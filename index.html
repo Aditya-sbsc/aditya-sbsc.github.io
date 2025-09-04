@@ -329,11 +329,16 @@ Start the conversation by introducing yourself as Aditya's AI assistant and aski
         React.useEffect(() => {
           if (isOpen && !chat) {
             try {
+              if (!process.env.API_KEY) {
+                console.error("API_KEY environment variable not set.");
+                setMessages([{ role: 'model', text: "Sorry, the AI assistant is not configured correctly. The API key is missing." }]);
+                return;
+              }
               const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
               const newChat = ai.chats.create({ model: 'gemini-2.5-flash', config: { systemInstruction: systemInstruction }});
               setChat(newChat);
               setIsLoading(true);
-              newChat.sendMessage({ message: "" }).then(response => {
+              newChat.sendMessage({ message: "Hello" }).then(response => {
                  setMessages([{ role: 'model', text: response.text }]);
                  setIsLoading(false);
               }).catch(error => {
@@ -362,7 +367,7 @@ Start the conversation by introducing yourself as Aditya's AI assistant and aski
           setIsLoading(true);
 
           try {
-            const response = await chat.sendMessage({ message: inputValue });
+            const response = await chat.sendMessage({ message: userMessage.text });
             const modelMessage = { role: 'model', text: response.text };
             setMessages(prev => [...prev, modelMessage]);
           } catch (error) {
