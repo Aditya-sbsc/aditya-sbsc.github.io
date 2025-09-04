@@ -329,12 +329,12 @@ Start the conversation by introducing yourself as Aditya's AI assistant and aski
         React.useEffect(() => {
           if (isOpen && !chat) {
             try {
-              if (!process.env.API_KEY) {
-                console.error("API_KEY environment variable not set.");
+              if (!process.env.AIzaSyA0FvsruhE7ygxtn5DpyUXdbEg9CTlTVpc) {
+                console.error("AIzaSyA0FvsruhE7ygxtn5DpyUXdbEg9CTlTVpc environment variable not set.");
                 setMessages([{ role: 'model', text: "Sorry, the AI assistant is not configured correctly. The API key is missing." }]);
                 return;
               }
-              const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+              const ai = new GoogleGenAI({ apiKey: process.env.AIzaSyA0FvsruhE7ygxtn5DpyUXdbEg9CTlTVpc });
               const newChat = ai.chats.create({ model: 'gemini-2.5-flash', config: { systemInstruction: systemInstruction }});
               setChat(newChat);
               setIsLoading(true);
