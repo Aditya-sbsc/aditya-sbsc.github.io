@@ -57,15 +57,6 @@
         will-change: transform;
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/client": "https://aistudiocdn.com/react-dom@^19.1.1/client",
-    "react": "https://aistudiocdn.com/react@^19.1.1",
-    "@google/generative-ai": "https://esm.sh/@google/generative-ai@0.21.0"
-  }
-}
-</script>
 </head>
   <body class="antialiased">
     <div id="root"></div>
@@ -73,7 +64,6 @@
     <script type="module">
       import React from 'react';
       import ReactDOM from 'react-dom/client';
-      import { GoogleGenerativeAI } from '@google/generative-ai';
 
       // --- START OF COMPILED APPLICATION CODE ---
 
@@ -125,6 +115,79 @@
         { name: 'Twitter', url: '#', icon: React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" }, React.createElement('path', { d: "M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.298 1.634 4.212 3.793 4.649-.65.177-1.336.216-2.029.177.608 1.926 2.373 3.252 4.49 3.29-1.711 1.33-3.845 2.068-6.141 2.068-.4 0-.8-.023-1.18-.067 2.15 1.386 4.697 2.15 7.44 2.15 9.117 0 14.29-7.56 14.04-14.513 1.018-.73 1.836-1.636 2.463-2.68z" })) },
         { name: 'GitHub', url: '#', icon: React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" }, React.createElement('path', { d: "M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" })) },
       ];
+
+      // Enhanced Training Data for Aria with Contact Information
+      const TRAINING_DATA = {
+        contact: {
+          email: "aditya.yadav.m7@gmail.com",
+          github: "https://github.com/Aditya-sbsc",
+          portfolio: "https://aditya-sbsc.github.io",
+          repositories: [
+            "aditya-sbsc.github.io - Portfolio Website",
+            "video-caption-generator - AI Video Captioning Tool"
+          ]
+        },
+        faq: [
+          {
+            question: "What makes Aditya different from other automation specialists?",
+            answer: "Aditya combines deep AI knowledge with practical business automation, focusing on ROI-driven solutions. He has successfully saved clients 20+ hours per week and specializes in seamless integrations between different platforms.",
+            keywords: ["different", "unique", "special", "why choose", "alag", "kya special"]
+          },
+          {
+            question: "How long does a typical automation project take?",
+            answer: "Most automation projects are completed within 2-4 weeks, depending on complexity and integrations required. Simple workflows can be set up in just a few days!",
+            keywords: ["timeline", "duration", "how long", "time", "kitna time", "samay"]
+          },
+          {
+            question: "What industries does Aditya work with?",
+            answer: "Aditya works with e-commerce businesses, SaaS companies, marketing agencies, and small to medium businesses looking to scale their operations efficiently.",
+            keywords: ["industries", "sectors", "businesses", "companies", "kaun sa business", "industry"]
+          },
+          {
+            question: "What are the costs for automation services?",
+            answer: "Project costs vary based on complexity and requirements. For detailed pricing and a custom quote, please reach out to Aditya directly at aditya.yadav.m7@gmail.com",
+            keywords: ["cost", "price", "pricing", "budget", "expensive", "kitna paisa", "rate", "fees"]
+          },
+          {
+            question: "Does Aditya provide ongoing support?",
+            answer: "Yes! Aditya provides comprehensive support including setup, training, and ongoing maintenance to ensure your automation continues to work perfectly.",
+            keywords: ["support", "maintenance", "help", "ongoing", "sahaayata", "madad"]
+          },
+          {
+            question: "How can I contact Aditya?",
+            answer: "You can reach Aditya directly via email at aditya.yadav.m7@gmail.com or through the contact form on this website. He typically responds within 24 hours!",
+            keywords: ["contact", "email", "reach", "connect", "sampark", "contact kaise kare", "email kya hai"]
+          }
+        ],
+        projectDetails: [
+          {
+            name: "Automated Lead Qualification",
+            details: "This AI-powered system uses machine learning to score and qualify leads automatically, integrating with CRM systems like HubSpot and Salesforce. It reduced manual work by 90% and improved lead quality.",
+            technologies: ["AI", "n8n", "CRM Integration", "Machine Learning"]
+          },
+          {
+            name: "Dynamic Ad Creative Generation",
+            details: "A sophisticated workflow that generates hundreds of personalized ad variations using templates and customer data. Integrated with Facebook Ads and Google Ads APIs for automatic campaign optimization.",
+            technologies: ["Automation", "Zapier", "Ad Tech", "API Integration"]
+          },
+          {
+            name: "Video Caption Generator",
+            details: "An AI-powered tool that automatically generates captions for videos, helping content creators and businesses make their content more accessible and engaging.",
+            technologies: ["AI", "Video Processing", "Natural Language Processing"]
+          }
+        ],
+        capabilities: [
+          "AI-powered chatbot development",
+          "Workflow automation with n8n and Zapier",
+          "CRM integrations and lead qualification",
+          "Social media automation",
+          "E-commerce automation",
+          "Video caption generation",
+          "Data analysis and reporting",
+          "API integrations",
+          "Custom dashboard creation"
+        ]
+      };
 
       // Components from components/*.tsx
 
@@ -304,8 +367,7 @@
         const [messages, setMessages] = React.useState([]);
         const [isLoading, setIsLoading] = React.useState(false);
         const [inputValue, setInputValue] = React.useState('');
-        const [model, setModel] = React.useState(null);
-        const [chat, setChat] = React.useState(null);
+        const [detectedLanguage, setDetectedLanguage] = React.useState('en');
         const messagesEndRef = React.useRef(null);
         
         const API_KEY = 'AIzaSyA0FvsruhE7ygxtn5DpyUXdbEg9CTlTVpc';
@@ -313,54 +375,124 @@
         const portfolioInfo = PORTFOLIO_ITEMS.map(item => `- ${item.title}: ${item.description}`).join('\n');
         const servicesInfo = SERVICES.map(service => `- ${service.title}: ${service.description}`).join('\n');
         const toolsInfo = TOOLS.map(tool => tool.name).join(', ');
+        const faqInfo = TRAINING_DATA.faq.map(item => `Q: ${item.question}\nA: ${item.answer}`).join('\n\n');
+        const capabilitiesInfo = TRAINING_DATA.capabilities.join(', ');
+        const contactInfo = `Email: ${TRAINING_DATA.contact.email}\nGitHub: ${TRAINING_DATA.contact.github}\nPortfolio: ${TRAINING_DATA.contact.portfolio}`;
         
-        const systemInstruction = `You are a friendly and helpful AI assistant on Aditya Yadav's personal portfolio website. Your goal is to answer questions about Aditya, his skills, and his projects based on the information provided below. Keep your answers concise, professional, and helpful. Do not make up information that is not present in the context. If a user asks something unrelated to Aditya's professional profile, politely decline to answer and redirect them to ask about Aditya's work.
+        const createSystemMessage = (language = 'en') => {
+          const languageInstructions = {
+            'en': 'Respond in English',
+            'es': 'Responde en español',
+            'fr': 'Répondez en français',
+            'de': 'Antworten Sie auf Deutsch',
+            'it': 'Rispondi in italiano',
+            'pt': 'Responda em português',
+            'ru': 'Отвечайте на русском языке',
+            'ja': '日本語で答えてください',
+            'ko': '한국어로 답변해 주세요',
+            'zh': '请用中文回答',
+            'ar': 'أجب بالعربية',
+            'hi': 'हिंदी में उत्तर दें',
+            'hinglish': 'Respond in Hinglish (Hindi-English mix) - use English words mixed with Hindi naturally like "acha", "kya", "bahut", "accha lag raha", etc.',
+            'default': 'Respond in the same language the user is using'
+          };
 
-Here is the information about Aditya Yadav:
+          return `You are "Aria", Aditya Yadav's intelligent and friendly AI assistant on his portfolio website. You have a warm, professional personality and are passionate about AI automation, workflow optimization, and creative advertising.
 
-**What Aditya Does (Services):**
+**CRITICAL LANGUAGE INSTRUCTION: ${languageInstructions[language] || languageInstructions.default}. Always detect the language the user is speaking and respond in that exact same language. For Indian users, feel free to use Hinglish (Hindi-English mix) naturally.**
+
+**Special for Indian/Hinglish Users:**
+- Use common Hindi words naturally: "acha", "kya", "bahut", "bilkul", "theek hai", "samajh gaya", "perfect", etc.
+- Mix English and Hindi naturally like Indians speak
+- Be more casual and friendly with Indian users
+- Use expressions like "bhai", "dost", "ji haan", "accha" when appropriate
+
+**Your Personality as Aria:**
+- Name: Aria (always introduce yourself by name)
+- Personality: Friendly, enthusiastic, professional, knowledgeable, slightly casual with Indian users
+- Tone: Conversational but informative
+- Style: Helpful and engaging, with excitement about technology
+- Always greet new visitors warmly and introduce yourself
+
+**Contact Information for Aditya:**
+${contactInfo}
+
+**About Aditya Yadav:**
+
+**Services & Expertise:**
 ${servicesInfo}
 
 **Portfolio Projects:**
 ${portfolioInfo}
 
-**Tools Aditya Uses:**
+**Tools & Technologies:**
 ${toolsInfo}
 
-Always be friendly, professional, and helpful in your responses. Focus on Aditya's expertise in AI automation, workflow optimization, and creative advertising.`;
+**Core Capabilities:**
+${capabilitiesInfo}
+
+**Frequently Asked Questions:**
+${faqInfo}
+
+**Advanced Project Details:**
+- Lead qualification system: Uses AI scoring algorithms with 95% accuracy
+- Ad creative generation: Creates 500+ variations per campaign automatically  
+- Chatbot implementations: Handle 70%+ of customer queries with 98% satisfaction
+- Workflow automation: Saves clients average of 25 hours per week
+- Integration expertise: 50+ platforms including CRM, marketing tools, e-commerce
+- Video caption generator: AI-powered tool for automatic video captioning
+
+**Recent GitHub Projects:**
+- Portfolio Website (aditya-sbsc.github.io)
+- Video Caption Generator (AI-powered video captioning tool)
+
+**Conversation Guidelines:**
+1. **Language**: Always respond in the same language the user is using. For Indian users, use Hinglish naturally
+2. **Contact**: Always provide Aditya's email (aditya.yadav.m7@gmail.com) when asked about contact
+3. **Personality**: Be enthusiastic about Aditya's work and helpful to visitors
+4. **Information**: Provide specific details from the training data above
+5. **Pricing**: For pricing questions, provide email and suggest contacting directly
+6. **Engagement**: Ask follow-up questions to understand visitor needs better
+7. **Navigation**: Guide visitors to relevant portfolio sections when appropriate
+
+**Sample Responses for Different Languages:**
+- English: "Hi there! I'm Aria, Aditya's AI assistant! 👋"
+- Hinglish: "Hey! Main Aria hun, Aditya ki AI assistant! 👋 Kya help chahiye?"
+- Hindi: "नमस्ते! मैं आरिया हूं, आदित्य की AI असिस्टेंट!"
+
+Remember: Always be helpful, specific, and enthusiastic while responding in the user's language, especially Hinglish for Indian users!`;
+        };
+
+        const detectLanguage = (text) => {
+          const languagePatterns = {
+            'hinglish': /\b(kya|hai|acha|bhai|yaar|bhi|main|mera|tera|kaise|kahan|kab|kyun|accha|theek|bilkul|zaroor|samjha|samajh|matlab|chahiye|help|project|work|automation)\b/i,
+            'hi': /\b(क्या|है|अच्छा|भाई|यार|भी|मैं|मेरा|तेरा|कैसे|कहाँ|कब|क्यों|ठीक|बिल्कुल|जरूर|समझा|समझ|मतलब|चाहिए|नमस्ते|धन्यवाद)\b/,
+            'es': /\b(hola|gracias|por favor|cómo|qué|sí|no|bueno|trabajo|proyecto)\b/i,
+            'fr': /\b(bonjour|merci|s'il vous plaît|comment|que|oui|non|bon|travail|projet)\b/i,
+            'de': /\b(hallo|danke|bitte|wie|was|ja|nein|gut|arbeit|projekt)\b/i,
+            'it': /\b(ciao|grazie|per favore|come|che|sì|no|buono|lavoro|progetto)\b/i,
+            'pt': /\b(olá|obrigado|por favor|como|que|sim|não|bom|trabalho|projeto)\b/i,
+            'ru': /\b(привет|спасибо|пожалуйста|как|что|да|нет|хорошо|работа|проект)\b/i,
+            'ja': /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/,
+            'ko': /[\uAC00-\uD7AF]/,
+            'zh': /[\u4E00-\u9FFF]/,
+            'ar': /[\u0600-\u06FF]/
+          };
+
+          for (const [lang, pattern] of Object.entries(languagePatterns)) {
+            if (pattern.test(text)) {
+              return lang;
+            }
+          }
+          return 'en';
+        };
 
         React.useEffect(() => {
-          if (isOpen && !model) {
-            try {
-              const genAI = new GoogleGenerativeAI(API_KEY);
-              const generativeModel = genAI.getGenerativeModel({ 
-                model: 'gemini-1.5-flash',
-                systemInstruction: systemInstruction
-              });
-              setModel(generativeModel);
-              
-              // Start a new chat session
-              const chatSession = generativeModel.startChat({
-                history: []
-              });
-              setChat(chatSession);
-              
-              // Send initial message
-              setIsLoading(true);
-              chatSession.sendMessage("Hello! Introduce yourself and ask how you can help.")
-                .then(response => {
-                  setMessages([{ role: 'model', text: response.response.text() }]);
-                  setIsLoading(false);
-                })
-                .catch(error => {
-                  console.error("Error with initial message:", error);
-                  setMessages([{ role: 'model', text: "Hi! I'm Aditya's AI assistant. I can help you learn about his work in AI automation, workflow optimization, and creative advertising. What would you like to know?" }]);
-                  setIsLoading(false);
-                });
-            } catch (error) {
-              console.error("Failed to initialize Gemini AI:", error);
-              setMessages([{ role: 'model', text: "Hi! I'm Aditya's AI assistant. I can help you learn about his work in AI automation, workflow optimization, and creative advertising. What would you like to know?" }]);
-            }
+          if (isOpen && messages.length === 0) {
+            setMessages([{ 
+              role: 'assistant', 
+              text: "Hi there! I'm Aria, Aditya's AI assistant! 👋 I'm here to help you learn about his amazing work in AI automation, workflow optimization, and creative advertising. Kya help chahiye? 😊" 
+            }]);
           }
         }, [isOpen]);
 
@@ -368,9 +500,57 @@ Always be friendly, professional, and helpful in your responses. Focus on Aditya
           messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
         }, [messages, isLoading]);
 
+        const callGeminiAPI = async (userMessage, language) => {
+          try {
+            const systemMessage = createSystemMessage(language);
+            
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                contents: [
+                  {
+                    parts: [
+                      { text: systemMessage },
+                      { text: `User message: ${userMessage}` }
+                    ]
+                  }
+                ],
+                generationConfig: {
+                  temperature: 0.8,
+                  topK: 40,
+                  topP: 0.95,
+                  maxOutputTokens: 1024,
+                }
+              })
+            });
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            
+            if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts[0]) {
+              return data.candidates[0].content.parts[0].text;
+            } else {
+              throw new Error('Invalid response format');
+            }
+          } catch (error) {
+            console.error('Gemini API Error:', error);
+            throw error;
+          }
+        };
+
         const handleSendMessage = async (e) => {
           e.preventDefault();
-          if (!inputValue.trim() || isLoading || !chat) return;
+          if (!inputValue.trim() || isLoading) return;
+
+          // Detect language from user input
+          const detectedLang = detectLanguage(inputValue);
+          setDetectedLanguage(detectedLang);
 
           const userMessage = { role: 'user', text: inputValue };
           setMessages(prev => [...prev, userMessage]);
@@ -378,12 +558,29 @@ Always be friendly, professional, and helpful in your responses. Focus on Aditya
           setIsLoading(true);
 
           try {
-            const response = await chat.sendMessage(userMessage.text);
-            const modelMessage = { role: 'model', text: response.response.text() };
-            setMessages(prev => [...prev, modelMessage]);
+            const responseText = await callGeminiAPI(userMessage.text, detectedLang);
+            const assistantMessage = { role: 'assistant', text: responseText };
+            setMessages(prev => [...prev, assistantMessage]);
           } catch (error) {
             console.error("Error sending message:", error);
-            const errorMessage = { role: 'model', text: "I apologize, but I'm having trouble responding right now. Please try asking about Aditya's services, portfolio projects, or the tools he uses." };
+            
+            // Error messages in detected language
+            const errorMessages = {
+              'hinglish': "Sorry yaar, main thoda problem face kar rahi hun. Aditya ke services, projects ya tools ke baare mein pooch sakte ho!",
+              'hi': "क्षमा करें, मुझे कुछ समस्या हो रही है। आदित्य की सेवाओं के बारे में पूछें!",
+              'es': "Lo siento, estoy teniendo problemas para responder ahora. ¡Pregúntame sobre los servicios, proyectos o herramientas de Aditya!",
+              'fr': "Désolé, j'ai des difficultés à répondre maintenant. Demandez-moi des services, projets ou outils d'Aditya!",
+              'de': "Entschuldigung, ich habe Probleme zu antworten. Fragen Sie mich nach Adityas Services, Projekten oder Tools!",
+              'it': "Scusa, sto avendo problemi a rispondere. Chiedimi dei servizi, progetti o strumenti di Aditya!",
+              'pt': "Desculpe, estou tendo problemas para responder. Pergunte-me sobre os serviços, projetos ou ferramentas do Aditya!",
+              'ru': "Извините, у меня проблемы с ответом. Спросите меня об услугах, проектах или инструментах Адитьи!",
+              'default': "I apologize, but I'm having trouble responding right now. Please ask me about Aditya's services, portfolio projects, or the tools he uses!"
+            };
+            
+            const errorMessage = { 
+              role: 'assistant', 
+              text: errorMessages[detectedLang] || errorMessages.default
+            };
             setMessages(prev => [...prev, errorMessage]);
           } finally {
             setIsLoading(false);
@@ -393,24 +590,33 @@ Always be friendly, professional, and helpful in your responses. Focus on Aditya
         return React.createElement(React.Fragment, null,
           React.createElement('button', {
             onClick: () => setIsOpen(!isOpen),
-            className: `fixed bottom-6 right-6 w-16 h-16 rounded-full bg-blue-600 text-white shadow-xl hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transition-all duration-300 transform hover:scale-110 z-30 flex items-center justify-center ${isOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}`,
-            'aria-label': "Open chat"
+            className: `fixed bottom-6 right-6 w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow-xl hover:from-orange-600 hover:to-pink-600 focus:outline-none focus:ring-4 focus:ring-orange-300 dark:focus:ring-orange-800 transition-all duration-300 transform hover:scale-110 z-30 flex items-center justify-center ${isOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}`,
+            'aria-label': "Chat with Aria"
           }, React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-8 w-8", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" }))),
           React.createElement('div', { className: `fixed bottom-6 right-6 w-[calc(100vw-3rem)] max-w-md h-[70vh] max-h-[600px] bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-2xl z-30 flex flex-col transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}` },
-            React.createElement('div', { className: "flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700" },
-              React.createElement('h3', { className: "text-lg font-bold text-gray-900 dark:text-white" }, "AI Assistant"),
-              React.createElement('button', { onClick: () => setIsOpen(false), className: "text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white", 'aria-label': "Close chat" }, React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" })))
+            React.createElement('div', { className: "flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-orange-500 to-pink-500 rounded-t-2xl" },
+              React.createElement('div', { className: "flex items-center space-x-3" },
+                React.createElement('div', { className: "w-8 h-8 rounded-full bg-white/20 flex items-center justify-center" },
+                  React.createElement('span', { className: "text-white font-bold text-sm" }, "A")
+                ),
+                React.createElement('div', null,
+                  React.createElement('h3', { className: "text-lg font-bold text-white" }, "Aria"),
+                  React.createElement('p', { className: "text-xs text-white/80" }, "AI Assistant • Multilingual")
+                )
+              ),
+              React.createElement('button', { onClick: () => setIsOpen(false), className: "text-white/80 hover:text-white", 'aria-label': "Close chat" }, React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" })))
             ),
             React.createElement('div', { className: "flex-1 p-4 overflow-y-auto space-y-4" },
               messages.map((msg, index) => React.createElement('div', { key: index, className: `flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}` },
-                React.createElement('div', { className: `max-w-[80%] rounded-2xl px-4 py-2 text-sm ${msg.role === 'user' ? 'bg-blue-600 text-white rounded-br-lg' : 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-bl-lg'}` }, msg.text)
+                React.createElement('div', { className: `max-w-[85%] rounded-2xl px-4 py-2 text-sm ${msg.role === 'user' ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-br-lg' : 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-bl-lg'}` }, msg.text)
               )),
               isLoading && React.createElement('div', { className: "flex justify-start" },
                 React.createElement('div', { className: "max-w-[80%] rounded-2xl px-4 py-2 text-sm bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-bl-lg" },
                   React.createElement('div', { className: "flex items-center space-x-2" },
-                    React.createElement('div', { className: "w-2 h-2 bg-gray-500 rounded-full animate-pulse" }),
-                    React.createElement('div', { className: "w-2 h-2 bg-gray-500 rounded-full animate-pulse [animation-delay:0.2s]" }),
-                    React.createElement('div', { className: "w-2 h-2 bg-gray-500 rounded-full animate-pulse [animation-delay:0.4s]" })
+                    React.createElement('div', { className: "w-2 h-2 bg-orange-500 rounded-full animate-pulse" }),
+                    React.createElement('div', { className: "w-2 h-2 bg-pink-500 rounded-full animate-pulse [animation-delay:0.2s]" }),
+                    React.createElement('div', { className: "w-2 h-2 bg-orange-500 rounded-full animate-pulse [animation-delay:0.4s]" }),
+                    React.createElement('span', { className: "text-xs text-gray-500 ml-2" }, "Aria typing...")
                   )
                 )
               ),
@@ -418,9 +624,9 @@ Always be friendly, professional, and helpful in your responses. Focus on Aditya
             ),
             React.createElement('form', { onSubmit: handleSendMessage, className: "p-4 border-t border-gray-200 dark:border-gray-700" },
               React.createElement('div', { className: "relative" },
-                React.createElement('input', { type: "text", value: inputValue, onChange: (e) => setInputValue(e.target.value), placeholder: "Ask me anything about Aditya...", className: "w-full bg-gray-100/50 dark:bg-gray-900/50 border-gray-300 dark:border-gray-600 rounded-full py-2 pl-4 pr-12 text-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none", disabled: isLoading }),
-                React.createElement('button', { type: "submit", className: "absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 disabled:bg-blue-400 dark:disabled:bg-blue-800 transition-colors", disabled: isLoading || !inputValue.trim() },
-                  React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-5 w-5", viewBox: "0 0 20 20", fill: "currentColor" }, React.createElement('path', { fillRule: "evenodd", d: "M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z", clipRule: "evenodd" }))
+                React.createElement('input', { type: "text", value: inputValue, onChange: (e) => setInputValue(e.target.value), placeholder: "Ask me anything - English/Hindi/Hinglish...", className: "w-full bg-gray-100/50 dark:bg-gray-900/50 border-gray-300 dark:border-gray-600 rounded-full py-3 pl-4 pr-12 text-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-200", disabled: isLoading }),
+                React.createElement('button', { type: "submit", className: "absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-full hover:from-orange-600 hover:to-pink-600 disabled:from-orange-400 disabled:to-pink-400 dark:disabled:from-orange-800 dark:disabled:to-pink-800 transition-all duration-200 transform hover:scale-105", disabled: isLoading || !inputValue.trim() },
+                  React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-5 w-5", viewBox: "0 0 24 24", fill: "currentColor" }, React.createElement('path', { d: "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" }))
                 )
               )
             )
