@@ -60,8 +60,7 @@
   <script type="importmap">
 {
   "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
-    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react-dom/client": "https://aistudiocdn.com/react-dom@^19.1.1/client",
     "react": "https://aistudiocdn.com/react@^19.1.1",
     "@google/genai": "https://aistudiocdn.com/@google/genai@^0.15.0"
   }
@@ -71,6 +70,413 @@
   <body class="antialiased">
     <div id="root"></div>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script type="module" src="/index.tsx"></script>
+    <script type="module">
+      import React from 'react';
+      import ReactDOM from 'react-dom/client';
+      import { GoogleGenAI } from '@google/genai';
+
+      // --- START OF COMPILED APPLICATION CODE ---
+
+      // Constants from constants.tsx
+      const NAV_LINKS = ['Home', 'About', 'Portfolio', 'Ad Mockups', 'Tools', 'Contact'];
+
+      const SERVICES = [
+        {
+          title: 'AI-Powered Chatbots',
+          description: 'I design and deploy intelligent chatbots that handle customer inquiries, qualify leads, and provide 24/7 support, enhancing user experience and efficiency.',
+          icon: React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-12 w-12", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" }))
+        },
+        {
+          title: 'Workflow Automation',
+          description: 'I build custom automation pipelines that eliminate repetitive tasks, connect your apps, and streamline your business processes using tools like n8n and Zapier.',
+          icon: React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-12 w-12", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" }))
+        },
+        {
+          title: 'Creative Ad Mockups',
+          description: 'I craft visually compelling and strategically sound ad mockups for social media and digital platforms that capture attention and drive conversions.',
+          icon: React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-12 w-12", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" }))
+        },
+      ];
+
+      const PORTFOLIO_ITEMS = [
+        { title: 'Automated Lead Qualification', description: 'Developed an AI-powered system that automatically qualifies inbound leads, saving 20+ hours per week for the sales team.', imageUrl: 'https://picsum.photos/seed/project1/600/400', tags: ['AI', 'n8n', 'CRM Integration'] },
+        { title: 'Dynamic Ad Creative Generation', description: 'Built a workflow that generates hundreds of ad creative variations from a single template, personalized for different audiences.', imageUrl: 'https://picsum.photos/seed/project2/600/400', tags: ['Automation', 'Zapier', 'Ad Tech'] },
+        { title: 'Customer Support Chatbot', description: 'Implemented a sophisticated chatbot that handles 70% of common customer queries, improving response time and satisfaction.', imageUrl: 'https://picsum.photos/seed/project3/600/400', tags: ['Chatbot', 'AI', 'Customer Experience'] },
+        { title: 'Social Media Content Scheduler', description: 'Created an automated pipeline to schedule and post content across multiple social media platforms from a centralized dashboard.', imageUrl: 'https://picsum.photos/seed/project4/600/400', tags: ['Social Media', 'Automation', 'API'] },
+      ];
+
+      const AD_MOCKUPS = [
+        { caption: 'Sleek & Modern - Tech Gadget Launch', imageUrl: 'https://picsum.photos/seed/ad1/500/700' },
+        { caption: 'Vibrant & Fresh - Healthy Drink Campaign', imageUrl: 'https://picsum.photos/seed/ad2/500/700' },
+        { caption: 'Luxury & Elegance - Fashion Brand Ad', imageUrl: 'https://picsum.photos/seed/ad3/500/700' },
+        { caption: 'Action-Packed - Sports Apparel Promotion', imageUrl: 'https://picsum.photos/seed/ad4/500/700' },
+      ];
+
+      const TOOLS = [
+        { name: 'n8n', logoUrl: 'https://raw.githubusercontent.com/n8n-io/n8n-docs/main/archive/static/n8n-logo-grey.svg', colorLogoUrl: 'https://raw.githubusercontent.com/n8n-io/n8n-docs/main/archive/static/n8n-logo.svg' },
+        { name: 'Zapier', logoUrl: 'https://cdn.worldvectorlogo.com/logos/zapier-2.svg', colorLogoUrl: 'https://cdn.worldvectorlogo.com/logos/zapier.svg' },
+        { name: 'Google Ads', logoUrl: 'https://www.gstatic.com/images/branding/product/2x/ads_96dp.png', colorLogoUrl: 'https://www.gstatic.com/images/branding/product/2x/ads_96dp.png' },
+        { name: 'Make', logoUrl: 'https://static-cdn.make.com/img/logo/make-logo-mono-dark.svg', colorLogoUrl: 'https://static-cdn.make.com/img/logo/make-logo.svg' },
+        { name: 'Google Analytics', logoUrl: 'https://www.gstatic.com/analytics-suite/header/suite/v2/ic_analytics.svg', colorLogoUrl: 'https://www.gstatic.com/analytics-suite/header/suite/v2/ic_analytics.svg' }
+      ];
+
+      const SOCIAL_LINKS = [
+        { name: 'LinkedIn', url: '#', icon: React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" }, React.createElement('path', { d: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" })) },
+        { name: 'Twitter', url: '#', icon: React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" }, React.createElement('path', { d: "M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.298 1.634 4.212 3.793 4.649-.65.177-1.336.216-2.029.177.608 1.926 2.373 3.252 4.49 3.29-1.711 1.33-3.845 2.068-6.141 2.068-.4 0-.8-.023-1.18-.067 2.15 1.386 4.697 2.15 7.44 2.15 9.117 0 14.29-7.56 14.04-14.513 1.018-.73 1.836-1.636 2.463-2.68z" })) },
+        { name: 'GitHub', url: '#', icon: React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" }, React.createElement('path', { d: "M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" })) },
+      ];
+
+      // Components from components/*.tsx
+
+      const DarkModeToggle = ({ isDarkMode, toggleDarkMode }) => {
+        return React.createElement('button', {
+          onClick: toggleDarkMode,
+          className: "p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600 transition-colors duration-300",
+          'aria-label': "Toggle dark mode"
+        }, isDarkMode ?
+          React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 2 },
+            React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" })
+          ) :
+          React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 2 },
+            React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" })
+          )
+        );
+      };
+
+      const Header = ({ isDarkMode, toggleDarkMode }) => {
+        const [isOpen, setIsOpen] = React.useState(false);
+        const [isScrolled, setIsScrolled] = React.useState(false);
+
+        React.useEffect(() => {
+          const handleScroll = () => setIsScrolled(window.scrollY > 10);
+          window.addEventListener('scroll', handleScroll);
+          return () => window.removeEventListener('scroll', handleScroll);
+        }, []);
+
+        const navLinkClass = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-colors duration-300";
+
+        return React.createElement('nav', { className: `fixed w-full z-20 top-0 start-0 transition-all duration-300 ${isScrolled ? 'bg-white/30 dark:bg-gray-900/30 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700' : 'bg-transparent'}` },
+          React.createElement('div', { className: "max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4" },
+            React.createElement('a', { href: "#home", className: "flex items-center space-x-3 rtl:space-x-reverse" },
+              React.createElement('span', { className: "self-center text-2xl font-semibold whitespace-nowrap dark:text-white" }, "Aditya Yadav")
+            ),
+            React.createElement('div', { className: "flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center" },
+              React.createElement(DarkModeToggle, { isDarkMode, toggleDarkMode }),
+              React.createElement('button', { onClick: () => setIsOpen(!isOpen), type: "button", className: "inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600", 'aria-controls': "navbar-sticky", 'aria-expanded': isOpen },
+                React.createElement('span', { className: "sr-only" }, "Open main menu"),
+                React.createElement('svg', { className: "w-5 h-5", 'aria-hidden': "true", xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 17 14" },
+                  React.createElement('path', { stroke: "currentColor", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M1 1h15M1 7h15M1 13h15" })
+                )
+              )
+            ),
+            React.createElement('div', { className: `items-center justify-between w-full md:flex md:w-auto md:order-1 ${isOpen ? 'block' : 'hidden'}`, id: "navbar-sticky" },
+              React.createElement('ul', { className: "flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:border-gray-700" },
+                NAV_LINKS.map(link => React.createElement('li', { key: link },
+                  React.createElement('a', { href: `#${link.toLowerCase().replace(' ', '-')}`, className: navLinkClass, onClick: () => setIsOpen(false) }, link)
+                ))
+              )
+            )
+          )
+        );
+      };
+      
+      const Section = ({ id, title, children, className = '' }) => {
+        return React.createElement('section', { id, className: `py-16 md:py-24 ${className}` },
+          React.createElement('div', { className: "container mx-auto px-6 md:px-12" },
+            React.createElement('h2', { className: "text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white mb-12" }, title),
+            children
+          )
+        );
+      };
+
+      const Hero = () => {
+        return React.createElement('section', { id: "home", className: "h-screen flex items-center justify-center" },
+          React.createElement('div', { className: "text-center px-4" },
+            React.createElement('h1', { className: "text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white mb-4" }, "Aditya Yadav"),
+            React.createElement('p', { className: "text-lg md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto" }, "AI & Ads Specialist | Automating Workflows & Crafting High-Impact Advertising"),
+            React.createElement('a', { href: "#contact", className: "inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 duration-300" }, "Get In Touch")
+          )
+        );
+      };
+
+      const About = () => {
+        const ServiceCard = ({ title, description, icon }) => React.createElement('div', { className: "bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-white/20 dark:border-gray-700/30" },
+          React.createElement('div', { className: "text-blue-500 mb-4" }, icon),
+          React.createElement('h3', { className: "text-xl font-bold text-gray-900 dark:text-white mb-2" }, title),
+          React.createElement('p', { className: "text-gray-700 dark:text-gray-400" }, description)
+        );
+
+        return React.createElement(Section, { id: "about", title: "What I Do" },
+          React.createElement('div', { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-8" },
+            SERVICES.map(service => React.createElement(ServiceCard, { key: service.title, ...service }))
+          )
+        );
+      };
+
+      const Portfolio = () => {
+        return React.createElement(Section, { id: "portfolio", title: "Automation Portfolio" },
+          React.createElement('div', { className: "grid md:grid-cols-2 gap-8 lg:gap-12" },
+            PORTFOLIO_ITEMS.map((item, index) => React.createElement('div', { key: index, className: "group rounded-xl overflow-hidden bg-white/30 dark:bg-gray-800/30 backdrop-blur-lg border border-white/20 dark:border-gray-700/30 shadow-lg shadow-blue-500/10 dark:shadow-blue-400/10 hover:shadow-2xl hover:shadow-blue-500/20 dark:hover:shadow-blue-400/20 transition-all duration-300 transform hover:-translate-y-2" },
+              React.createElement('img', { src: item.imageUrl, alt: item.title, className: "w-full h-56 object-cover" }),
+              React.createElement('div', { className: "p-6" },
+                React.createElement('h3', { className: "text-xl font-bold text-gray-900 dark:text-white mb-2" }, item.title),
+                React.createElement('p', { className: "text-gray-600 dark:text-gray-400 mb-4" }, item.description),
+                React.createElement('div', { className: "flex flex-wrap gap-2" },
+                  item.tags.map(tag => React.createElement('span', { key: tag, className: "bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300" }, tag))
+                )
+              )
+            ))
+          )
+        );
+      };
+
+      const AdMockups = () => {
+        return React.createElement(Section, { id: "ad-mockups", title: "Ad Mockups" },
+          React.createElement('div', { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" },
+            AD_MOCKUPS.map((mockup, index) => React.createElement('div', { key: index, className: "group relative overflow-hidden rounded-xl shadow-lg shadow-purple-500/10 dark:shadow-purple-400/10 hover:shadow-2xl hover:shadow-purple-500/20 dark:hover:shadow-purple-400/20 transition-all duration-300" },
+              React.createElement('img', { src: mockup.imageUrl, alt: mockup.caption, className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" }),
+              React.createElement('div', { className: "absolute inset-0 bg-black/40 backdrop-blur-sm flex items-end p-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100" },
+                React.createElement('p', { className: "text-white font-semibold" }, mockup.caption)
+              )
+            ))
+          )
+        );
+      };
+
+      const Tools = () => {
+        const extendedTools = [...TOOLS, ...TOOLS];
+        return React.createElement(Section, { id: "tools", title: "Tools I Use" },
+          React.createElement('div', { className: "relative w-full overflow-hidden" },
+            React.createElement('div', { className: "flex will-change-transform animate-marquee" },
+              extendedTools.map((tool, index) => React.createElement('div', { key: `${tool.name}-${index}`, className: "flex-shrink-0 w-48 mx-8 flex justify-center items-center group" },
+                React.createElement('img', { src: tool.colorLogoUrl, alt: tool.name, className: "h-16 object-contain filter grayscale group-hover:filter-none transition-all duration-300" })
+              ))
+            ),
+            React.createElement('div', { className: "absolute top-0 left-0 h-full w-20 bg-gradient-to-r from-slate-50 dark:from-slate-950 to-transparent pointer-events-none" }),
+            React.createElement('div', { className: "absolute top-0 right-0 h-full w-20 bg-gradient-to-l from-slate-50 dark:from-slate-950 to-transparent pointer-events-none" })
+          )
+        );
+      };
+
+      const Contact = () => {
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          alert("Form submitted! (This is a demo)");
+        };
+        return React.createElement(Section, { id: "contact", title: "Get In Touch" },
+          React.createElement('div', { className: "max-w-2xl mx-auto bg-white/30 dark:bg-gray-800/30 backdrop-blur-lg p-8 rounded-xl border border-white/20 dark:border-gray-700/30" },
+            React.createElement('p', { className: "text-center text-gray-700 dark:text-gray-400 mb-8" }, "Have a project in mind or want to discuss automation? Let's connect."),
+            React.createElement('form', { onSubmit: handleSubmit, className: "space-y-6" },
+              React.createElement('div', null,
+                React.createElement('label', { htmlFor: "name", className: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" }, "Your Name"),
+                React.createElement('input', { type: "text", id: "name", className: "bg-gray-50/50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white", placeholder: "John Doe", required: true })
+              ),
+              React.createElement('div', null,
+                React.createElement('label', { htmlFor: "email", className: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" }, "Your Email"),
+                React.createElement('input', { type: "email", id: "email", className: "bg-gray-50/50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white", placeholder: "name@company.com", required: true })
+              ),
+              React.createElement('div', null,
+                React.createElement('label', { htmlFor: "message", className: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" }, "Your Message"),
+                React.createElement('textarea', { id: "message", rows: 4, className: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white", placeholder: "Let's talk about..." })
+              ),
+              React.createElement('button', { type: "submit", className: "w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors duration-300" }, "Send Message")
+            )
+          )
+        );
+      };
+
+      const Footer = () => {
+        return React.createElement('footer', { className: "bg-transparent" },
+          React.createElement('div', { className: "container mx-auto px-6 py-8" },
+            React.createElement('div', { className: "flex flex-col items-center text-center" },
+              React.createElement('a', { href: "#home", className: "text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300" }, "Aditya Yadav"),
+              React.createElement('div', { className: "flex mt-4" },
+                SOCIAL_LINKS.map(link => React.createElement('a', { key: link.name, href: link.url, target: "_blank", rel: "noopener noreferrer", className: "mx-3 text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300", 'aria-label': link.name }, link.icon))
+              ),
+              React.createElement('p', { className: "mt-4 text-sm text-gray-600 dark:text-gray-400" }, `© ${new Date().getFullYear()} Aditya Yadav. All Rights Reserved.`)
+            )
+          )
+        );
+      };
+      
+      const Chatbot = () => {
+        const [isOpen, setIsOpen] = React.useState(false);
+        const [messages, setMessages] = React.useState([]);
+        const [isLoading, setIsLoading] = React.useState(false);
+        const [inputValue, setInputValue] = React.useState('');
+        const [chat, setChat] = React.useState(null);
+        const messagesEndRef = React.useRef(null);
+        
+        const portfolioInfo = PORTFOLIO_ITEMS.map(item => `- ${item.title}: ${item.description}`).join('\\n');
+        const servicesInfo = SERVICES.map(service => `- ${service.title}: ${service.description}`).join('\\n');
+        const toolsInfo = TOOLS.map(tool => tool.name).join(', ');
+        const systemInstruction = `You are a friendly and helpful AI assistant on Aditya Yadav's personal portfolio website. Your goal is to answer questions about Aditya, his skills, and his projects based on the information provided below. Keep your answers concise, professional, and helpful. Do not make up information that is not present in the context. If a user asks something unrelated to Aditya's professional profile, politely decline to answer.
+
+Here is the information about Aditya Yadav:
+
+**What Aditya Does (Services):**
+${servicesInfo}
+
+**Portfolio Projects:**
+${portfolioInfo}
+
+**Tools Aditya Uses:**
+${toolsInfo}
+
+Start the conversation by introducing yourself as Aditya's AI assistant and asking how you can help.
+`;
+
+        React.useEffect(() => {
+          if (isOpen && !chat) {
+            try {
+              const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+              const newChat = ai.chats.create({ model: 'gemini-2.5-flash', config: { systemInstruction: systemInstruction }});
+              setChat(newChat);
+              setIsLoading(true);
+              newChat.sendMessage({ message: "" }).then(response => {
+                 setMessages([{ role: 'model', text: response.text }]);
+                 setIsLoading(false);
+              }).catch(error => {
+                  console.error("Error fetching initial message:", error);
+                  setMessages([{ role: 'model', text: "Sorry, I'm having trouble connecting right now." }]);
+                  setIsLoading(false);
+              });
+            } catch (error) {
+              console.error("Failed to initialize Gemini AI:", error);
+              setMessages([{ role: 'model', text: "Sorry, the AI assistant is currently unavailable." }]);
+            }
+          }
+        }, [isOpen, chat]);
+
+        React.useEffect(() => {
+          messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }, [messages, isLoading]);
+
+        const handleSendMessage = async (e) => {
+          e.preventDefault();
+          if (!inputValue.trim() || isLoading || !chat) return;
+
+          const userMessage = { role: 'user', text: inputValue };
+          setMessages(prev => [...prev, userMessage]);
+          setInputValue('');
+          setIsLoading(true);
+
+          try {
+            const response = await chat.sendMessage({ message: inputValue });
+            const modelMessage = { role: 'model', text: response.text };
+            setMessages(prev => [...prev, modelMessage]);
+          } catch (error) {
+            console.error("Error sending message:", error);
+            const errorMessage = { role: 'model', text: "Oops! Something went wrong. Please try again." };
+            setMessages(prev => [...prev, errorMessage]);
+          } finally {
+            setIsLoading(false);
+          }
+        };
+
+        return React.createElement(React.Fragment, null,
+          React.createElement('button', {
+            onClick: () => setIsOpen(!isOpen),
+            className: `fixed bottom-6 right-6 w-16 h-16 rounded-full bg-blue-600 text-white shadow-xl hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transition-all duration-300 transform hover:scale-110 z-30 flex items-center justify-center ${isOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}`,
+            'aria-label': "Open chat"
+          }, React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-8 w-8", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" }))),
+          React.createElement('div', { className: `fixed bottom-6 right-6 w-[calc(100vw-3rem)] max-w-md h-[70vh] max-h-[600px] bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-2xl z-30 flex flex-col transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}` },
+            React.createElement('div', { className: "flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700" },
+              React.createElement('h3', { className: "text-lg font-bold text-gray-900 dark:text-white" }, "AI Assistant"),
+              React.createElement('button', { onClick: () => setIsOpen(false), className: "text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white", 'aria-label': "Close chat" }, React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" })))
+            ),
+            React.createElement('div', { className: "flex-1 p-4 overflow-y-auto space-y-4" },
+              messages.map((msg, index) => React.createElement('div', { key: index, className: `flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}` },
+                React.createElement('div', { className: `max-w-[80%] rounded-2xl px-4 py-2 text-sm ${msg.role === 'user' ? 'bg-blue-600 text-white rounded-br-lg' : 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-bl-lg'}` }, msg.text)
+              )),
+              isLoading && React.createElement('div', { className: "flex justify-start" },
+                React.createElement('div', { className: "max-w-[80%] rounded-2xl px-4 py-2 text-sm bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-bl-lg" },
+                  React.createElement('div', { className: "flex items-center space-x-2" },
+                    React.createElement('div', { className: "w-2 h-2 bg-gray-500 rounded-full animate-pulse" }),
+                    React.createElement('div', { className: "w-2 h-2 bg-gray-500 rounded-full animate-pulse [animation-delay:0.2s]" }),
+                    React.createElement('div', { className: "w-2 h-2 bg-gray-500 rounded-full animate-pulse [animation-delay:0.4s]" })
+                  )
+                )
+              ),
+              React.createElement('div', { ref: messagesEndRef })
+            ),
+            React.createElement('form', { onSubmit: handleSendMessage, className: "p-4 border-t border-gray-200 dark:border-gray-700" },
+              React.createElement('div', { className: "relative" },
+                React.createElement('input', { type: "text", value: inputValue, onChange: (e) => setInputValue(e.target.value), placeholder: "Ask me anything...", className: "w-full bg-gray-100/50 dark:bg-gray-900/50 border-gray-300 dark:border-gray-600 rounded-full py-2 pl-4 pr-12 text-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none", disabled: isLoading }),
+                React.createElement('button', { type: "submit", className: "absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 disabled:bg-blue-400 dark:disabled:bg-blue-800 transition-colors", disabled: isLoading || !inputValue.trim() },
+                  React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-5 w-5", viewBox: "0 0 20 20", fill: "currentColor" }, React.createElement('path', { fillRule: "evenodd", d: "M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z", clipRule: "evenodd" }))
+                )
+              )
+            )
+          )
+        );
+      };
+
+      // App Component from App.tsx
+      function App() {
+        const [isDarkMode, setIsDarkMode] = React.useState(false);
+
+        React.useEffect(() => {
+          const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const storedTheme = localStorage.getItem('theme');
+          if (storedTheme === 'dark' || (!storedTheme && userPrefersDark)) {
+            setIsDarkMode(true);
+          }
+        }, []);
+
+        React.useEffect(() => {
+          const root = document.documentElement;
+          if (isDarkMode) {
+            root.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          } else {
+            root.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          }
+        }, [isDarkMode]);
+
+        React.useEffect(() => {
+          if (typeof window !== 'undefined' && window.ScrollReveal) {
+            const sr = window.ScrollReveal({
+              origin: 'bottom', distance: '60px', duration: 1000,
+              delay: 200, reset: false, easing: 'cubic-bezier(0.5, 0, 0, 1)',
+            });
+            sr.reveal('#home h1, #home p, #home a');
+            sr.reveal('h2', { delay: 100 });
+            sr.reveal('#about .grid > div', { interval: 150 });
+            sr.reveal('#portfolio .grid > div', { interval: 150, origin: 'left' });
+            sr.reveal('#ad-mockups .grid > div', { interval: 100, scale: 0.95 });
+            sr.reveal('#tools .relative');
+            sr.reveal('#contact > div', { origin: 'top' });
+          }
+        }, []);
+
+        const toggleDarkMode = () => setIsDarkMode(prev => !prev);
+
+        return React.createElement('div', { className: "font-sans text-gray-800 dark:text-gray-200" },
+          React.createElement(Header, { isDarkMode, toggleDarkMode }),
+          React.createElement('main', null,
+            React.createElement(Hero),
+            React.createElement(About),
+            React.createElement(Portfolio),
+            React.createElement(AdMockups),
+            React.createElement(Tools),
+            React.createElement(Contact)
+          ),
+          React.createElement(Footer),
+          React.createElement(Chatbot)
+        );
+      }
+
+      // Entry point from index.tsx
+      const rootElement = document.getElementById('root');
+      if (!rootElement) {
+        throw new Error("Could not find root element to mount to");
+      }
+      const root = ReactDOM.createRoot(rootElement);
+      root.render(React.createElement(React.StrictMode, null, React.createElement(App)));
+
+      // --- END OF COMPILED APPLICATION CODE ---
+    </script>
   </body>
 </html>
