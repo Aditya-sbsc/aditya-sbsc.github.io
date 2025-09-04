@@ -1,4 +1,3 @@
-
 export interface PortfolioItem {
   title: string;
   description: string;
@@ -20,5 +19,11 @@ export interface Tool {
 export interface SocialLink {
   name: string;
   url: string;
+  icon: JSX.Element;
+}
+
+export interface Service {
+  title: string;
+  description: string;
   icon: JSX.Element;
 }
