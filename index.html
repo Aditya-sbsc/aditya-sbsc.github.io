@@ -305,25 +305,72 @@
       };
 
       const Contact = () => {
-        const handleSubmit = (e) => {
+        const handleSubmit = async (e) => {
           e.preventDefault();
-          alert("Form submitted! (This is a demo)");
+          
+          const form = e.target;
+          const formData = new FormData(form);
+          
+          try {
+            const response = await fetch(form.action, {
+              method: form.method,
+              body: formData,
+              headers: {
+                'Accept': 'application/json'
+              }
+            });
+            
+            if (response.ok) {
+              alert("Thank you! Your message has been sent successfully.");
+              form.reset(); // Clear the form
+            } else {
+              throw new Error('Form submission failed');
+            }
+          } catch (error) {
+            alert("Sorry, there was a problem sending your message. Please try again or contact us directly at aditya.yadav.m7@gmail.com");
+          }
         };
         return createElement(Section, { id: "contact", title: "Get In Touch" },
           createElement('div', { className: "max-w-2xl mx-auto bg-white/30 dark:bg-gray-800/30 backdrop-blur-lg p-8 rounded-xl border border-white/20 dark:border-gray-700/30" },
             createElement('p', { className: "text-center text-gray-700 dark:text-gray-400 mb-8" }, "Have a project in mind or want to discuss automation? Let's connect."),
-            createElement('form', { onSubmit: handleSubmit, className: "space-y-6" },
+            createElement('form', { 
+              action: "https://formspree.io/f/xkgvpgqz", 
+              method: "POST", 
+              onSubmit: handleSubmit, 
+              className: "space-y-6" 
+            },
               createElement('div', null,
                 createElement('label', { htmlFor: "name", className: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" }, "Your Name"),
-                createElement('input', { type: "text", id: "name", className: "bg-gray-50/50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white", placeholder: "John Doe", required: true })
+                createElement('input', { 
+                  type: "text", 
+                  id: "name", 
+                  name: "name",
+                  className: "bg-gray-50/50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white", 
+                  placeholder: "John Doe", 
+                  required: true 
+                })
               ),
               createElement('div', null,
                 createElement('label', { htmlFor: "email", className: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" }, "Your Email"),
-                createElement('input', { type: "email", id: "email", className: "bg-gray-50/50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white", placeholder: "name@company.com", required: true })
+                createElement('input', { 
+                  type: "email", 
+                  id: "email", 
+                  name: "email",
+                  className: "bg-gray-50/50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white", 
+                  placeholder: "name@company.com", 
+                  required: true 
+                })
               ),
               createElement('div', null,
                 createElement('label', { htmlFor: "message", className: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" }, "Your Message"),
-                createElement('textarea', { id: "message", rows: 4, className: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white", placeholder: "Let's talk about..." })
+                createElement('textarea', { 
+                  id: "message", 
+                  name: "message",
+                  rows: 4, 
+                  className: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50/50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white", 
+                  placeholder: "Let's talk about...",
+                  required: true
+                })
               ),
               createElement('button', { type: "submit", className: "w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors duration-300" }, "Send Message")
             )
