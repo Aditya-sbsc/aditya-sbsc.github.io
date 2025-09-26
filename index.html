@@ -408,213 +408,261 @@
       };
       
       const Chatbot = () => {
-        const [isOpen, setIsOpen] = useState(false);
-        const [messages, setMessages] = useState([]);
-        const [isLoading, setIsLoading] = useState(false);
-        const [inputValue, setInputValue] = useState('');
-        const [detectedLanguage, setDetectedLanguage] = useState('en');
-        const messagesEndRef = useRef(null);
-        
-        const API_KEY = 'AIzaSyBo1_1nNKAA15l-ecbsllNN90kLkLI9EZY';
-        
-        const createSystemMessage = (language = 'en') => {
-          const languageInstructions = {
-            'en': 'Respond in English',
-            'es': 'Responde en español',
-            'fr': 'Répondez en français',
-            'de': 'Antworten Sie auf Deutsch',
-            'it': 'Rispondi in italiano',
-            'pt': 'Responda em português',
-            'ru': 'Отвечайте на русском языке',
-            'ja': '日本語で答えてください',
-            'ko': '한국어로 답변해 주세요',
-            'zh': '请用中文回答',
-            'ar': 'أجب بالعربية',
-            'hi': 'हिंदी में उत्तर दें',
-            'hinglish': 'Respond in Hinglish (Hindi-English mix) - use English words mixed with Hindi naturally like "acha", "kya", "bahut", "accha lag raha", etc.',
-            'default': 'Respond in the same language the user is using'
-          };
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const [detectedLanguage, setDetectedLanguage] = useState('en');
+  const messagesEndRef = useRef(null);
+  
+  // REPLACE THIS WITH YOUR NEW API KEY
+  const API_KEY = 'AIzaSyBIz-ns44qNGvnZU2NKvxzxZyBpIC4FjrE';
+  
+  const createSystemMessage = (language = 'en') => {
+    const languageInstructions = {
+      'en': 'Respond in English',
+      'es': 'Responde en español',
+      'fr': 'Répondez en français',
+      'de': 'Antworten Sie auf Deutsch',
+      'it': 'Rispondi in italiano',
+      'pt': 'Responda em português',
+      'ru': 'Отвечайте на русском языке',
+      'ja': '日本語で答えてください',
+      'ko': '한국어로 답변해 주세요',
+      'zh': '请用中文回答',
+      'ar': 'أجب بالعربية',
+      'hi': 'हिंदी में उत्तर दें',
+      'hinglish': 'Respond in Hinglish (Hindi-English mix) - use English words mixed with Hindi naturally like "acha", "kya", "bahut", "accha lag raha", etc.',
+      'default': 'Respond in the same language the user is using'
+    };
 
-          return `You are "Aria", Aditya Yadav's intelligent and friendly AI assistant on his portfolio website. You have a warm, professional personality and are passionate about AI automation, workflow optimization, and creative advertising.
+    return `You are "Aria", Aditya Yadav's intelligent and friendly AI assistant on his portfolio website. You have a warm, professional personality and are passionate about helping users with ANY questions they might have.
 
-**CRITICAL LANGUAGE INSTRUCTION: ${languageInstructions[language] || languageInstructions.default}. Always detect the language the user is speaking and respond in that exact same language. For Indian users, feel free to use Hinglish (Hindi-English mix) naturally.**
+**CRITICAL LANGUAGE INSTRUCTION: ${languageInstructions[language] || languageInstructions.default}. Always detect the language the user is speaking and respond in that exact same language. For Indian users, use Hinglish naturally mixing Hindi and English.**
 
 **Contact Information for Aditya:**
 Email: aditya.yadav.m7@gmail.com
+Mobile: +91 9027087180
 GitHub: https://github.com/Aditya-sbsc
 Portfolio: https://aditya-sbsc.github.io
 
 **About Aditya Yadav:**
-He's an AI & Ads Specialist who creates AI-powered chatbots, workflow automation, and creative ad mockups. His recent projects include automated lead qualification systems, dynamic ad creative generation, customer support chatbots, and a video caption generator.
+He's an AI & Ads Specialist who creates AI-powered chatbots, workflow automation, and creative ad mockups. His recent projects include automated lead qualification systems, dynamic ad creative generation, and customer support chatbots that handle 70% of common queries.
+
+**Your Capabilities:**
+- Answer questions about Aditya's work, services, and expertise
+- Help with general questions about AI, automation, advertising, and technology
+- Provide information about web development, programming, and digital marketing
+- Assist with business automation ideas and solutions
+- Answer general knowledge questions
+- Help with project planning and technical advice
+
+**Default Response Strategy:**
+For ANY question you cannot answer specifically, ALWAYS provide Aditya's contact information and suggest reaching out to him directly.
 
 **Your Personality as Aria:**
 - Name: Aria (always introduce yourself by name)
 - Be friendly, enthusiastic, and helpful
 - Use Hinglish naturally with Indian users
-- Always provide contact info when asked
+- Always provide contact info when needed
+- Be knowledgeable about technology and business
 
 **Sample Responses:**
-- English: "Hi! I'm Aria, Aditya's AI assistant! 👋"
-- Hinglish: "Hey! Main Aria hun, Aditya ki AI assistant! 👋 Kya help chahiye?"
-- For contact: "You can reach Aditya at aditya.yadav.m7@gmail.com"
+- English: "Hi! I'm Aria, Aditya's AI assistant! 👋 I can help with questions about his work or general tech topics!"
+- Hinglish: "Hey! Main Aria hun, Aditya ki AI assistant! 👋 Kya help chahiye? Tech, automation, ya kuch aur?"
+- For contact: "You can reach Aditya at aditya.yadav.m7@gmail.com or call him at +91 9027087180"
 
-Remember: Always be helpful and respond in the user's language!`;
-        };
+Remember: Be helpful with ALL types of questions and always provide contact info when needed!`;
+  };
 
-        const detectLanguage = (text) => {
-          const languagePatterns = {
-            'hinglish': /\b(kya|hai|acha|bhai|yaar|bhi|main|mera|tera|kaise|kahan|kab|kyun|accha|theek|bilkul|zaroor|samjha|samajh|matlab|chahiye|help|project|work|automation)\b/i,
-            'hi': /\b(क्या|है|अच्छा|भाई|यार|भी|मैं|मेरा|तेरा|कैसे|कहाँ|कब|क्यों|ठीक|बिल्कुल|जरूर|समझा|समझ|मतलब|चाहिए|नमस्ते|धन्यवाद)\b/,
-            'es': /\b(hola|gracias|por favor|cómo|qué|sí|no|bueno|trabajo|proyecto)\b/i,
-            'fr': /\b(bonjour|merci|s'il vous plaît|comment|que|oui|non|bon|travail|projet)\b/i,
-          };
+  const detectLanguage = (text) => {
+    const languagePatterns = {
+      'hinglish': /\b(kya|hai|acha|bhai|yaar|bhi|main|mera|tera|kaise|kahan|kab|kyun|accha|theek|bilkul|zaroor|samjha|samajh|matlab|chahiye|help|project|work|automation)\b/i,
+      'hi': /\b(क्या|है|अच्छा|भाई|यार|भी|मैं|मेरा|तेरा|कैसे|कहाँ|कब|क्यों|ठीक|बिल्कुल|ज़रूर|समझा|समझ|मतलब|चाहिए|मदद|परियोजना|काम|स्वचालन)\b/i,
+      'es': /\b(hola|gracias|por favor|cómo|qué|sí|no|bueno|trabajo|proyecto)\b/i,
+      'fr': /\b(bonjour|merci|s'il vous plaît|comment|que|oui|non|bon|travail|projet)\b/i,
+    };
 
-          for (const [lang, pattern] of Object.entries(languagePatterns)) {
-            if (pattern.test(text)) {
-              return lang;
+    for (const [lang, pattern] of Object.entries(languagePatterns)) {
+      if (pattern.test(text)) {
+        return lang;
+      }
+    }
+    return 'en';
+  };
+
+  // Enhanced fallback response system
+  const generateFallbackResponse = (userText, language) => {
+    const lowerText = userText.toLowerCase();
+    
+    // Contact-related queries
+    if (lowerText.includes('contact') || lowerText.includes('email') || lowerText.includes('phone') || lowerText.includes('mobile') || lowerText.includes('call')) {
+      return language === 'hinglish' ? 
+        "Aditya se contact karne ke liye:\n📧 Email: aditya.yadav.m7@gmail.com\n📱 Mobile: +91 9027087180\nDirect call kar sakte ho ya email send kar sakte ho!" :
+        "You can contact Aditya at:\n📧 Email: aditya.yadav.m7@gmail.com\n📱 Mobile: +91 9027087180\nFeel free to call or email him directly!";
+    }
+    
+    // Services and automation
+    if (lowerText.includes('service') || lowerText.includes('automation') || lowerText.includes('workflow') || lowerText.includes('chatbot')) {
+      return language === 'hinglish' ?
+        "Aditya ye services provide karta hai:\n🤖 AI-powered chatbots\n⚡ Workflow automation\n🎨 Creative ad mockups\n📊 Lead qualification systems\n\nDetails ke liye contact karo: +91 9027087180" :
+        "Aditya provides these services:\n🤖 AI-powered chatbots\n⚡ Workflow automation\n🎨 Creative ad mockups\n📊 Lead qualification systems\n\nContact for details: +91 9027087180";
+    }
+    
+    // Portfolio and work
+    if (lowerText.includes('portfolio') || lowerText.includes('work') || lowerText.includes('project') || lowerText.includes('experience')) {
+      return language === 'hinglish' ?
+        "Aditya ka portfolio dekho upar! 👆\n✨ Dynamic ad generation systems\n🎯 Customer support bots (70% query resolution)\n📈 Automation pipelines\n\nMore details: aditya.yadav.m7@gmail.com" :
+        "Check out Aditya's portfolio above! 👆\n✨ Dynamic ad generation systems\n🎯 Customer support bots (70% query resolution)\n📈 Automation pipelines\n\nMore details: aditya.yadav.m7@gmail.com";
+    }
+    
+    // Technical questions
+    if (lowerText.includes('how') || lowerText.includes('what') || lowerText.includes('why') || lowerText.includes('when') || lowerText.includes('ai') || lowerText.includes('tech')) {
+      return language === 'hinglish' ?
+        "Main tech aur automation ke baare mein help kar sakti hun! 💡\nAditya se detailed discussion ke liye:\n📱 +91 9027087180\n📧 aditya.yadav.m7@gmail.com\n\nKya specific question hai?" :
+        "I can help with tech and automation questions! 💡\nFor detailed discussion with Aditya:\n📱 +91 9027087180\n📧 aditya.yadav.m7@gmail.com\n\nWhat's your specific question?";
+    }
+    
+    // Default response with contact info
+    return language === 'hinglish' ?
+      "Main Aditya ki AI assistant Aria hun! 🤖\nMujhse kuch bhi pooch sakte ho - tech, automation, business ideas, ya general questions!\n\nDirect contact ke liye:\n📱 +91 9027087180\n📧 aditya.yadav.m7@gmail.com" :
+      "I'm Aria, Aditya's AI assistant! 🤖\nFeel free to ask me anything - tech, automation, business ideas, or general questions!\n\nFor direct contact:\n📱 +91 9027087180\n📧 aditya.yadav.m7@gmail.com";
+  };
+
+  useEffect(() => {
+    if (isOpen && messages.length === 0) {
+      setMessages([{ 
+        role: 'assistant', 
+        text: "Hi there! I'm Aria, Aditya's AI assistant! 👋\n\nI can help you with:\n🤖 Questions about AI & automation\n💼 Business workflow solutions\n🎨 Creative advertising ideas\n💡 Tech and programming topics\n📞 Connecting you with Aditya\n\nKya help chahiye? What can I help you with today?"
+      }]);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isLoading]);
+
+  const callGeminiAPI = async (userMessage, language) => {
+    try {
+      const systemMessage = createSystemMessage(language);
+      
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                { text: systemMessage },
+                { text: `User message: ${userMessage}` }
+              ]
             }
+          ],
+          generationConfig: {
+            temperature: 0.8,
+            topK: 40,
+            topP: 0.95,
+            maxOutputTokens: 1024,
           }
-          return 'en';
-        };
+        })
+      });
 
-        useEffect(() => {
-          if (isOpen && messages.length === 0) {
-            setMessages([{ 
-              role: 'assistant', 
-              text: "Hi there! I'm Aria, Aditya's AI assistant! 👋 I'm here to help you learn about his amazing work in AI automation, workflow optimization, and creative advertising. Kya help chahiye? 😊" 
-            }]);
-          }
-        }, [isOpen]);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-        useEffect(() => {
-          messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-        }, [messages, isLoading]);
+      const data = await response.json();
+      
+      if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts[0]) {
+        return data.candidates[0].content.parts[0].text;
+      } else {
+        throw new Error('Invalid response format');
+      }
+    } catch (error) {
+      console.error('Gemini API Error:', error);
+      throw error;
+    }
+  };
 
-        const callGeminiAPI = async (userMessage, language) => {
-          try {
-            const systemMessage = createSystemMessage(language);
-            
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                contents: [
-                  {
-                    parts: [
-                      { text: systemMessage },
-                      { text: `User message: ${userMessage}` }
-                    ]
-                  }
-                ],
-                generationConfig: {
-                  temperature: 0.8,
-                  topK: 40,
-                  topP: 0.95,
-                  maxOutputTokens: 1024,
-                }
-              })
-            });
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+    if (!inputValue.trim() || isLoading) return;
 
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
+    const detectedLang = detectLanguage(inputValue);
+    setDetectedLanguage(detectedLang);
 
-            const data = await response.json();
-            
-            if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts[0]) {
-              return data.candidates[0].content.parts[0].text;
-            } else {
-              throw new Error('Invalid response format');
-            }
-          } catch (error) {
-            console.error('Gemini API Error:', error);
-            throw error;
-          }
-        };
+    const userMessage = { role: 'user', text: inputValue };
+    setMessages(prev => [...prev, userMessage]);
+    setInputValue('');
+    setIsLoading(true);
 
-        const handleSendMessage = async (e) => {
-          e.preventDefault();
-          if (!inputValue.trim() || isLoading) return;
+    try {
+      const responseText = await callGeminiAPI(userMessage.text, detectedLang);
+      const assistantMessage = { role: 'assistant', text: responseText };
+      setMessages(prev => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error("Error sending message:", error);
+      
+      // Enhanced error handling with helpful fallback responses
+      const fallbackResponse = generateFallbackResponse(userMessage.text, detectedLang);
+      const errorMessage = { 
+        role: 'assistant', 
+        text: `${fallbackResponse}\n\n💡 Note: I'm currently having a technical issue, but I can still help with basic questions!`
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-          const detectedLang = detectLanguage(inputValue);
-          setDetectedLanguage(detectedLang);
-
-          const userMessage = { role: 'user', text: inputValue };
-          setMessages(prev => [...prev, userMessage]);
-          setInputValue('');
-          setIsLoading(true);
-
-          try {
-            const responseText = await callGeminiAPI(userMessage.text, detectedLang);
-            const assistantMessage = { role: 'assistant', text: responseText };
-            setMessages(prev => [...prev, assistantMessage]);
-          } catch (error) {
-            console.error("Error sending message:", error);
-            
-            const errorMessages = {
-              'hinglish': "Sorry yaar, main thoda problem face kar rahi hun. Aditya ke services, projects ya tools ke baare mein pooch sakte ho!",
-              'hi': "क्षमा करें, मुझे कुछ समस्या हो रही है। आदित्य की सेवाओं के बारे में पूछें!",
-              'default': "I apologize, but I'm having trouble responding right now. Please ask me about Aditya's services or contact him at aditya.yadav.m7@gmail.com"
-            };
-            
-            const errorMessage = { 
-              role: 'assistant', 
-              text: errorMessages[detectedLang] || errorMessages.default
-            };
-            setMessages(prev => [...prev, errorMessage]);
-          } finally {
-            setIsLoading(false);
-          }
-        };
-
-        return createElement(Fragment, null,
-          createElement('button', {
-            onClick: () => setIsOpen(!isOpen),
-            className: `fixed bottom-6 right-6 w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow-xl hover:from-orange-600 hover:to-pink-600 focus:outline-none focus:ring-4 focus:ring-orange-300 dark:focus:ring-orange-800 transition-all duration-300 transform hover:scale-110 z-30 flex items-center justify-center ${isOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}`,
-            'aria-label': "Chat with Aria"
-          }, createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-8 w-8", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" }))),
-          createElement('div', { className: `fixed bottom-6 right-6 w-[calc(100vw-3rem)] max-w-md h-[70vh] max-h-[600px] bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-2xl z-30 flex flex-col transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}` },
-            createElement('div', { className: "flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-orange-500 to-pink-500 rounded-t-2xl" },
-              createElement('div', { className: "flex items-center space-x-3" },
-                createElement('div', { className: "w-8 h-8 rounded-full bg-white/20 flex items-center justify-center" },
-                  createElement('span', { className: "text-white font-bold text-sm" }, "A")
-                ),
-                createElement('div', null,
-                  createElement('h3', { className: "text-lg font-bold text-white" }, "Aria"),
-                  createElement('p', { className: "text-xs text-white/80" }, "AI Assistant • Multilingual")
-                )
-              ),
-              createElement('button', { onClick: () => setIsOpen(false), className: "text-white/80 hover:text-white", 'aria-label': "Close chat" }, createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" })))
-            ),
-            createElement('div', { className: "flex-1 p-4 overflow-y-auto space-y-4" },
-              messages.map((msg, index) => createElement('div', { key: index, className: `flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}` },
-                createElement('div', { className: `max-w-[85%] rounded-2xl px-4 py-2 text-sm ${msg.role === 'user' ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-br-lg' : 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-bl-lg'}` }, msg.text)
-              )),
-              isLoading && createElement('div', { className: "flex justify-start" },
-                createElement('div', { className: "max-w-[80%] rounded-2xl px-4 py-2 text-sm bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-bl-lg" },
-                  createElement('div', { className: "flex items-center space-x-2" },
-                    createElement('div', { className: "w-2 h-2 bg-orange-500 rounded-full animate-pulse" }),
-                    createElement('div', { className: "w-2 h-2 bg-pink-500 rounded-full animate-pulse [animation-delay:0.2s]" }),
-                    createElement('div', { className: "w-2 h-2 bg-orange-500 rounded-full animate-pulse [animation-delay:0.4s]" }),
-                    createElement('span', { className: "text-xs text-gray-500 ml-2" }, "Aria typing...")
-                  )
-                )
-              ),
-              createElement('div', { ref: messagesEndRef })
-            ),
-            createElement('form', { onSubmit: handleSendMessage, className: "p-4 border-t border-gray-200 dark:border-gray-700" },
-              createElement('div', { className: "relative" },
-                createElement('input', { type: "text", value: inputValue, onChange: (e) => setInputValue(e.target.value), placeholder: "Ask me anything - English/Hindi/Hinglish...", className: "w-full bg-gray-100/50 dark:bg-gray-900/50 border-gray-300 dark:border-gray-600 rounded-full py-3 pl-4 pr-12 text-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-200", disabled: isLoading }),
-                createElement('button', { type: "submit", className: "absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-full hover:from-orange-600 hover:to-pink-600 disabled:from-orange-400 disabled:to-pink-400 transition-all duration-200 transform hover:scale-105", disabled: isLoading || !inputValue.trim() },
-                  createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-5 w-5", viewBox: "0 0 24 24", fill: "currentColor" }, createElement('path', { d: "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" }))
-                )
-              )
+  return createElement(Fragment, null,
+    createElement('button', {
+      onClick: () => setIsOpen(!isOpen),
+      className: `fixed bottom-6 right-6 w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow-xl hover:from-orange-600 hover:to-pink-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition-all duration-300 transform hover:scale-110 z-50`,
+      'aria-label': "Chat with Aria"
+    }, createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-8 w-8", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" }))),
+    createElement('div', { className: `fixed bottom-6 right-6 w-[calc(100vw-3rem)] max-w-md h-[70vh] max-h-[600px] bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-2xl transition-all duration-300 z-40 ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}` },
+      createElement('div', { className: "flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-orange-500 to-pink-500 rounded-t-2xl" },
+        createElement('div', { className: "flex items-center space-x-3" },
+          createElement('div', { className: "w-8 h-8 rounded-full bg-white/20 flex items-center justify-center" },
+            createElement('span', { className: "text-white font-bold text-sm" }, "A")
+          ),
+          createElement('div', null,
+            createElement('h3', { className: "text-lg font-bold text-white" }, "Aria"),
+            createElement('p', { className: "text-xs text-white/80" }, "AI Assistant • Multilingual • Enhanced")
+          )
+        ),
+        createElement('button', { onClick: () => setIsOpen(false), className: "text-white/80 hover:text-white", 'aria-label': "Close chat" }, createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" })))
+      ),
+      createElement('div', { className: "flex-1 p-4 overflow-y-auto space-y-4" },
+        messages.map((msg, index) => createElement('div', { key: index, className: `flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}` },
+          createElement('div', { className: `max-w-[85%] rounded-2xl px-4 py-2 text-sm whitespace-pre-line ${msg.role === 'user' ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-br-lg' : 'bg-gray-200/80 text-gray-800 dark:bg-gray-700/80 dark:text-gray-200 rounded-bl-lg'}`, style: { wordBreak: 'break-word' } }, msg.text)
+        )),
+        isLoading && createElement('div', { className: "flex justify-start" },
+          createElement('div', { className: "max-w-[80%] rounded-2xl px-4 py-2 text-sm bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-bl-lg" },
+            createElement('div', { className: "flex items-center space-x-2" },
+              createElement('div', { className: "w-2 h-2 bg-orange-500 rounded-full animate-pulse" }),
+              createElement('div', { className: "w-2 h-2 bg-pink-500 rounded-full animate-pulse [animation-delay:0.2s]" }),
+              createElement('div', { className: "w-2 h-2 bg-orange-500 rounded-full animate-pulse [animation-delay:0.4s]" }),
+              createElement('span', { className: "text-xs text-gray-500 ml-2" }, "Aria thinking...")
             )
           )
-        );
-      };
+        ),
+        createElement('div', { ref: messagesEndRef })
+      ),
+      createElement('form', { onSubmit: handleSendMessage, className: "p-4 border-t border-gray-200 dark:border-gray-700" },
+        createElement('div', { className: "relative" },
+          createElement('input', { type: "text", value: inputValue, onChange: (e) => setInputValue(e.target.value), placeholder: "Ask anything - Tech, automation, AI, or general questions...", className: "w-full pr-12 pl-4 py-3 bg-gray-100/80 dark:bg-gray-700/80 border border-gray-300 dark:border-gray-600 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all", disabled: isLoading }),
+          createElement('button', { type: "submit", className: "absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-full hover:from-orange-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all disabled:opacity-50", disabled: isLoading || !inputValue.trim() },
+            createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-5 w-5", viewBox: "0 0 24 24", fill: "currentColor" }, createElement('path', { d: "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" }))
+          )
+        )
+      )
+    )
+  );
+};
 
       // App Component
       function App() {
