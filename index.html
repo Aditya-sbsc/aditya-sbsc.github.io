@@ -407,7 +407,7 @@
         );
       };
       
-      const Chatbot = () => {
+    const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -436,9 +436,9 @@
       'default': 'Respond in the same language the user is using'
     };
 
-    return `You are "Aria", Aditya Yadav's intelligent and friendly AI assistant on his portfolio website. You have a warm, professional personality and are passionate about helping users with ANY questions they might have.
+    return `You are "Aria", Aditya Yadav's intelligent and friendly AI assistant on his portfolio website. You have a warm, professional personality and are passionate about AI automation, chatbots, and creative advertising.
 
-**CRITICAL LANGUAGE INSTRUCTION: ${languageInstructions[language] || languageInstructions.default}. Always detect the language the user is speaking and respond in that exact same language. For Indian users, use Hinglish naturally mixing Hindi and English.**
+**CRITICAL LANGUAGE INSTRUCTION: ${languageInstructions[language] || languageInstructions.default}. Always detect the language the user is speaking and respond in that exact same language. For Indian users mixing Hindi and English (Hinglish), respond naturally in the same mix.**
 
 **Contact Information for Aditya:**
 Email: aditya.yadav.m7@gmail.com
@@ -449,36 +449,34 @@ Portfolio: https://aditya-sbsc.github.io
 **About Aditya Yadav:**
 He's an AI & Ads Specialist who creates AI-powered chatbots, workflow automation, and creative ad mockups. His recent projects include automated lead qualification systems, dynamic ad creative generation, and customer support chatbots that handle 70% of common queries.
 
-**Your Capabilities:**
-- Answer questions about Aditya's work, services, and expertise
-- Help with general questions about AI, automation, advertising, and technology
-- Provide information about web development, programming, and digital marketing
-- Assist with business automation ideas and solutions
-- Answer general knowledge questions
-- Help with project planning and technical advice
-
-**Default Response Strategy:**
-For ANY question you cannot answer specifically, ALWAYS provide Aditya's contact information and suggest reaching out to him directly.
-
 **Your Personality as Aria:**
 - Name: Aria (always introduce yourself by name)
 - Be friendly, enthusiastic, and helpful
+- Answer questions about technology, business, automation, AI, and general topics
 - Use Hinglish naturally with Indian users
-- Always provide contact info when needed
-- Be knowledgeable about technology and business
+- Always provide contact info when asked
+- For unknown queries, default to providing Aditya's contact information
+
+**Services Aditya Offers:**
+1. AI-Powered Chatbots - 24/7 customer support, lead qualification
+2. Workflow Automation - Using n8n, Zapier, Make
+3. Creative Ad Mockups - Social media and digital advertising
+4. Google Ads Management and Analytics
 
 **Sample Responses:**
-- English: "Hi! I'm Aria, Aditya's AI assistant! 👋 I can help with questions about his work or general tech topics!"
-- Hinglish: "Hey! Main Aria hun, Aditya ki AI assistant! 👋 Kya help chahiye? Tech, automation, ya kuch aur?"
+- English: "Hi! I'm Aria, Aditya's AI assistant! 👋"
+- Hinglish: "Hey! Main Aria hun, Aditya ki AI assistant! 👋 Kya help chahiye?"
 - For contact: "You can reach Aditya at aditya.yadav.m7@gmail.com or call him at +91 9027087180"
 
-Remember: Be helpful with ALL types of questions and always provide contact info when needed!`;
+**For Unknown Queries:** If you don't know something specific, always provide Aditya's contact information and suggest they reach out directly for personalized assistance.
+
+Remember: Be helpful, knowledgeable, and respond in the user's language while always being ready to connect them with Aditya!`;
   };
 
   const detectLanguage = (text) => {
     const languagePatterns = {
       'hinglish': /\b(kya|hai|acha|bhai|yaar|bhi|main|mera|tera|kaise|kahan|kab|kyun|accha|theek|bilkul|zaroor|samjha|samajh|matlab|chahiye|help|project|work|automation)\b/i,
-      'hi': /\b(क्या|है|अच्छा|भाई|यार|भी|मैं|मेरा|तेरा|कैसे|कहाँ|कब|क्यों|ठीक|बिल्कुल|ज़रूर|समझा|समझ|मतलब|चाहिए|मदद|परियोजना|काम|स्वचालन)\b/i,
+      'hi': /\b(क्या|है|अच्छा|भाई|यार|भी|मैं|मेरा|तेरा|कैसे|कहाँ|कब|क्यों|ठीक|बिल्कुल|ज़रूर|समझा|समझ|मतलब|चाहिए)\b/i,
       'es': /\b(hola|gracias|por favor|cómo|qué|sí|no|bueno|trabajo|proyecto)\b/i,
       'fr': /\b(bonjour|merci|s'il vous plaît|comment|que|oui|non|bon|travail|projet)\b/i,
     };
@@ -495,45 +493,45 @@ Remember: Be helpful with ALL types of questions and always provide contact info
   const generateFallbackResponse = (userText, language) => {
     const lowerText = userText.toLowerCase();
     
-    // Contact-related queries
-    if (lowerText.includes('contact') || lowerText.includes('email') || lowerText.includes('phone') || lowerText.includes('mobile') || lowerText.includes('call')) {
+    // Contact information queries
+    if (lowerText.includes('contact') || lowerText.includes('email') || lowerText.includes('phone') || lowerText.includes('mobile') || lowerText.includes('number')) {
       return language === 'hinglish' ? 
-        "Aditya se contact karne ke liye:\n📧 Email: aditya.yadav.m7@gmail.com\n📱 Mobile: +91 9027087180\nDirect call kar sakte ho ya email send kar sakte ho!" :
-        "You can contact Aditya at:\n📧 Email: aditya.yadav.m7@gmail.com\n📱 Mobile: +91 9027087180\nFeel free to call or email him directly!";
+        "Aditya se contact karne ke liye:\n📧 Email: aditya.yadav.m7@gmail.com\n📱 Mobile: +91 9027087180" :
+        "You can contact Aditya at:\n📧 Email: aditya.yadav.m7@gmail.com\n📱 Mobile: +91 9027087180";
     }
     
-    // Services and automation
-    if (lowerText.includes('service') || lowerText.includes('automation') || lowerText.includes('workflow') || lowerText.includes('chatbot')) {
+    // Services queries
+    if (lowerText.includes('service') || lowerText.includes('automation') || lowerText.includes('chatbot') || lowerText.includes('ai')) {
       return language === 'hinglish' ?
-        "Aditya ye services provide karta hai:\n🤖 AI-powered chatbots\n⚡ Workflow automation\n🎨 Creative ad mockups\n📊 Lead qualification systems\n\nDetails ke liye contact karo: +91 9027087180" :
-        "Aditya provides these services:\n🤖 AI-powered chatbots\n⚡ Workflow automation\n🎨 Creative ad mockups\n📊 Lead qualification systems\n\nContact for details: +91 9027087180";
+        "Aditya ye services provide karta hai:\n🤖 AI Chatbots\n⚙️ Workflow Automation\n🎨 Creative Ad Mockups\n📱 Google Ads Management\n\nDetails ke liye contact karo: aditya.yadav.m7@gmail.com" :
+        "Aditya offers these services:\n🤖 AI-Powered Chatbots\n⚙️ Workflow Automation\n🎨 Creative Ad Mockups\n📱 Google Ads Management\n\nContact: aditya.yadav.m7@gmail.com";
     }
     
-    // Portfolio and work
-    if (lowerText.includes('portfolio') || lowerText.includes('work') || lowerText.includes('project') || lowerText.includes('experience')) {
+    // Portfolio/work queries
+    if (lowerText.includes('portfolio') || lowerText.includes('work') || lowerText.includes('project')) {
       return language === 'hinglish' ?
-        "Aditya ka portfolio dekho upar! 👆\n✨ Dynamic ad generation systems\n🎯 Customer support bots (70% query resolution)\n📈 Automation pipelines\n\nMore details: aditya.yadav.m7@gmail.com" :
-        "Check out Aditya's portfolio above! 👆\n✨ Dynamic ad generation systems\n🎯 Customer support bots (70% query resolution)\n📈 Automation pipelines\n\nMore details: aditya.yadav.m7@gmail.com";
+        "Aditya ka portfolio yahan dekh sakte ho! Usne dynamic ad generation aur customer support bots banaye hain jo 70% queries handle karte hain.\n\nMore details: aditya.yadav.m7@gmail.com" :
+        "Check out Aditya's portfolio above! He's built dynamic ad generation systems and customer support bots that handle 70% of customer queries.\n\nFor more details: aditya.yadav.m7@gmail.com";
     }
     
-    // Technical questions
-    if (lowerText.includes('how') || lowerText.includes('what') || lowerText.includes('why') || lowerText.includes('when') || lowerText.includes('ai') || lowerText.includes('tech')) {
+    // Pricing queries
+    if (lowerText.includes('price') || lowerText.includes('cost') || lowerText.includes('budget') || lowerText.includes('kitna') || lowerText.includes('paisa')) {
       return language === 'hinglish' ?
-        "Main tech aur automation ke baare mein help kar sakti hun! 💡\nAditya se detailed discussion ke liye:\n📱 +91 9027087180\n📧 aditya.yadav.m7@gmail.com\n\nKya specific question hai?" :
-        "I can help with tech and automation questions! 💡\nFor detailed discussion with Aditya:\n📱 +91 9027087180\n📧 aditya.yadav.m7@gmail.com\n\nWhat's your specific question?";
+        "Pricing project complexity pe depend karti hai. Custom quote ke liye Aditya se directly baat karo:\n📧 aditya.yadav.m7@gmail.com\n📱 +91 9027087180" :
+        "Pricing depends on project complexity. For a custom quote, contact Aditya directly:\n📧 aditya.yadav.m7@gmail.com\n📱 +91 9027087180";
     }
     
-    // Default response with contact info
+    // Default response for unknown queries
     return language === 'hinglish' ?
-      "Main Aditya ki AI assistant Aria hun! 🤖\nMujhse kuch bhi pooch sakte ho - tech, automation, business ideas, ya general questions!\n\nDirect contact ke liye:\n📱 +91 9027087180\n📧 aditya.yadav.m7@gmail.com" :
-      "I'm Aria, Aditya's AI assistant! 🤖\nFeel free to ask me anything - tech, automation, business ideas, or general questions!\n\nFor direct contact:\n📱 +91 9027087180\n📧 aditya.yadav.m7@gmail.com";
+      "Main Aditya ki AI assistant hun! Main AI automation, workflow optimization, aur creative advertising ke baare mein help kar sakti hun.\n\nKoi specific question hai? Ya phir directly Aditya se contact karo:\n📧 aditya.yadav.m7@gmail.com\n📱 +91 9027087180" :
+      "I'm Aditya's AI assistant! I can help with questions about AI automation, workflow optimization, and creative advertising.\n\nFor specific queries or personalized assistance, contact Aditya directly:\n📧 aditya.yadav.m7@gmail.com\n📱 +91 9027087180";
   };
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([{ 
         role: 'assistant', 
-        text: "Hi there! I'm Aria, Aditya's AI assistant! 👋\n\nI can help you with:\n🤖 Questions about AI & automation\n💼 Business workflow solutions\n🎨 Creative advertising ideas\n💡 Tech and programming topics\n📞 Connecting you with Aditya\n\nKya help chahiye? What can I help you with today?"
+        text: "Hi there! I'm Aria, Aditya's AI assistant! 👋 I'm here to help you learn about his amazing work in AI automation, workflow optimization, and creative advertising. Kya help chahiye? Feel free to ask anything!"
       }]);
     }
   }, [isOpen]);
@@ -605,11 +603,11 @@ Remember: Be helpful with ALL types of questions and always provide contact info
     } catch (error) {
       console.error("Error sending message:", error);
       
-      // Enhanced error handling with helpful fallback responses
+      // Use enhanced fallback response instead of generic error
       const fallbackResponse = generateFallbackResponse(userMessage.text, detectedLang);
       const errorMessage = { 
         role: 'assistant', 
-        text: `${fallbackResponse}\n\n💡 Note: I'm currently having a technical issue, but I can still help with basic questions!`
+        text: `Sorry, I couldn't process your request due to a technical issue. Here's what I can help you with:\n\n${fallbackResponse}`
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
@@ -618,45 +616,119 @@ Remember: Be helpful with ALL types of questions and always provide contact info
   };
 
   return createElement(Fragment, null,
+    // Fixed chat button with proper icon positioning
     createElement('button', {
       onClick: () => setIsOpen(!isOpen),
-      className: `fixed bottom-6 right-6 w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow-xl hover:from-orange-600 hover:to-pink-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition-all duration-300 transform hover:scale-110 z-50`,
+      className: `fixed bottom-6 right-6 w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow-xl hover:from-orange-600 hover:to-pink-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition-all duration-300 transform hover:scale-110 z-50 flex items-center justify-center`,
       'aria-label': "Chat with Aria"
-    }, createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-8 w-8", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" }))),
-    createElement('div', { className: `fixed bottom-6 right-6 w-[calc(100vw-3rem)] max-w-md h-[70vh] max-h-[600px] bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-2xl transition-all duration-300 z-40 ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}` },
-      createElement('div', { className: "flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-orange-500 to-pink-500 rounded-t-2xl" },
+    }, 
+      createElement('svg', { 
+        xmlns: "http://www.w3.org/2000/svg", 
+        className: "h-7 w-7", 
+        fill: "none", 
+        viewBox: "0 0 24 24", 
+        stroke: "currentColor",
+        strokeWidth: 2
+      }, 
+        createElement('path', { 
+          strokeLinecap: "round", 
+          strokeLinejoin: "round", 
+          d: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" 
+        })
+      )
+    ),
+    // Fixed chat window with improved scrolling
+    createElement('div', { 
+      className: `fixed bottom-6 right-6 w-[calc(100vw-3rem)] max-w-md h-[70vh] max-h-[600px] bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl shadow-2xl transition-all duration-300 transform ${isOpen ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-full opacity-0 scale-95'} ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'} z-40 overflow-hidden flex flex-col`
+    },
+      // Header
+      createElement('div', { className: "flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-orange-500 to-pink-500 rounded-t-2xl flex-shrink-0" },
         createElement('div', { className: "flex items-center space-x-3" },
           createElement('div', { className: "w-8 h-8 rounded-full bg-white/20 flex items-center justify-center" },
             createElement('span', { className: "text-white font-bold text-sm" }, "A")
           ),
           createElement('div', null,
             createElement('h3', { className: "text-lg font-bold text-white" }, "Aria"),
-            createElement('p', { className: "text-xs text-white/80" }, "AI Assistant • Multilingual • Enhanced")
+            createElement('p', { className: "text-xs text-white/80" }, "AI Assistant • Multilingual")
           )
         ),
-        createElement('button', { onClick: () => setIsOpen(false), className: "text-white/80 hover:text-white", 'aria-label': "Close chat" }, createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" })))
+        createElement('button', { 
+          onClick: () => setIsOpen(false), 
+          className: "text-white/80 hover:text-white transition-colors duration-200", 
+          'aria-label': "Close chat" 
+        }, 
+          createElement('svg', { 
+            xmlns: "http://www.w3.org/2000/svg", 
+            className: "h-6 w-6", 
+            fill: "none", 
+            viewBox: "0 0 24 24", 
+            stroke: "currentColor" 
+          }, 
+            createElement('path', { 
+              strokeLinecap: "round", 
+              strokeLinejoin: "round", 
+              strokeWidth: "2", 
+              d: "M6 18L18 6M6 6l12 12" 
+            })
+          )
+        )
       ),
-      createElement('div', { className: "flex-1 p-4 overflow-y-auto space-y-4" },
-        messages.map((msg, index) => createElement('div', { key: index, className: `flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}` },
-          createElement('div', { className: `max-w-[85%] rounded-2xl px-4 py-2 text-sm whitespace-pre-line ${msg.role === 'user' ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-br-lg' : 'bg-gray-200/80 text-gray-800 dark:bg-gray-700/80 dark:text-gray-200 rounded-bl-lg'}`, style: { wordBreak: 'break-word' } }, msg.text)
-        )),
+      // Messages container with fixed scrolling
+      createElement('div', { 
+        className: "flex-1 p-4 overflow-y-auto space-y-4 min-h-0",
+        style: { maxHeight: 'calc(70vh - 140px)' }
+      },
+        messages.map((msg, index) => 
+          createElement('div', { 
+            key: index, 
+            className: `flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}` 
+          },
+            createElement('div', { 
+              className: `max-w-[85%] rounded-2xl px-4 py-2 text-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-br-lg' : 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-bl-lg'}` 
+            }, msg.text)
+          )
+        ),
         isLoading && createElement('div', { className: "flex justify-start" },
           createElement('div', { className: "max-w-[80%] rounded-2xl px-4 py-2 text-sm bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 rounded-bl-lg" },
             createElement('div', { className: "flex items-center space-x-2" },
               createElement('div', { className: "w-2 h-2 bg-orange-500 rounded-full animate-pulse" }),
               createElement('div', { className: "w-2 h-2 bg-pink-500 rounded-full animate-pulse [animation-delay:0.2s]" }),
               createElement('div', { className: "w-2 h-2 bg-orange-500 rounded-full animate-pulse [animation-delay:0.4s]" }),
-              createElement('span', { className: "text-xs text-gray-500 ml-2" }, "Aria thinking...")
+              createElement('span', { className: "text-xs text-gray-500 ml-2" }, "Aria typing...")
             )
           )
         ),
         createElement('div', { ref: messagesEndRef })
       ),
-      createElement('form', { onSubmit: handleSendMessage, className: "p-4 border-t border-gray-200 dark:border-gray-700" },
+      // Input form
+      createElement('form', { 
+        onSubmit: handleSendMessage, 
+        className: "p-4 border-t border-gray-200 dark:border-gray-700 flex-shrink-0" 
+      },
         createElement('div', { className: "relative" },
-          createElement('input', { type: "text", value: inputValue, onChange: (e) => setInputValue(e.target.value), placeholder: "Ask anything - Tech, automation, AI, or general questions...", className: "w-full pr-12 pl-4 py-3 bg-gray-100/80 dark:bg-gray-700/80 border border-gray-300 dark:border-gray-600 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all", disabled: isLoading }),
-          createElement('button', { type: "submit", className: "absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-full hover:from-orange-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all disabled:opacity-50", disabled: isLoading || !inputValue.trim() },
-            createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-5 w-5", viewBox: "0 0 24 24", fill: "currentColor" }, createElement('path', { d: "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" }))
+          createElement('input', { 
+            type: "text", 
+            value: inputValue, 
+            onChange: (e) => setInputValue(e.target.value), 
+            placeholder: "Ask me anything - English/Hindi/Hinglish...", 
+            className: "w-full p-3 pr-12 rounded-xl border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400",
+            disabled: isLoading
+          }),
+          createElement('button', { 
+            type: "submit", 
+            disabled: isLoading || !inputValue.trim(),
+            className: "absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-full hover:from-orange-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed" 
+          },
+            createElement('svg', { 
+              xmlns: "http://www.w3.org/2000/svg", 
+              className: "h-5 w-5", 
+              viewBox: "0 0 24 24", 
+              fill: "currentColor" 
+            }, 
+              createElement('path', { 
+                d: "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" 
+              })
+            )
           )
         )
       )
