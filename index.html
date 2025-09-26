@@ -417,6 +417,9 @@
         
         const API_KEY = 'AIzaSyBo1_1nNKAA15l-ecbsllNN90kLkLI9EZY';
         
+        // Check if API key is available
+        const isAPIAvailable = API_KEY && API_KEY.length > 10;
+        
         const createSystemMessage = (language = 'en') => {
           const languageInstructions = {
             'en': 'Respond in English',
@@ -479,9 +482,13 @@ Remember: Always be helpful and respond in the user's language!`;
 
         useEffect(() => {
           if (isOpen && messages.length === 0) {
+            const welcomeMessage = isAPIAvailable 
+              ? "Hi there! I'm Aria, Aditya's AI assistant! 👋 I'm here to help you learn about his amazing work in AI automation, workflow optimization, and creative advertising. Ask me about his services, projects, or contact info! Kya help chahiye? 😊"
+              : "Hi! I'm Aria, Aditya's AI assistant! 👋 While I'm experiencing some technical issues with my AI responses, I can still help you! Ask me about Aditya's services - he's an AI & Ads specialist who creates amazing automation solutions. Contact: aditya.yadav.m7@gmail.com 📧";
+            
             setMessages([{ 
               role: 'assistant', 
-              text: "Hi there! I'm Aria, Aditya's AI assistant! 👋 I'm here to help you learn about his amazing work in AI automation, workflow optimization, and creative advertising. Kya help chahiye? 😊" 
+              text: welcomeMessage
             }]);
           }
         }, [isOpen]);
@@ -502,9 +509,9 @@ Remember: Always be helpful and respond in the user's language!`;
               body: JSON.stringify({
                 contents: [
                   {
+                    role: 'user',
                     parts: [
-                      { text: systemMessage },
-                      { text: `User message: ${userMessage}` }
+                      { text: `${systemMessage}\n\nUser: ${userMessage}` }
                     ]
                   }
                 ],
@@ -513,20 +520,42 @@ Remember: Always be helpful and respond in the user's language!`;
                   topK: 40,
                   topP: 0.95,
                   maxOutputTokens: 1024,
-                }
+                },
+                safetySettings: [
+                  {
+                    category: "HARM_CATEGORY_HARASSMENT",
+                    threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                  },
+                  {
+                    category: "HARM_CATEGORY_HATE_SPEECH",
+                    threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                  },
+                  {
+                    category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                    threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                  },
+                  {
+                    category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+                    threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                  }
+                ]
               })
             });
 
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
             const data = await response.json();
+            
+            if (!response.ok) {
+              console.error('API Error Response:', data);
+              throw new Error(`API Error: ${response.status} - ${data.error?.message || 'Unknown error'}`);
+            }
             
             if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts[0]) {
               return data.candidates[0].content.parts[0].text;
+            } else if (data.error) {
+              throw new Error(`API Error: ${data.error.message}`);
             } else {
-              throw new Error('Invalid response format');
+              console.error('Invalid response format:', data);
+              throw new Error('Invalid response format from API');
             }
           } catch (error) {
             console.error('Gemini API Error:', error);
@@ -546,6 +575,17 @@ Remember: Always be helpful and respond in the user's language!`;
           setInputValue('');
           setIsLoading(true);
 
+          // If API is not available, provide immediate fallback
+          if (!isAPIAvailable) {
+            setTimeout(() => {
+              const fallbackResponse = generateFallbackResponse(userMessage.text, detectedLang);
+              const assistantMessage = { role: 'assistant', text: fallbackResponse };
+              setMessages(prev => [...prev, assistantMessage]);
+              setIsLoading(false);
+            }, 1000); // Add small delay to simulate thinking
+            return;
+          }
+
           try {
             const responseText = await callGeminiAPI(userMessage.text, detectedLang);
             const assistantMessage = { role: 'assistant', text: responseText };
@@ -553,20 +593,52 @@ Remember: Always be helpful and respond in the user's language!`;
           } catch (error) {
             console.error("Error sending message:", error);
             
-            const errorMessages = {
-              'hinglish': "Sorry yaar, main thoda problem face kar rahi hun. Aditya ke services, projects ya tools ke baare mein pooch sakte ho!",
-              'hi': "क्षमा करें, मुझे कुछ समस्या हो रही है। आदित्य की सेवाओं के बारे में पूछें!",
-              'default': "I apologize, but I'm having trouble responding right now. Please ask me about Aditya's services or contact him at aditya.yadav.m7@gmail.com"
-            };
+            // Create a fallback response based on common queries
+            const fallbackResponse = generateFallbackResponse(userMessage.text, detectedLang);
             
             const errorMessage = { 
               role: 'assistant', 
-              text: errorMessages[detectedLang] || errorMessages.default
+              text: fallbackResponse
             };
             setMessages(prev => [...prev, errorMessage]);
           } finally {
             setIsLoading(false);
           }
+        };
+
+        const generateFallbackResponse = (userInput, detectedLang) => {
+          const lowerInput = userInput.toLowerCase();
+          
+          if (lowerInput.includes('contact') || lowerInput.includes('email') || lowerInput.includes('reach')) {
+            const contactResponses = {
+              'hinglish': "Aditya se contact karne ke liye email karo: aditya.yadav.m7@gmail.com ya GitHub check karo: https://github.com/Aditya-sbsc",
+              'hi': "आदित्य से संपर्क करने के लिए ईमेल करें: aditya.yadav.m7@gmail.com",
+              'default': "You can contact Aditya at aditya.yadav.m7@gmail.com or check his GitHub: https://github.com/Aditya-sbsc"
+            };
+            return contactResponses[detectedLang] || contactResponses.default;
+          } else if (lowerInput.includes('service') || lowerInput.includes('automation') || lowerInput.includes('chatbot')) {
+            const serviceResponses = {
+              'hinglish': "Aditya AI-powered chatbots, workflow automation, aur creative ad mockups banata hai. Professional automation solutions provide karta hai!",
+              'hi': "आदित्य AI-संचालित चैटबॉट्स, वर्कफ़्लो ऑटोमेशन और रचनात्मक विज्ञापन मॉकअप बनाता है।",
+              'default': "Aditya specializes in AI-powered chatbots, workflow automation, and creative ad mockups. He helps businesses save 20+ hours per week through intelligent automation!"
+            };
+            return serviceResponses[detectedLang] || serviceResponses.default;
+          } else if (lowerInput.includes('project') || lowerInput.includes('portfolio') || lowerInput.includes('work')) {
+            const projectResponses = {
+              'hinglish': "Aditya ne kayi amazing projects kiye hain: automated lead qualification systems, dynamic ad creative generation, customer support chatbots, aur video caption generator!",
+              'hi': "आदित्य ने कई शानदार प्रोजेक्ट्स किए हैं जैसे स्वचालित लीड क्वालिफिकेशन सिस्टम और ग्राहक सहायता चैटबॉट्स।",
+              'default': "Aditya has worked on several impressive projects including automated lead qualification systems, dynamic ad creative generation, customer support chatbots, and a video caption generator!"
+            };
+            return projectResponses[detectedLang] || projectResponses.default;
+          } else {
+            const generalResponses = {
+              'hinglish': "Main Aria hun, Aditya ki AI assistant! Temporarily thoda technical issue hai, but main help kar sakti hun. Aditya AI & Ads specialist hai - automation, chatbots, aur creative ads mein expert hai. Contact: aditya.yadav.m7@gmail.com",
+              'hi': "मैं एरिया हूं, आदित्य की AI असिस्टेंट! तकनीकी समस्या के कारण मैं पूरी तरह से काम नहीं कर रही, लेकिन आदित्य से संपर्क करें: aditya.yadav.m7@gmail.com",
+              'default': "Hi! I'm Aria, Aditya's AI assistant. I'm experiencing some technical difficulties right now, but I can still help! Aditya is an AI & Ads specialist who creates amazing automation solutions, chatbots, and creative advertisements. Contact him at: aditya.yadav.m7@gmail.com"
+            };
+            return generalResponses[detectedLang] || generalResponses.default;
+          }
+        };
         };
 
         return createElement(Fragment, null,
