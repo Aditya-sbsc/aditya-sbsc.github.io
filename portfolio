@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aditya - Creative Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f172a; /* bg-slate-900 */
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* --- Animated Blobs --- */
+        .blob-animation { animation: blob-move 15s infinite ease-in-out; }
+        .blob-animation-2 { animation: blob-move-2 20s infinite ease-in-out; }
+        .blob-animation-3 { animation: blob-move-3 18s infinite ease-in-out; }
+
+        @keyframes blob-move {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(20vw, -15vh) scale(1.1); }
+            50% { transform: translate(-10vw, 20vh) scale(0.9); }
+            75% { transform: translate(15vw, 10vh) scale(1.2); }
+        }
+        @keyframes blob-move-2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-25vw, 10vh) scale(0.8); }
+            50% { transform: translate(15vw, -20vh) scale(1.2); }
+            75% { transform: translate(-10vw, -15vh) scale(1.1); }
+        }
+        @keyframes blob-move-3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-15vw, -15vh) scale(1.1); }
+            66% { transform: translate(20vw, 15vh) scale(0.9); }
+        }
+
+        /* --- Glassmorphism Effect --- */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.3); /* bg-slate-900/30 */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 1rem; /* rounded-2xl */
+            box-shadow: 0 8px 32px 0 rgba(0, 255, 255, 0.1);
+        }
+
+        /* --- Scroll Reveal Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, transform;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* --- Misc Styles --- */
+        .text-glow {
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Blobs -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div class="absolute top-[-50vh] left-[-20vw] w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] bg-cyan-500 rounded-full opacity-30 filter blur-3xl blob-animation"></div>
+        <div class="absolute top-[30vh] right-[-30vw] w-[90vw] h-[90vw] md:w-[70vw] md:h-[70vw] bg-purple-600 rounded-full opacity-20 filter blur-3xl blob-animation-2"></div>
+        <div class="absolute bottom-[-40vh] left-[10vw] w-[70vw] h-[70vw] md:w-[50vw] md:h-[50vw] bg-teal-500 rounded-full opacity-20 filter blur-3xl blob-animation-3"></div>
+    </div>
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 p-4">
+        <div class="container mx-auto">
+            <div class="glass-card flex justify-between items-center px-6 py-3">
+                <a href="#home" class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 cursor-pointer">
+                    Aditya
+                </a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-lg font-medium text-slate-200 hover:text-cyan-400 transition-colors duration-300">Home</a>
+                    <a href="#about" class="text-lg font-medium text-slate-200 hover:text-cyan-400 transition-colors duration-300">About</a>
+                    <a href="#portfolio" class="text-lg font-medium text-slate-200 hover:text-cyan-400 transition-colors duration-300">Portfolio</a>
+                    <a href="#contact" class="text-lg font-medium text-slate-200 hover:text-cyan-400 transition-colors duration-300">Contact</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden mt-2 hidden">
+            <div class="glass-card flex flex-col items-center space-y-4 py-4">
+                <a href="#home" class="mobile-link text-lg font-medium text-slate-200 hover:text-cyan-400 transition-colors duration-300">Home</a>
+                <a href="#about" class="mobile-link text-lg font-medium text-slate-200 hover:text-cyan-400 transition-colors duration-300">About</a>
+                <a href="#portfolio" class="mobile-link text-lg font-medium text-slate-200 hover:text-cyan-400 transition-colors duration-300">Portfolio</a>
+                <a href="#contact" class="mobile-link text-lg font-medium text-slate-200 hover:text-cyan-400 transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 md:px-12">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
+            <h1 class="text-7xl md:text-9xl font-black uppercase tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-500 animate-pulse">
+                Aditya
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl font-light text-slate-300 tracking-wider text-glow">
+                Creative Designer | Visual Storyteller
+            </p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 md:py-32">
+            <div class="glass-card p-8 md:p-12 max-w-3xl mx-auto reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-purple-400">
+                    About Me
+                </h2>
+                <p class="text-lg md:text-xl text-slate-300 leading-relaxed text-center">
+                    I'm Aditya, a passionate designer with a knack for creating compelling visual narratives. From vibrant Instagram posts to eye-catching YouTube thumbnails, I specialize in crafting digital experiences that not only look good but also communicate effectively. My goal is to transform ideas into impactful designs that resonate with audiences and elevate brands.
+                </p>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-24 md:py-32">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-purple-400 reveal">
+               My Work
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+                <!-- Portfolio Item 1 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg reveal">
+                    <img src="https://picsum.photos/seed/design1/600/600" alt="Instagram Post" class="w-full h-auto transition-transform duration-500 ease-in-out group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><h3 class="text-2xl font-bold text-white">Instagram Post</h3></div>
+                    </div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-xl transition-all duration-300 pointer-events-none transform scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100"></div>
+                </div>
+                <!-- Portfolio Item 2 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg reveal">
+                    <img src="https://picsum.photos/seed/design2/800/450" alt="YouTube Thumbnail" class="w-full h-auto transition-transform duration-500 ease-in-out group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><h3 class="text-2xl font-bold text-white">YouTube Thumbnail</h3></div>
+                    </div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-xl transition-all duration-300 pointer-events-none transform scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100"></div>
+                </div>
+                <!-- Portfolio Item 3 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg reveal">
+                    <img src="https://picsum.photos/seed/design3/500/700" alt="Branding Project" class="w-full h-auto transition-transform duration-500 ease-in-out group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><h3 class="text-2xl font-bold text-white">Branding</h3></div>
+                    </div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-xl transition-all duration-300 pointer-events-none transform scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100"></div>
+                </div>
+                <!-- Portfolio Item 4 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg reveal">
+                    <img src="https://picsum.photos/seed/design4/800/450" alt="Social Media Ad" class="w-full h-auto transition-transform duration-500 ease-in-out group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><h3 class="text-2xl font-bold text-white">Social Media Ad</h3></div>
+                    </div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-xl transition-all duration-300 pointer-events-none transform scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100"></div>
+                </div>
+                <!-- Portfolio Item 5 -->
+                 <div class="group relative overflow-hidden rounded-xl shadow-lg reveal">
+                    <img src="https://picsum.photos/seed/design5/600/600" alt="Logo Design" class="w-full h-auto transition-transform duration-500 ease-in-out group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><h3 class="text-2xl font-bold text-white">Logo Design</h3></div>
+                    </div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-xl transition-all duration-300 pointer-events-none transform scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100"></div>
+                </div>
+                <!-- Portfolio Item 6 -->
+                 <div class="group relative overflow-hidden rounded-xl shadow-lg reveal">
+                    <img src="https://picsum.photos/seed/design6/500/650" alt="Illustration" class="w-full h-auto transition-transform duration-500 ease-in-out group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                         <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"><h3 class="text-2xl font-bold text-white">Illustration</h3></div>
+                    </div>
+                    <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-xl transition-all duration-300 pointer-events-none transform scale-90 group-hover:scale-100 opacity-0 group-hover:opacity-100"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 md:py-32">
+            <div class="glass-card p-8 md:p-12 max-w-3xl mx-auto reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-purple-400">
+                    Get In Touch
+                </h2>
+                <form onsubmit="event.preventDefault()" class="space-y-6">
+                    <input type="text" placeholder="Your Name" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all" />
+                    <input type="email" placeholder="Your Email" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all" />
+                    <textarea placeholder="Your Message" rows="5" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all"></textarea>
+                    <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg font-bold text-lg hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30 transform transition-all duration-300">
+                        Send Message
+                    </button>
+                </form>
+                <div class="mt-12 flex justify-center space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-cyan-400 hover:scale-125 transform transition-all duration-300" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-cyan-400 hover:scale-125 transform transition-all duration-300" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.6 11.64 9.5 7.17A1 1 0 0 0 8 8v8a1 1 0 0 0 1.5.83l6.1-4.47a1 1 0 0 0 0-1.66z"></path><path d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"></path></svg>
+                    </a>
+                    <a href="mailto:example@email.com" class="text-slate-400 hover:text-cyan-400 hover:scale-125 transform transition-all duration-300" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="py-8 text-center text-slate-500">
+        <p>&copy; 2024 Aditya. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Mobile Menu Toggle ---
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // --- Scroll Reveal Animation ---
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Stagger the animation for portfolio items
+                        const delay = entry.target.parentElement.classList.contains('grid') ? index * 150 : 0;
+                        setTimeout(() => {
+                           entry.target.classList.add('visible');
+                        }, delay);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
