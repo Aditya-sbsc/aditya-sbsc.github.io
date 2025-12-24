@@ -25,7 +25,7 @@
         }
         
         /* ===== CSS Variables ===== */
-        : root {
+        :root {
             --primary-green: #4A7C2F;
             --dark-earth: #2D5016;
             --warm-brown: #6B4423;
@@ -37,7 +37,7 @@
             --text-light: #6C757D;
             --whatsapp-green: #25D366;
             --font-hindi: 'Noto Sans Devanagari', sans-serif;
-            --font-english: 'Poppins', sans-serif;
+            --font-english:  'Poppins', sans-serif;
             --font-body: 'Open Sans', 'Noto Sans', sans-serif;
             --section-padding: 80px 0;
             --container-padding: 20px;
@@ -47,7 +47,7 @@
         /* ===== Base Styles ===== */
         html {
             font-size: 16px;
-            scroll-behavior:  smooth;
+            scroll-behavior: smooth;
         }
         
         body {
@@ -56,13 +56,14 @@
             line-height:  1.6;
             color: var(--text-dark);
             background-color: var(--white);
+            overflow-x: hidden;
         }
         
         /* ===== Typography ===== */
         h1, h2, h3, h4, h5, h6 {
             font-family:  var(--font-hindi);
             font-weight: 700;
-            line-height: 1.3;
+            line-height:  1.3;
             margin-bottom: 1rem;
         }
         
@@ -120,7 +121,16 @@
             background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-earth) 100%);
             color: var(--white);
         }
-        . mt-4 { margin-top:  2rem; }
+        . mt-4 { margin-top: 2rem; }
+        
+        /* ===== Language Toggle Styles ===== */
+        [lang-content] {
+            display: none;
+        }
+        
+        [lang-content]. active {
+            display: inline;
+        }
         
         /* ===== Buttons ===== */
         .btn {
@@ -183,24 +193,24 @@
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
         }
         
-        .btn-call {
+        . btn-call {
             background-color: var(--primary-green);
             color: var(--white);
         }
         
         .btn-call:hover {
-            background-color: var(--dark-earth);
+            background-color:  var(--dark-earth);
         }
         
         .btn-lg {
             padding: 16px 32px;
-            font-size: 1.125rem;
+            font-size:  1.125rem;
         }
         
         /* ===== Language Bar ===== */
         .language-bar {
             background-color: var(--dark-earth);
-            padding: 8px 0;
+            padding: 10px 0;
         }
         
         .lang-options {
@@ -214,17 +224,23 @@
             background:  none;
             border: none;
             color: var(--white);
-            padding: 4px 12px;
+            padding: 6px 16px;
             cursor: pointer;
-            font-size: 0.875rem;
+            font-size: 0.95rem;
             opacity: 0.7;
             transition: var(--transition);
+            border-radius: 4px;
         }
         
-        .lang-btn:hover,
+        .lang-btn:hover {
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
         .lang-btn.active {
             opacity: 1;
-            color: var(--accent-yellow);
+            background-color: var(--accent-yellow);
+            color: var(--dark-earth);
         }
         
         /* ===== Header/Navigation ===== */
@@ -264,7 +280,7 @@
         }
         
         .logo-text {
-            font-family: var(--font-hindi);
+            font-family:  var(--font-hindi);
             font-size: 1.5rem;
             font-weight:  700;
             color: var(--primary-green);
@@ -283,7 +299,7 @@
         .mobile-menu-toggle span {
             width: 25px;
             height: 3px;
-            background-color:  var(--dark-earth);
+            background-color: var(--dark-earth);
             transition: var(--transition);
         }
         
@@ -330,6 +346,7 @@
             align-items: center;
             background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
             overflow: hidden;
+            padding: 60px 0;
         }
         
         .hero-bg {
@@ -346,7 +363,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            align-items: center;
+            align-items:  center;
             position: relative;
             z-index: 1;
         }
@@ -386,13 +403,14 @@
         }
         
         .hero-image {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-earth) 100%);
+            background:  linear-gradient(135deg, var(--primary-green) 0%, var(--dark-earth) 100%);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 3rem;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 400px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
         }
         
         .hero-image-placeholder {
@@ -401,15 +419,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: rgba(255, 255, 255, 0.3);
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.4);
         }
         
         /* ===== Trust Bar ===== */
         .trust-bar {
             background-color: var(--primary-green);
             color: var(--white);
-            padding:  2rem 0;
+            padding: 2rem 0;
         }
         
         .trust-items {
@@ -435,7 +453,7 @@
         }
         
         /* ===== Promise Section ===== */
-        .promise-grid {
+        . promise-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
@@ -455,7 +473,7 @@
             box-shadow:  0 8px 30px rgba(0, 0, 0, 0.12);
         }
         
-        .promise-icon {
+        . promise-icon {
             color: var(--primary-green);
             margin-bottom: 1.5rem;
             font-size: 3.5rem;
@@ -472,7 +490,7 @@
         }
         
         /* ===== Testimonial Section ===== */
-        .testimonial-grid {
+        . testimonial-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
@@ -500,7 +518,7 @@
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-size: 4rem;
+            font-size: 5rem;
         }
         
         .testimonial-content {
@@ -555,7 +573,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
+            font-size: 6rem;
             color: var(--primary-green);
         }
         
@@ -566,12 +584,14 @@
         .product-content h3 {
             color:  var(--dark-earth);
             margin-bottom: 0.5rem;
+            font-size: 1.25rem;
         }
         
         .product-tagline {
             color: var(--primary-green);
             font-weight: 600;
             margin-bottom: 1rem;
+            font-size: 1rem;
         }
         
         .product-benefits {
@@ -598,15 +618,15 @@
             background-color: var(--white);
             padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow:  0 4px 20px rgba(0, 0, 0, 0.08);
         }
         
         .comparison-chemical {
-            border:  2px solid #E74C3C;
+            border:  3px solid #E74C3C;
         }
         
         .comparison-organic {
-            border: 2px solid var(--primary-green);
+            border: 3px solid var(--primary-green);
             background:  linear-gradient(135deg, rgba(74, 124, 47, 0.05) 0%, var(--white) 100%);
         }
         
@@ -632,20 +652,20 @@
             display: flex;
             align-items: flex-start;
             gap: 0.75rem;
-            margin-bottom:  1rem;
+            margin-bottom: 1rem;
             font-size: 1rem;
         }
         
         .icon-cross {
             color: #E74C3C;
             font-weight: bold;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
         }
         
         .icon-check {
             color: var(--primary-green);
             font-weight: bold;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
         }
         
         /* ===== Stats Section ===== */
@@ -672,7 +692,7 @@
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
-            color: var(--primary-green);
+            color:  var(--primary-green);
             margin-bottom: 0.5rem;
         }
         
@@ -738,18 +758,19 @@
             justify-content: center;
             color: var(--dark-earth);
             font-weight: 700;
+            font-size: 1.25rem;
         }
         
         .footer-logo span {
             font-family: var(--font-hindi);
-            font-size: 1.25rem;
+            font-size:  1.25rem;
             font-weight:  700;
         }
         
         .footer-desc {
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
-            margin-bottom: 1rem;
+            margin-bottom:  1rem;
         }
         
         .social-links {
@@ -775,7 +796,7 @@
         }
         
         .footer-col h4 {
-            margin-bottom: 1rem;
+            margin-bottom:  1rem;
             font-size: 1.125rem;
         }
         
@@ -792,11 +813,11 @@
             font-size: 0.95rem;
         }
         
-        . footer-links a:hover {
+        .footer-links a:hover {
             color: var(--accent-yellow);
         }
         
-        .footer-contact {
+        . footer-contact {
             list-style: none;
         }
         
@@ -816,13 +837,13 @@
             color: var(--accent-yellow);
         }
         
-        .footer-bottom {
+        . footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 1.5rem;
+            padding-top: 1. 5rem;
             text-align: center;
         }
         
-        . footer-bottom p {
+        .footer-bottom p {
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.875rem;
             margin-bottom: 0.5rem;
@@ -857,6 +878,80 @@
             box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
         }
         
+        /* ===== Form Styles ===== */
+        .contact-form-wrapper {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow:  0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color:  var(--text-dark);
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        /* ===== Contact Cards ===== */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            padding: 2rem;
+            text-align: center;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+        
+        .contact-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-card-info {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
         /* ===== RESPONSIVE STYLES ===== */
         
         /* Tablet - 768px and below */
@@ -865,7 +960,7 @@
             h1 { font-size: 2rem; }
             h2 { font-size: 1.75rem; }
             h3 { font-size: 1.25rem; }
-            .section { padding: 60px 0; }
+            . section { padding: 60px 0; }
             
             .lang-options {
                 justify-content: center;
@@ -873,6 +968,7 @@
             
             .mobile-menu-toggle {
                 display: flex;
+                order: 3;
             }
             
             .nav-menu {
@@ -941,7 +1037,7 @@
             .promise-grid,
             .testimonial-grid,
             .product-grid {
-                grid-template-columns:  1fr;
+                grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
             
@@ -967,13 +1063,17 @@
                 flex-direction: column;
             }
             
-            .cta-buttons .btn {
+            . cta-buttons .btn {
                 width: 100%;
             }
             
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
+            }
+            
+            .contact-cards {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -1000,7 +1100,7 @@
             
             .btn-lg {
                 padding: 14px 28px;
-                font-size: 1rem;
+                font-size:  1rem;
             }
             
             .lang-options {
@@ -1008,8 +1108,8 @@
             }
             
             .lang-btn {
-                font-size: 0.75rem;
-                padding: 4px 8px;
+                font-size: 0.8rem;
+                padding: 5px 12px;
             }
             
             .logo-icon {
@@ -1026,7 +1126,7 @@
                 padding: 2rem 0;
             }
             
-            . hero-title {
+            .hero-title {
                 font-size: 1.75rem;
             }
             
@@ -1036,6 +1136,10 @@
             
             .hero-subtitle {
                 font-size: 1rem;
+            }
+            
+            .hero-image-placeholder {
+                font-size: 5rem;
             }
             
             .trust-items {
@@ -1052,7 +1156,7 @@
             }
             
             .promise-icon {
-                font-size: 2.5rem;
+                font-size: 2. 5rem;
             }
             
             .stats-grid {
@@ -1060,7 +1164,7 @@
             }
             
             .stat-number {
-                font-size: 2rem;
+                font-size:  2rem;
             }
             
             .footer-content {
@@ -1109,20 +1213,60 @@
                 </button>
                 
                 <ul class="nav-menu">
-                    <li><a href="#home" class="active" data-en="Home" data-hi="होम">होम</a></li>
-                    <li><a href="#about" data-en="About Us" data-hi="हमारे बारे में">हमारे बारे में</a></li>
-                    <li><a href="#products" data-en="Our Products" data-hi="हमारे उत्पाद">हमारे उत्पाद</a></li>
-                    <li><a href="#why-organic" data-en="Why Organic?" data-hi="ऑर्गेनिक क्यों? ">ऑर्गेनिक क्यों? </a></li>
-                    <li><a href="#how-to-use" data-en="How to Use" data-hi="कैसे इस्तेमाल करें">कैसे इस्तेमाल करें</a></li>
-                    <li><a href="#contact" data-en="Contact" data-hi="संपर्क करें">संपर्क करें</a></li>
+                    <li><a href="#home" class="active">
+                        <span lang-content="hi" class="active">होम</span>
+                        <span lang-content="en">Home</span>
+                        <span lang-content="ta">முகப்பு</span>
+                        <span lang-content="te">హోమ్</span>
+                        <span lang-content="mr">मुख्यपृष्ठ</span>
+                    </a></li>
+                    <li><a href="#about">
+                        <span lang-content="hi" class="active">हमारे बारे में</span>
+                        <span lang-content="en">About Us</span>
+                        <span lang-content="ta">எங்களை பற்றி</span>
+                        <span lang-content="te">మా గురించి</span>
+                        <span lang-content="mr">आमच्याबद्दल</span>
+                    </a></li>
+                    <li><a href="#products">
+                        <span lang-content="hi" class="active">हमारे उत्पाद</span>
+                        <span lang-content="en">Our Products</span>
+                        <span lang-content="ta">எங்கள் தயாரிப்புகள்</span>
+                        <span lang-content="te">మా ఉత్పత్తులు</span>
+                        <span lang-content="mr">आमची उत्पादने</span>
+                    </a></li>
+                    <li><a href="#why-organic">
+                        <span lang-content="hi" class="active">ऑर्गेनिक क्यों? </span>
+                        <span lang-content="en">Why Organic?</span>
+                        <span lang-content="ta">ஆர்கானிக் ஏன்?</span>
+                        <span lang-content="te">ఆర్గానిక్ ఎందుకు?</span>
+                        <span lang-content="mr">सेंद्रिय का? </span>
+                    </a></li>
+                    <li><a href="#how-to-use">
+                        <span lang-content="hi" class="active">कैसे इस्तेमाल करें</span>
+                        <span lang-content="en">How to Use</span>
+                        <span lang-content="ta">எப்படி பயன்படுத்துவது</span>
+                        <span lang-content="te">ఎలా ఉపయోగించాలి</span>
+                        <span lang-content="mr">कसे वापरावे</span>
+                    </a></li>
+                    <li><a href="#contact">
+                        <span lang-content="hi" class="active">संपर्क करें</span>
+                        <span lang-content="en">Contact</span>
+                        <span lang-content="ta">தொடர்பு</span>
+                        <span lang-content="te">సంప్రదించండి</span>
+                        <span lang-content="mr">संपर्क</span>
+                    </a></li>
                 </ul>
                 
                 <div class="header-cta">
                     <a href="https://wa.me/919876543210" class="btn btn-whatsapp" target="_blank">
-                        📱 <span data-en="WhatsApp" data-hi="WhatsApp">WhatsApp</span>
+                        📱 WhatsApp
                     </a>
                     <a href="tel:+919876543210" class="btn btn-call">
-                        📞 <span data-en="Call Now" data-hi="कॉल करें">कॉल करें</span>
+                        📞 <span lang-content="hi" class="active">कॉल करें</span>
+                        <span lang-content="en">Call Now</span>
+                        <span lang-content="ta">அழைக்கவும்</span>
+                        <span lang-content="te">కాల్ చేయండి</span>
+                        <span lang-content="mr">कॉल करा</span>
                     </a>
                 </div>
             </nav>
@@ -1136,18 +1280,35 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">
-                        <span class="title-hindi" data-hi="आपकी मिट्टी, हमारी जिम्मेदारी">आपकी मिट्टी, हमारी जिम्मेदारी</span>
-                        <span class="title-english" data-en="Your Soil, Our Responsibility">Your Soil, Our Responsibility</span>
+                        <span class="title-hindi">
+                            <span lang-content="hi" class="active">आपकी मिट्टी, हमारी जिम्मेदारी</span>
+                            <span lang-content="en">Your Soil, Our Responsibility</span>
+                            <span lang-content="ta">உங்கள் மண், எங்கள் பொறுப்பு</span>
+                            <span lang-content="te">మీ నేల, మా బాధ్యత</span>
+                            <span lang-content="mr">तुमची माती, आमची जबाबदारी</span>
+                        </span>
                     </h1>
-                    <p class="hero-subtitle" data-en="Pure organic fertilizers that bring life back to your land—naturally safe, truly effective" data-hi="शुद्ध जैविक खाद जो आपकी जमीन में फिर से जान डालती है—प्राकृतिक रूप से सुरक्षित, वास्तव में प्रभावी">
-                        शुद्ध जैविक खाद जो आपकी जमीन में फिर से जान डालती है—प्राकृतिक रूप से सुरक्षित, वास्तव में प्रभावी
+                    <p class="hero-subtitle">
+                        <span lang-content="hi" class="active">शुद्ध जैविक खाद जो आपकी जमीन में फिर से जान डालती है—प्राकृतिक रूप से सुरक्षित, वास्तव में प्रभावी</span>
+                        <span lang-content="en">Pure organic fertilizers that bring life back to your land—naturally safe, truly effective</span>
+                        <span lang-content="ta">உங்கள் நிலத்திற்கு உயிரை மீட்டெடுக்கும் தூய இயற்கை உரங்கள்—இயற்கையாக பாதுகாப்பான, உண்மையிலேயே பயனுள்ள</span>
+                        <span lang-content="te">మీ భూమికి జీవితాన్ని తిరిగి తీసుకువచ్చే స్వచ్ఛమైన సేంద్రీయ ఎరువులు—సహజంగా సురక్షితమైనవి, నిజంగా ప్రభావవంతమైనవి</span>
+                        <span lang-content="mr">शुद्ध सेंद्रिय खते जे तुमच्या जमिनीत पुन्हा जीवन आणतात—नैसर्गिकरित्या सुरक्षित, खरोखरच प्रभावी</span>
                     </p>
                     <div class="hero-cta">
                         <a href="#products" class="btn btn-primary btn-lg">
-                            <span data-en="See Our Products" data-hi="हमारे उत्पाद देखें">हमारे उत्पाद देखें</span>
+                            <span lang-content="hi" class="active">हमारे उत्पाद देखें</span>
+                            <span lang-content="en">See Our Products</span>
+                            <span lang-content="ta">எங்கள் தயாரிப்புகளைக் காணவும்</span>
+                            <span lang-content="te">మా ఉత్పత్తులను చూడండి</span>
+                            <span lang-content="mr">आमची उत्पादने पहा</span>
                         </a>
                         <a href="#farmer-stories" class="btn btn-secondary btn-lg">
-                            <span data-en="Farmer Stories" data-hi="किसान भाइयों की कहानी">किसान भाइयों की कहानी</span>
+                            <span lang-content="hi" class="active">किसान भाइयों की कहानी</span>
+                            <span lang-content="en">Farmer Stories</span>
+                            <span lang-content="ta">விவசாயிகளின் கதைகள்</span>
+                            <span lang-content="te">రైతు కథలు</span>
+                            <span lang-content="mr">शेतकरी कथा</span>
                         </a>
                     </div>
                 </div>
@@ -1164,19 +1325,43 @@
             <div class="trust-items">
                 <div class="trust-item">
                     <div class="trust-icon">✓</div>
-                    <p data-en="100% Natural" data-hi="100% प्राकृतिक">100% प्राकृतिक</p>
+                    <p>
+                        <span lang-content="hi" class="active">100% प्राकृतिक</span>
+                        <span lang-content="en">100% Natural</span>
+                        <span lang-content="ta">100% இயற்கை</span>
+                        <span lang-content="te">100% సహజమైనది</span>
+                        <span lang-content="mr">100% नैसर्गिक</span>
+                    </p>
                 </div>
                 <div class="trust-item">
                     <div class="trust-icon">✓</div>
-                    <p data-en="Chemical-Free" data-hi="रासायनिक मुक्त">रासायनिक मुक्त</p>
+                    <p>
+                        <span lang-content="hi" class="active">रासायनिक मुक्त</span>
+                        <span lang-content="en">Chemical-Free</span>
+                        <span lang-content="ta">இரசாயன இலவசம்</span>
+                        <span lang-content="te">రసాయన రహితం</span>
+                        <span lang-content="mr">रसायनमुक्त</span>
+                    </p>
                 </div>
                 <div class="trust-item">
                     <div class="trust-icon">✓</div>
-                    <p data-en="Made for Indian Soil" data-hi="भारतीय मिट्टी के लिए">भारतीय मिट्टी के लिए</p>
+                    <p>
+                        <span lang-content="hi" class="active">भारतीय मिट्टी के लिए</span>
+                        <span lang-content="en">Made for Indian Soil</span>
+                        <span lang-content="ta">இந்திய மண்ணுக்காக</span>
+                        <span lang-content="te">భారతీయ నేల కొరకు</span>
+                        <span lang-content="mr">भारतीय मातीसाठी</span>
+                    </p>
                 </div>
                 <div class="trust-item">
                     <div class="trust-icon">✓</div>
-                    <p data-en="Affordable & Safe" data-hi="सस्ती और सुरक्षित">सस्ती और सुरक्षित</p>
+                    <p>
+                        <span lang-content="hi" class="active">सस्ती और सुरक्षित</span>
+                        <span lang-content="en">Affordable & Safe</span>
+                        <span lang-content="ta">மலிவு & பாதுகாப்பான</span>
+                        <span lang-content="te">సరసమైన & సురక్షితమైన</span>
+                        <span lang-content="mr">परवडणारे आणि सुरक्षित</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -1187,46 +1372,82 @@
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">
-                    <span data-hi="किसान भाई, हम समझते हैं आपकी चिंता">किसान भाई, हम समझते हैं आपकी चिंता</span><br>
-                    <span class="subtitle-en" data-en="We Understand Your Concerns">We Understand Your Concerns</span>
+                    <span lang-content="hi" class="active">किसान भाई, हम समझते हैं आपकी चिंता</span>
+                    <span lang-content="en">We Understand Your Concerns</span>
+                    <span lang-content="ta">விவசாயி சகோதரரே, நாங்கள் உங்கள் கவலைகளைப் புரிந்துகொள்கிறோம்</span>
+                    <span lang-content="te">రైతు సోదరులారా, మేము మీ ఆందోళనలను అర్థం చేసుకుంటున్నాము</span>
+                    <span lang-content="mr">शेतकरी भाऊ, आम्ही तुमची चिंता समजतो</span>
                 </h2>
             </div>
             
             <div class="promise-grid">
                 <div class="promise-card">
                     <div class="promise-icon">🌱</div>
-                    <h3 data-hi="सुरक्षित खेती" data-en="Safe Farming">सुरक्षित खेती</h3>
-                    <p data-hi="कोई हानिकारक रसायन नहीं। आपके परिवार या मिट्टी के लिए कोई डर नहीं। बस शुद्ध, प्राकृतिक शक्ति।" data-en="No harmful chemicals. No fear for your family or soil. Just pure, natural strength. ">
-                        कोई हानिकारक रसायन नहीं। आपके परिवार या मिट्टी के लिए कोई डर नहीं। बस शुद्ध, प्राकृतिक शक्ति।
+                    <h3>
+                        <span lang-content="hi" class="active">सुरक्षित खेती</span>
+                        <span lang-content="en">Safe Farming</span>
+                        <span lang-content="ta">பாதுகாப்பான விவசாயம்</span>
+                        <span lang-content="te">సురక్షితమైన వ్యవసాయం</span>
+                        <span lang-content="mr">सुरक्षित शेती</span>
+                    </h3>
+                    <p>
+                        <span lang-content="hi" class="active">कोई हानिकारक रसायन नहीं। आपके परिवार या मिट्टी के लिए कोई डर नहीं। बस शुद्ध, प्राकृतिक शक्ति।</span>
+                        <span lang-content="en">No harmful chemicals. No fear for your family or soil. Just pure, natural strength.</span>
+                        <span lang-content="ta">தீங்கு விளைவிக்கும் இரசாயனங்கள் இல்லை. உங்கள் குடும்பத்திற்கோ மண்ணுக்கோ பயம் இல்லை. தூய, இயற்கை வலிமை மட்டுமே.</span>
+                        <span lang-content="te">హానికరమైన రసాయనాలు లేవు. మీ కుటుంబానికి లేదా నేలకు భయం లేదు. కేవలం స్వచ్ఛమైన, సహజ శక్తి.</span>
+                        <span lang-content="mr">हानिकारक रसायने नाहीत. तुमच्या कुटुंबासाठी किंवा मातीसाठी कोणतीही भीती नाही. फक्त शुद्ध, नैसर्गिक शक्ती.</span>
                     </p>
                 </div>
                 
                 <div class="promise-card">
                     <div class="promise-icon">💪</div>
-                    <h3 data-hi="ज्यादा पैदावार" data-en="Better Yield">ज्यादा पैदावार</h3>
-                    <p data-hi="ऑर्गेनिक का मतलब कम नहीं है। इसका मतलब है स्वस्थ फसल, मजबूत जड़ें और बेहतर उपज।" data-en="Organic doesn't mean less. It means healthier crops, stronger roots, and better harvest.">
-                        ऑर्गेनिक का मतलब कम नहीं है। इसका मतलब है स्वस्थ फसल, मजबूत जड़ें और बेहतर उपज।
+                    <h3>
+                        <span lang-content="hi" class="active">ज्यादा पैदावार</span>
+                        <span lang-content="en">Better Yield</span>
+                        <span lang-content="ta">சிறந்த விளைச்சல்</span>
+                        <span lang-content="te">మెరుగైన దిగుబడి</span>
+                        <span lang-content="mr">चांगले उत्पन्न</span>
+                    </h3>
+                    <p>
+                        <span lang-content="hi" class="active">ऑर्गेनिक का मतलब कम नहीं है। इसका मतलब है स्वस्थ फसल, मजबूत जड़ें और बेहतर उपज।</span>
+                        <span lang-content="en">Organic doesn't mean less. It means healthier crops, stronger roots, and better harvest.</span>
+                        <span lang-content="ta">ஆர்கானிக் என்றால் குறைவு என்று அர்த்தமல்ல. ஆரோக்கியமான பயிர்கள், வலுவான வேர்கள் மற்றும் சிறந்த அறுவடை என்று பொருள்.</span>
+                        <span lang-content="te">ఆర్గానిక్ అంటే తక్కువ కాదు. ఆరోగ్యకరమైన పంటలు, బలమైన వేర్లు మరియు మెరుగైన పంట అని అర్థం.</span>
+                        <span lang-content="mr">सेंद्रिय म्हणजे कमी नाही. याचा अर्थ आरोग्यदायी पिके, मजबूत मुळे आणि चांगली कापणी.</span>
                     </p>
                 </div>
                 
                 <div class="promise-card">
                     <div class="promise-icon">🏡</div>
-                    <h3 data-hi="अगली पीढ़ी के लिए" data-en="For Future Generations">अगली पीढ़ी के लिए</h3>
-                    <p data-hi="आज अपनी जमीन की रक्षा करें ताकि आपके बच्चे कल खेती कर सकें।" data-en="Protect your land today so your children can farm it tomorrow.">
-                        आज अपनी जमीन की रक्षा करें ताकि आपके बच्चे कल खेती कर सकें।
+                    <h3>
+                        <span lang-content="hi" class="active">अगली पीढ़ी के लिए</span>
+                        <span lang-content="en">For Future Generations</span>
+                        <span lang-content="ta">எதிர்கால சந்ததியினருக்கு</span>
+                        <span lang-content="te">భవిష్యత్ తరాలకు</span>
+                        <span lang-content="mr">भावी पिढ्यांसाठी</span>
+                    </h3>
+                    <p>
+                        <span lang-content="hi" class="active">आज अपनी जमीन की रक्षा करें ताकि आपके बच्चे कल खेती कर सकें।</span>
+                        <span lang-content="en">Protect your land today so your children can farm it tomorrow.</span>
+                        <span lang-content="ta">இன்று உங்கள் நிலத்தைப் பாதுகாக்கவும், நாளை உங்கள் குழந்தைகள் விவசாயம் செய்யலாம்.</span>
+                        <span lang-content="te">ఈరోజు మీ భూమిని రక్షించండి, రేపు మీ పిల్లలు వ్యవసాయం చేయగలరు.</span>
+                        <span lang-content="mr">आज तुमच्या जमिनीचे रक्षण करा जेणेकरून उद्या तुमची मुले शेती करू शकतील.</span>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Farmers Switching Section -->
+    <!-- Testimonial Section -->
     <section class="switching-section section bg-light" id="farmer-stories">
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">
-                    <span data-hi="हजारों किसान क्यों बदल रहे हैं MKAK की ओर? ">हजारों किसान क्यों बदल रहे हैं MKAK की ओर?</span><br>
-                    <span class="subtitle-en" data-en="Why Thousands Are Choosing MKAK">Why Thousands Are Choosing MKAK</span>
+                    <span lang-content="hi" class="active">हजारों किसान क्यों बदल रहे हैं MKAK की ओर? </span>
+                    <span lang-content="en">Why Thousands Are Choosing MKAK</span>
+                    <span lang-content="ta">ஆயிரக்கணக்கானோர் ஏன் MKAK-ஐ தேர்வு செய்கிறார்கள்</span>
+                    <span lang-content="te">వేల మంది MKAK ను ఎందుకు ఎంచుకుంటున్నారు</span>
+                    <span lang-content="mr">हजारो लोक MKAK का निवड करत आहेत</span>
                 </h2>
             </div>
             
@@ -1234,12 +1455,22 @@
                 <div class="testimonial-card">
                     <div class="testimonial-image">👨‍🌾</div>
                     <div class="testimonial-content">
-                        <p class="testimonial-text" data-hi="मेरी मिट्टी फिर से जिंदा हो गई। पहले साल में ही मैंने अंतर देखा।" data-en="My soil came back to life. I saw the difference in the first year itself.">
-                            "मेरी मिट्टी फिर से जिंदा हो गई। पहले साल में ही मैंने अंतर देखा।"
+                        <p class="testimonial-text">
+                            <span lang-content="hi" class="active">"मेरी मिट्टी फिर से जिंदा हो गई। पहले साल में ही मैंने अंतर देखा।"</span>
+                            <span lang-content="en">"My soil came back to life. I saw the difference in the first year itself."</span>
+                            <span lang-content="ta">"என் மண் மீண்டும் உயிர் பெற்றது. முதல் ஆண்டிலேயே நான் வித்தியாசத்தைக் கண்டேன்."</span>
+                            <span lang-content="te">"నా నేల మళ్లీ సజీవంగా మారింది. మొదటి సంవత్సరంలోనే నేను తేడాను చూశాను."</span>
+                            <span lang-content="mr">"माझी माती पुन्हा जिवंत झाली. पहिल्या वर्षीच मला फरक दिसला."</span>
                         </p>
                         <p class="testimonial-author">
                             <strong>राजेश पाटिल</strong>
-                            <span>महाराष्ट्र</span>
+                            <span>
+                                <span lang-content="hi" class="active">महाराष्ट्र</span>
+                                <span lang-content="en">Maharashtra</span>
+                                <span lang-content="ta">மகாராஷ்டிரா</span>
+                                <span lang-content="te">మహారాష్ట్ర</span>
+                                <span lang-content="mr">महाराष्ट्र</span>
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -1247,12 +1478,22 @@
                 <div class="testimonial-card">
                     <div class="testimonial-image">👩‍🌾</div>
                     <div class="testimonial-content">
-                        <p class="testimonial-text" data-hi="बच्चे खेत में खेलते हैं, अब डर नहीं लगता। यह बहुत बड़ी बात है।" data-en="My children play in the fields now, I'm not afraid anymore. That's huge.">
-                            "बच्चे खेत में खेलते हैं, अब डर नहीं लगता। यह बहुत बड़ी बात है।"
+                        <p class="testimonial-text">
+                            <span lang-content="hi" class="active">"बच्चे खेत में खेलते हैं, अब डर नहीं लगता। यह बहुत बड़ी बात है।"</span>
+                            <span lang-content="en">"My children play in the fields now, I'm not afraid anymore. That's huge."</span>
+                            <span lang-content="ta">"என் குழந்தைகள் இப்போது வயல்களில் விளையாடுகிறார்கள், எனக்கு இனி பயமில்லை. இது பெரிய விஷயம்."</span>
+                            <span lang-content="te">"నా పిల్లలు ఇప్పుడు పొలాల్లో ఆడుకుంటున్నారు, నాకు ఇకపై భయం లేదు. ఇది చాలా పెద్ద విషయం."</span>
+                            <span lang-content="mr">"माझी मुले आता शेतात खेळतात, मला आता भीती वाटत नाही. ही खूप मोठी गोष्ट आहे."</span>
                         </p>
                         <p class="testimonial-author">
                             <strong>सुनीता देवी</strong>
-                            <span>पंजाब</span>
+                            <span>
+                                <span lang-content="hi" class="active">पंजाब</span>
+                                <span lang-content="en">Punjab</span>
+                                <span lang-content="ta">பஞ்சாப்</span>
+                                <span lang-content="te">పంజాబ్</span>
+                                <span lang-content="mr">पंजाब</span>
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -1260,12 +1501,22 @@
                 <div class="testimonial-card">
                     <div class="testimonial-image">👨‍🌾</div>
                     <div class="testimonial-content">
-                        <p class="testimonial-text" data-hi="पहले साल में ही फर्क दिखा। मेरी सब्जियों का स्वाद और रंग बेहतर हो गया।" data-en="Saw the difference in the first year.  My vegetables' taste and color improved.">
-                            "पहले साल में ही फर्क दिखा। मेरी सब्जियों का स्वाद और रंग बेहतर हो गया।"
+                        <p class="testimonial-text">
+                            <span lang-content="hi" class="active">"पहले साल में ही फर्क दिखा। मेरी सब्जियों का स्वाद और रंग बेहतर हो गया।"</span>
+                            <span lang-content="en">"Saw the difference in the first year.  My vegetables' taste and color improved."</span>
+                            <span lang-content="ta">"முதல் ஆண்டிலேயே வித்தியாசத்தைக் கண்டேன். என் காய்கறிகளின் சுவை மற்றும் நிறம் மேம்பட்டது."</span>
+                            <span lang-content="te">"మొదటి సంవత్సరంలోనే తేడా కనిపించింది. నా కూరగాయల రుచి మరియు రంగు మెరుగుపడింది."</span>
+                            <span lang-content="mr">"पहिल्या वर्षीच फरक दिसला. माझ्या भाज्यांची चव आणि रंग सुधारला."</span>
                         </p>
                         <p class="testimonial-author">
                             <strong>मुरुगन</strong>
-                            <span>तमिलनाडु</span>
+                            <span>
+                                <span lang-content="hi" class="active">तमिलनाडु</span>
+                                <span lang-content="en">Tamil Nadu</span>
+                                <span lang-content="ta">தமிழ்நாடு</span>
+                                <span lang-content="te">తమిళనాడు</span>
+                                <span lang-content="mr">तमिळनाडू</span>
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -1278,8 +1529,11 @@
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">
-                    <span data-hi="आपकी फसल के लिए सही पोषण">आपकी फसल के लिए सही पोषण</span><br>
-                    <span class="subtitle-en" data-en="Right Nutrition for Your Crop">Right Nutrition for Your Crop</span>
+                    <span lang-content="hi" class="active">आपकी फसल के लिए सही पोषण</span>
+                    <span lang-content="en">Right Nutrition for Your Crop</span>
+                    <span lang-content="ta">உங்கள் பயிருக்கு சரியான ஊட்டச்சத்து</span>
+                    <span lang-content="te">మీ పంటకు సరైన పోషణ</span>
+                    <span lang-content="mr">तुमच्या पिकासाठी योग्य पोषण</span>
                 </h2>
             </div>
             
@@ -1288,16 +1542,42 @@
                     <div class="product-image">🌾</div>
                     <div class="product-content">
                         <h3>MKAK Organic Base Fertilizer</h3>
-                        <p class="product-tagline" data-hi="खेत की नींव मजबूत करे" data-en="Strengthen Your Soil Foundation">
-                            खेत की नींव मजबूत करे
+                        <p class="product-tagline">
+                            <span lang-content="hi" class="active">खेत की नींव मजबूत करे</span>
+                            <span lang-content="en">Strengthen Your Soil Foundation</span>
+                            <span lang-content="ta">உங்கள் மண் அடித்தளத்தை வலுப்படுத்துங்கள்</span>
+                            <span lang-content="te">మీ నేల పునాదిని బలపరచండి</span>
+                            <span lang-content="mr">तुमच्या मातीचा पाया मजबूत करा</span>
                         </p>
                         <ul class="product-benefits">
-                            <li data-hi="✓ सभी फसलों के लिए" data-en="✓ All crops">✓ सभी फसलों के लिए</li>
-                            <li data-hi="✓ लंबे समय तक असर" data-en="✓ Long-lasting effect">✓ लंबे समय तक असर</li>
-                            <li data-hi="✓ मिट्टी की संरचना सुधारे" data-en="✓ Improves soil structure">✓ मिट्टी की संरचना सुधारे</li>
+                            <li>
+                                <span lang-content="hi" class="active">✓ सभी फसलों के लिए</span>
+                                <span lang-content="en">✓ All crops</span>
+                                <span lang-content="ta">✓ அனைத்து பயிர்களுக்கும்</span>
+                                <span lang-content="te">✓ అన్ని పంటలకు</span>
+                                <span lang-content="mr">✓ सर्व पिकांसाठी</span>
+                            </li>
+                            <li>
+                                <span lang-content="hi" class="active">✓ लंबे समय तक असर</span>
+                                <span lang-content="en">✓ Long-lasting effect</span>
+                                <span lang-content="ta">✓ நீண்ட கால விளைவு</span>
+                                <span lang-content="te">✓ దీర్ఘకాలిక ప్రభావం</span>
+                                <span lang-content="mr">✓ दीर्घकाळ प्रभाव</span>
+                            </li>
+                            <li>
+                                <span lang-content="hi" class="active">✓ मिट्टी की संरचना सुधारे</span>
+                                <span lang-content="en">✓ Improves soil structure</span>
+                                <span lang-content="ta">✓ மண் அமைப்பை மேம்படுத்துகிறது</span>
+                                <span lang-content="te">✓ నేల నిర్మాణాన్ని మెరుగుపరుస్తుంది</span>
+                                <span lang-content="mr">✓ मातीची रचना सुधारते</span>
+                            </li>
                         </ul>
                         <a href="#contact" class="btn btn-outline">
-                            <span data-hi="जानें कैसे इस्तेमाल करें" data-en="Learn How to Use">जानें कैसे इस्तेमाल करें</span>
+                            <span lang-content="hi" class="active">जानें कैसे इस्तेमाल करें</span>
+                            <span lang-content="en">Learn How to Use</span>
+                            <span lang-content="ta">எப்படி பயன்படுத்துவது என்பதை அறியவும்</span>
+                            <span lang-content="te">ఎలా ఉపయోగించాలో తెలుసుకోండి</span>
+                            <span lang-content="mr">कसे वापरावे ते जाणून घ्या</span>
                         </a>
                     </div>
                 </div>
@@ -1306,16 +1586,42 @@
                     <div class="product-image">🌿</div>
                     <div class="product-content">
                         <h3>MKAK Growth Booster</h3>
-                        <p class="product-tagline" data-hi="जड़ से फल तक—हर हिस्से को ताकत" data-en="From Root to Fruit—Full Strength">
-                            जड़ से फल तक—हर हिस्से को ताकत
+                        <p class="product-tagline">
+                            <span lang-content="hi" class="active">जड़ से फल तक—हर हिस्से को ताकत</span>
+                            <span lang-content="en">From Root to Fruit—Full Strength</span>
+                            <span lang-content="ta">வேரிலிருந்து பழம் வரை—முழு வலிமை</span>
+                            <span lang-content="te">వేరు నుండి పండు వరకు—పూర్తి శక్తి</span>
+                            <span lang-content="mr">मुळापासून फळापर्यंत—संपूर्ण शक्ती</span>
                         </p>
                         <ul class="product-benefits">
-                            <li data-hi="✓ सब्जियों के लिए बेहतरीन" data-en="✓ Best for vegetables">✓ सब्जियों के लिए बेहतरीन</li>
-                            <li data-hi="✓ फूल और फल ज्यादा" data-en="✓ More flowers & fruits">✓ फूल और फल ज्यादा</li>
-                            <li data-hi="✓ बेहतर स्वाद और रंग" data-en="✓ Better taste & color">✓ बेहतर स्वाद और रंग</li>
+                            <li>
+                                <span lang-content="hi" class="active">✓ सब्जियों के लिए बेहतरीन</span>
+                                <span lang-content="en">✓ Best for vegetables</span>
+                                <span lang-content="ta">✓ காய்கறிகளுக்கு சிறந்தது</span>
+                                <span lang-content="te">✓ కూరగాయలకు ఉత్తమం</span>
+                                <span lang-content="mr">✓ भाज्यांसाठी उत्तम</span>
+                            </li>
+                            <li>
+                                <span lang-content="hi" class="active">✓ फूल और फल ज्यादा</span>
+                                <span lang-content="en">✓ More flowers & fruits</span>
+                                <span lang-content="ta">✓ அதிக பூக்கள் & பழங்கள்</span>
+                                <span lang-content="te">✓ ఎక్కువ పూలు & పండ్లు</span>
+                                <span lang-content="mr">✓ अधिक फुले आणि फळे</span>
+                            </li>
+                            <li>
+                                <span lang-content="hi" class="active">✓ बेहतर स्वाद और रंग</span>
+                                <span lang-content="en">✓ Better taste & color</span>
+                                <span lang-content="ta">✓ சிறந்த சுவை & நிறம்</span>
+                                <span lang-content="te">✓ మెరుగైన రుచి & రంగు</span>
+                                <span lang-content="mr">✓ चांगली चव आणि रंग</span>
+                            </li>
                         </ul>
                         <a href="#contact" class="btn btn-outline">
-                            <span data-hi="जानें कैसे इस्तेमाल करें" data-en="Learn How to Use">जानें कैसे इस्तेमाल करें</span>
+                            <span lang-content="hi" class="active">जानें कैसे इस्तेमाल करें</span>
+                            <span lang-content="en">Learn How to Use</span>
+                            <span lang-content="ta">எப்படி பயன்படுத்துவது என்பதை அறியவும்</span>
+                            <span lang-content="te">ఎలా ఉపయోగించాలో తెలుసుకోండి</span>
+                            <span lang-content="mr">कसे वापरावे ते जाणून घ्या</span>
                         </a>
                     </div>
                 </div>
@@ -1324,16 +1630,42 @@
                     <div class="product-image">🌱</div>
                     <div class="product-content">
                         <h3>MKAK Soil Health Restorer</h3>
-                        <p class="product-tagline" data-hi="बीमार मिट्टी को फिर से जिंदा करे" data-en="Revive Tired, Sick Soil">
-                            बीमार मिट्टी को फिर से जिंदा करे
+                        <p class="product-tagline">
+                            <span lang-content="hi" class="active">बीमार मिट्टी को फिर से जिंदा करे</span>
+                            <span lang-content="en">Revive Tired, Sick Soil</span>
+                            <span lang-content="ta">சோர்வான, நோயுற்ற மண்ணை புத்துயிர் அளிக்கவும்</span>
+                            <span lang-content="te">అలసిన, అనారోగ్య నేలను పునరుజ్జీవింపజేయండి</span>
+                            <span lang-content="mr">थकलेली, आजारी माती पुन्हा जिवंत करा</span>
                         </p>
                         <ul class="product-benefits">
-                            <li data-hi="✓ मिट्टी की रिकवरी" data-en="✓ Soil recovery">✓ मिट्टी की रिकवरी</li>
-                            <li data-hi="✓ ऑर्गेनिक में बदलाव के लिए" data-en="✓ For transition to organic">✓ ऑर्गेनिक में बदलाव के लिए</li>
-                            <li data-hi="✓ कम उपज वाले खेतों के लिए" data-en="✓ For low-yield fields">✓ कम उपज वाले खेतों के लिए</li>
+                            <li>
+                                <span lang-content="hi" class="active">✓ मिट्टी की रिकवरी</span>
+                                <span lang-content="en">✓ Soil recovery</span>
+                                <span lang-content="ta">✓ மண் மீட்பு</span>
+                                <span lang-content="te">✓ నేల పునరుద్ధరణ</span>
+                                <span lang-content="mr">✓ मातीची पुनर्प्राप्ती</span>
+                            </li>
+                            <li>
+                                <span lang-content="hi" class="active">✓ ऑर्गेनिक में बदलाव के लिए</span>
+                                <span lang-content="en">✓ For transition to organic</span>
+                                <span lang-content="ta">✓ ஆர்கானிக்கிற்கு மாற்றத்திற்கு</span>
+                                <span lang-content="te">✓ సేంద్రీయానికి పరివర్తన కోసం</span>
+                                <span lang-content="mr">✓ सेंद्रियात संक्रमणासाठी</span>
+                            </li>
+                            <li>
+                                <span lang-content="hi" class="active">✓ कम उपज वाले खेतों के लिए</span>
+                                <span lang-content="en">✓ For low-yield fields</span>
+                                <span lang-content="ta">✓ குறைந்த விளைச்சல் வயல்களுக்கு</span>
+                                <span lang-content="te">✓ తక్కువ దిగుబడి పొలాలకు</span>
+                                <span lang-content="mr">✓ कमी उत्पन्न देणाऱ्या शेतांसाठी</span>
+                            </li>
                         </ul>
                         <a href="#contact" class="btn btn-outline">
-                            <span data-hi="जानें कैसे इस्तेमाल करें" data-en="Learn How to Use">जानें कैसे इस्तेमाल करें</span>
+                            <span lang-content="hi" class="active">जानें कैसे इस्तेमाल करें</span>
+                            <span lang-content="en">Learn How to Use</span>
+                            <span lang-content="ta">எப்படி பயன்படுத்துவது என்பதை அறியவும்</span>
+                            <span lang-content="te">ఎలా ఉపయోగించాలో తెలుసుకోండి</span>
+                            <span lang-content="mr">कसे वापरावे ते जाणून घ्या</span>
                         </a>
                     </div>
                 </div>
@@ -1346,52 +1678,115 @@
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">
-                    <span data-hi="केमिकल से ऑर्गेनिक — एक आसान बदलाव">केमिकल से ऑर्गेनिक — एक आसान बदलाव</span><br>
-                    <span class="subtitle-en" data-en="From Chemical to Organic — An Easy Shift">From Chemical to Organic — An Easy Shift</span>
+                    <span lang-content="hi" class="active">केमिकल से ऑर्गेनिक — एक आसान बदलाव</span>
+                    <span lang-content="en">From Chemical to Organic — An Easy Shift</span>
+                    <span lang-content="ta">இரசாயனத்திலிருந்து ஆர்கானிக் வரை — எளிய மாற்றம்</span>
+                    <span lang-content="te">రసాయనం నుండి సేంద్రీయం వరకు — సులభ మార్పు</span>
+                    <span lang-content="mr">रसायनापासून सेंद्रियापर्यंत — एक सोपा बदल</span>
                 </h2>
             </div>
             
             <div class="comparison-table">
                 <div class="comparison-col comparison-chemical">
-                    <h3 data-hi="रासायनिक खाद" data-en="Chemical Fertilizer">रासायनिक खाद</h3>
+                    <h3>
+                        <span lang-content="hi" class="active">रासायनिक खाद</span>
+                        <span lang-content="en">Chemical Fertilizer</span>
+                        <span lang-content="ta">இரசாயன உரம்</span>
+                        <span lang-content="te">రసాయన ఎరువు</span>
+                        <span lang-content="mr">रासायनिक खत</span>
+                    </h3>
                     <ul>
                         <li>
                             <span class="icon-cross">✗</span>
-                            <span data-hi="मिट्टी कमजोर होती है" data-en="Soil becomes weak">मिट्टी कमजोर होती है</span>
+                            <span>
+                                <span lang-content="hi" class="active">मिट्टी कमजोर होती है</span>
+                                <span lang-content="en">Soil becomes weak</span>
+                                <span lang-content="ta">மண் பலவீனமாகிறது</span>
+                                <span lang-content="te">నేల బలహీనంగా మారుతుంది</span>
+                                <span lang-content="mr">माती कमकुवत होते</span>
+                            </span>
                         </li>
                         <li>
                             <span class="icon-cross">✗</span>
-                            <span data-hi="बार-बार डालना पड़ता है" data-en="Needs frequent application">बार-बार डालना पड़ता है</span>
+                            <span>
+                                <span lang-content="hi" class="active">बार-बार डालना पड़ता है</span>
+                                <span lang-content="en">Needs frequent application</span>
+                                <span lang-content="ta">அடிக்கடி பயன்படுத்த வேண்டும்</span>
+                                <span lang-content="te">తరచుగా వాడాలి</span>
+                                <span lang-content="mr">वारंवार घालावे लागते</span>
+                            </span>
                         </li>
                         <li>
                             <span class="icon-cross">✗</span>
-                            <span data-hi="पानी और हवा को नुकसान" data-en="Harms water & air">पानी और हवा को नुकसान</span>
+                            <span>
+                                <span lang-content="hi" class="active">पानी और हवा को नुकसान</span>
+                                <span lang-content="en">Harms water & air</span>
+                                <span lang-content="ta">நீர் மற்றும் காற்றுக்கு தீங்கு</span>
+                                <span lang-content="te">నీరు & గాలికి హాని</span>
+                                <span lang-content="mr">पाणी आणि हवेला हानी</span>
+                            </span>
                         </li>
                         <li>
                             <span class="icon-cross">✗</span>
-                            <span data-hi="स्वास्थ्य के लिए खतरनाक" data-en="Risky for health">स्वास्थ्य के लिए खतरनाक</span>
+                            <span>
+                                <span lang-content="hi" class="active">स्वास्थ्य के लिए खतरनाक</span>
+                                <span lang-content="en">Risky for health</span>
+                                <span lang-content="ta">ஆரோக்கியத்திற்கு ஆபத்து</span>
+                                <span lang-content="te">ఆరోగ్యానికి ప్రమాదకరం</span>
+                                <span lang-content="mr">आरोग्यासाठी धोकादायक</span>
+                            </span>
                         </li>
                     </ul>
                 </div>
                 
                 <div class="comparison-col comparison-organic">
-                    <h3 data-hi="MKAK ऑर्गेनिक" data-en="MKAK Organic">MKAK ऑर्गेनिक</h3>
+                    <h3>
+                        <span lang-content="hi" class="active">MKAK ऑर्गेनिक</span>
+                        <span lang-content="en">MKAK Organic</span>
+                        <span lang-content="ta">MKAK ஆர்கானிக்</span>
+                        <span lang-content="te">MKAK ఆర్గానిక్</span>
+                        <span lang-content="mr">MKAK सेंद्रिय</span>
+                    </h3>
                     <ul>
                         <li>
                             <span class="icon-check">✓</span>
-                            <span data-hi="मिट्टी मजबूत बनती है" data-en="Soil becomes strong">मिट्टी मजबूत बनती है</span>
+                            <span>
+                                <span lang-content="hi" class="active">मिट्टी मजबूत बनती है</span>
+                                <span lang-content="en">Soil becomes strong</span>
+                                <span lang-content="ta">மண் வலுவாகிறது</span>
+                                <span lang-content="te">నేల బలంగా మారుతుంది</span>
+                                <span lang-content="mr">माती मजबूत बनते</span>
+                            </span>
                         </li>
                         <li>
                             <span class="icon-check">✓</span>
-                            <span data-hi="लंबे समय तक असर" data-en="Long-lasting effect">लंबे समय तक असर</span>
+                            <span>
+                                <span lang-content="hi" class="active">लंबे समय तक असर</span>
+                                <span lang-content="en">Long-lasting effect</span>
+                                <span lang-content="ta">நீண்ட கால விளைவு</span>
+                                <span lang-content="te">దీర్ఘకాలిక ప్రభావం</span>
+                                <span lang-content="mr">दीर्घकाळ प्रभाव</span>
+                            </span>
                         </li>
                         <li>
                             <span class="icon-check">✓</span>
-                            <span data-hi="प्रकृति के साथ" data-en="Works with nature">प्रकृति के साथ</span>
+                            <span>
+                                <span lang-content="hi" class="active">प्रकृति के साथ</span>
+                                <span lang-content="en">Works with nature</span>
+                                <span lang-content="ta">இயற்கையுடன் இணைந்து</span>
+                                <span lang-content="te">ప్రకృతితో కలిసి</span>
+                                <span lang-content="mr">निसर्गासोबत</span>
+                            </span>
                         </li>
                         <li>
                             <span class="icon-check">✓</span>
-                            <span data-hi="पूरी तरह सुरक्षित" data-en="Completely safe">पूरी तरह सुरक्षित</span>
+                            <span>
+                                <span lang-content="hi" class="active">पूरी तरह सुरक्षित</span>
+                                <span lang-content="en">Completely safe</span>
+                                <span lang-content="ta">முற்றிலும் பாதுகாப்பானது</span>
+                                <span lang-content="te">పూర్తిగా సురక్షితం</span>
+                                <span lang-content="mr">पूर्णपणे सुरक्षित</span>
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -1404,33 +1799,66 @@
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">
-                    <span data-hi="3 आसान कदम—बस इतना ही">3 आसान कदम—बस इतना ही</span><br>
-                    <span class="subtitle-en" data-en="3 Simple Steps—That's It">3 Simple Steps—That's It</span>
+                    <span lang-content="hi" class="active">3 आसान कदम—बस इतना ही</span>
+                    <span lang-content="en">3 Simple Steps—That's It</span>
+                    <span lang-content="ta">3 எளிய படிகள்—அவ்வளவுதான்</span>
+                    <span lang-content="te">3 సులభ దశలు—అంతే</span>
+                    <span lang-content="mr">3 सोप्या पायऱ्या—एवढेच</span>
                 </h2>
             </div>
             
             <div class="promise-grid">
                 <div class="promise-card">
                     <div class="promise-icon">1️⃣</div>
-                    <h3 data-hi="सही खाद चुनें" data-en="Choose the Right Fertilizer">सही खाद चुनें</h3>
-                    <p data-hi="अपनी फसल और मिट्टी की जरूरत के हिसाब से चुनें। अगर समझ नहीं आ रहा, हमें फोन करें—हम मदद करेंगे।" data-en="Choose based on your crop and soil needs. Not sure? Call us—we'll help.">
-                        अपनी फसल और मिट्टी की जरूरत के हिसाब से चुनें। अगर समझ नहीं आ रहा, हमें फोन करें—हम मदद करेंगे।
+                    <h3>
+                        <span lang-content="hi" class="active">सही खाद चुनें</span>
+                        <span lang-content="en">Choose the Right Fertilizer</span>
+                        <span lang-content="ta">சரியான உரத்தைத் தேர்வு செய்யுங்கள்</span>
+                        <span lang-content="te">సరైన ఎరువును ఎంచుకోండి</span>
+                        <span lang-content="mr">योग्य खत निवडा</span>
+                    </h3>
+                    <p>
+                        <span lang-content="hi" class="active">अपनी फसल और मिट्टी की जरूरत के हिसाब से चुनें। अगर समझ नहीं आ रहा, हमें फोन करें—हम मदद करेंगे।</span>
+                        <span lang-content="en">Choose based on your crop and soil needs. Not sure? Call us—we'll help.</span>
+                        <span lang-content="ta">உங்கள் பயிர் மற்றும் மண் தேவைகளின் அடிப்படையில் தேர்வு செய்யுங்கள். உறுதியாக தெரியவில்லையா? எங்களை அழைக்கவும்—நாங்கள் உதவுவோம்.</span>
+                        <span lang-content="te">మీ పంట మరియు నేల అవసరాల ఆధారంగా ఎంచుకోండి. ఖచ్చితంగా లేదా?  మమ్మల్ని కాల్ చేయండి—మేము సహాయం చేస్తాము.</span>
+                        <span lang-content="mr">तुमच्या पीक आणि मातीच्या गरजेनुसार निवडा. खात्री नाही? आम्हाला कॉल करा—आम्ही मदत करू.</span>
                     </p>
                 </div>
                 
                 <div class="promise-card">
                     <div class="promise-icon">2️⃣</div>
-                    <h3 data-hi="सही मात्रा में डालें" data-en="Apply the Right Amount">सही मात्रा में डालें</h3>
-                    <p data-hi="हर खाद के पैकेट पर स्पष्ट निर्देश लिखे हैं। आपको बताया जाएगा कि प्रति एकड़ कितनी मात्रा चाहिए।" data-en="Every packet has clear instructions.  You'll know exactly how much to use per acre.">
-                        हर खाद के पैकेट पर स्पष्ट निर्देश लिखे हैं। आपको बताया जाएगा कि प्रति एकड़ कितनी मात्रा चाहिए।
+                    <h3>
+                        <span lang-content="hi" class="active">सही मात्रा में डालें</span>
+                        <span lang-content="en">Apply the Right Amount</span>
+                        <span lang-content="ta">சரியான அளவைப் பயன்படுத்தவும்</span>
+                        <span lang-content="te">సరైన మొత్తాన్ని వర్తించండి</span>
+                        <span lang-content="mr">योग्य प्रमाणात घाला</span>
+                    </h3>
+                    <p>
+                        <span lang-content="hi" class="active">हर खाद के पैकेट पर स्पष्ट निर्देश लिखे हैं। आपको बताया जाएगा कि प्रति एकड़ कितनी मात्रा चाहिए।</span>
+                        <span lang-content="en">Every packet has clear instructions.  You'll know exactly how much to use per acre.</span>
+                        <span lang-content="ta">ஒவ்வொரு பாக்கெட்டிலும் தெளிவான வழிமுறைகள் உள்ளன.  ஏக்கருக்கு எவ்வளவு பயன்படுத்த வேண்டும் என்பது உங்களுக்குத் தெரியும்.</span>
+                        <span lang-content="te">ప్రతి ప్యాకెట్‌లో స్పష్టమైన సూచనలు ఉన్నాయి. ఎకరుకు ఎంత ఉపయోగించాలో మీకు సరిగ్గా తెలుస్తుంది.</span>
+                        <span lang-content="mr">प्रत्येक पॅकेटवर स्पष्ट सूचना आहेत.  प्रति एकर किती वापरावे हे तुम्हाला नक्की कळेल.</span>
                     </p>
                 </div>
                 
                 <div class="promise-card">
                     <div class="promise-icon">3️⃣</div>
-                    <h3 data-hi="मिट्टी में मिलाएं" data-en="Mix into Soil">मिट्टी में मिलाएं</h3>
-                    <p data-hi="बीज बोने से पहले या फसल के बढ़ने के समय मिट्टी में अच्छे से मिला दें। पानी देने के बाद असर शुरू हो जाता है।" data-en="Mix well into soil before sowing or during crop growth. Effect starts after watering.">
-                        बीज बोने से पहले या फसल के बढ़ने के समय मिट्टी में अच्छे से मिला दें। पानी देने के बाद असर शुरू हो जाता है।
+                    <h3>
+                        <span lang-content="hi" class="active">मिट्टी में मिलाएं</span>
+                        <span lang-content="en">Mix into Soil</span>
+                        <span lang-content="ta">மண்ணில் கலக்கவும்</span>
+                        <span lang-content="te">నేలలో కలపండి</span>
+                        <span lang-content="mr">मातीमध्ये मिसळा</span>
+                    </h3>
+                    <p>
+                        <span lang-content="hi" class="active">बीज बोने से पहले या फसल के बढ़ने के समय मिट्टी में अच्छे से मिला दें। पानी देने के बाद असर शुरू हो जाता है।</span>
+                        <span lang-content="en">Mix well into soil before sowing or during crop growth. Effect starts after watering.</span>
+                        <span lang-content="ta">விதைப்பதற்கு முன் அல்லது பயிர் வளர்ச்சியின் போது மண்ணில் நன்கு கலக்கவும். தண்ணீர் பாய்ச்சிய பிறகு விளைவு தொடங்குகிறது.</span>
+                        <span lang-content="te">విత్తనాలు విత్తడానికి ముందు లేదా పంట పెరుగుదల సమయంలో నేలలో బాగా కలపండి. నీరు పోసిన తర్వాత ప్రభావం ప్రారంభమవుతుంది.</span>
+                        <span lang-content="mr">बियाणे पेरण्यापूर्वी किंवा पीक वाढीच्या वेळी मातीत चांगले मिसळा. पाणी घातल्यानंतर परिणाम सुरू होतो.</span>
                     </p>
                 </div>
             </div>
@@ -1442,33 +1870,85 @@
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">
-                    <span data-hi="नंबर झूठ नहीं बोलते" data-en="Numbers Don't Lie">नंबर झूठ नहीं बोलते</span>
+                    <span lang-content="hi" class="active">नंबर झूठ नहीं बोलते</span>
+                    <span lang-content="en">Numbers Don't Lie</span>
+                    <span lang-content="ta">எண்கள் பொய் சொல்லாது</span>
+                    <span lang-content="te">సంఖ్యలు అబద్ధం చెప్పవు</span>
+                    <span lang-content="mr">संख्या खोटे बोलत नाहीत</span>
                 </h2>
             </div>
             
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">12,000+</div>
-                    <p class="stat-label" data-hi="किसान" data-en="Farmers">किसान</p>
-                    <p class="stat-desc" data-hi="MKAK का उपयोग कर रहे हैं" data-en="using MKAK">MKAK का उपयोग कर रहे हैं</p>
+                    <p class="stat-label">
+                        <span lang-content="hi" class="active">किसान</span>
+                        <span lang-content="en">Farmers</span>
+                        <span lang-content="ta">விவசாயிகள்</span>
+                        <span lang-content="te">రైతులు</span>
+                        <span lang-content="mr">शेतकरी</span>
+                    </p>
+                    <p class="stat-desc">
+                        <span lang-content="hi" class="active">MKAK का उपयोग कर रहे हैं</span>
+                        <span lang-content="en">using MKAK</span>
+                        <span lang-content="ta">MKAK பயன்படுத்துகிறார்கள்</span>
+                        <span lang-content="te">MKAK ఉపయోగిస్తున్నారు</span>
+                        <span lang-content="mr">MKAK वापरत आहेत</span>
+                    </p>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">25,000+</div>
-                    <p class="stat-label" data-hi="एकड़" data-en="Acres">एकड़</p>
-                    <p class="stat-desc" data-hi="अब ऑर्गेनिक हैं" data-en="now organic">अब ऑर्गेनिक हैं</p>
+                    <p class="stat-label">
+                        <span lang-content="hi" class="active">एकड़</span>
+                        <span lang-content="en">Acres</span>
+                        <span lang-content="ta">ஏக்கர்</span>
+                        <span lang-content="te">ఎకరాలు</span>
+                        <span lang-content="mr">एकर</span>
+                    </p>
+                    <p class="stat-desc">
+                        <span lang-content="hi" class="active">अब ऑर्गेनिक हैं</span>
+                        <span lang-content="en">now organic</span>
+                        <span lang-content="ta">இப்போது ஆர்கானிக்</span>
+                        <span lang-content="te">ఇప్పుడు సేంద్రీయం</span>
+                        <span lang-content="mr">आता सेंद्रिय</span>
+                    </p>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">98%</div>
-                    <p class="stat-label" data-hi="संतुष्टि" data-en="Satisfaction">संतुष्टि</p>
-                                       <p class="stat-desc" data-hi="किसानों की रेटिंग" data-en="Farmer rating">किसानों की रेटिंग</p>
+                    <p class="stat-label">
+                        <span lang-content="hi" class="active">संतुष्टि</span>
+                        <span lang-content="en">Satisfaction</span>
+                        <span lang-content="ta">திருப்தி</span>
+                        <span lang-content="te">సంతృప్తి</span>
+                        <span lang-content="mr">समाधान</span>
+                    </p>
+                    <p class="stat-desc">
+                        <span lang-content="hi" class="active">किसानों की रेटिंग</span>
+                        <span lang-content="en">Farmer rating</span>
+                        <span lang-content="ta">விவசாயி மதிப்பீடு</span>
+                        <span lang-content="te">రైతు రేటింగ్</span>
+                        <span lang-content="mr">शेतकरी रेटिंग</span>
+                    </p>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">15%</div>
-                    <p class="stat-label" data-hi="ज्यादा आय" data-en="Higher Income">ज्यादा आय</p>
-                    <p class="stat-desc" data-hi="औसत वृद्धि" data-en="average increase">औसत वृद्धि</p>
+                    <p class="stat-label">
+                        <span lang-content="hi" class="active">ज्यादा आय</span>
+                        <span lang-content="en">Higher Income</span>
+                        <span lang-content="ta">அதிக வருமானம்</span>
+                        <span lang-content="te">అధిక ఆదాయం</span>
+                        <span lang-content="mr">अधिक उत्पन्न</span>
+                    </p>
+                    <p class="stat-desc">
+                        <span lang-content="hi" class="active">औसत वृद्धि</span>
+                        <span lang-content="en">average increase</span>
+                        <span lang-content="ta">சராசரி அதிகரிப்பு</span>
+                        <span lang-content="te">సగటు పెరుగుదల</span>
+                        <span lang-content="mr">सरासरी वाढ</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -1479,102 +1959,178 @@
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">
-                    <span data-hi="हम यहाँ हैं आपकी मदद के लिए">हम यहाँ हैं आपकी मदद के लिए</span><br>
-                    <span class="subtitle-en" data-en="We're Here to Help You">We're Here to Help You</span>
+                    <span lang-content="hi" class="active">हम यहाँ हैं आपकी मदद के लिए</span>
+                    <span lang-content="en">We're Here to Help You</span>
+                    <span lang-content="ta">உங்களுக்கு உதவ நாங்கள் இங்கே இருக்கிறோம்</span>
+                    <span lang-content="te">మీకు సహాయం చేయడానికి మేము ఇక్కడ ఉన్నాము</span>
+                    <span lang-content="mr">आम्ही तुमच्या मदतीसाठी येथे आहोत</span>
                 </h2>
-                <p data-hi="सवाल?  भ्रम? ऑर्गेनिक खेती शुरू करना चाहते हैं?  बस कॉल या मैसेज करें—हम आपका मार्गदर्शन करेंगे।" data-en="Questions? Confusion?  Want to start organic farming? Just call or message—we'll guide you.">
-                    सवाल? भ्रम? ऑर्गेनिक खेती शुरू करना चाहते हैं?  बस कॉल या मैसेज करें—हम आपका मार्गदर्शन करेंगे।
+                <p>
+                    <span lang-content="hi" class="active">सवाल?  भ्रम?  ऑर्गेनिक खेती शुरू करना चाहते हैं?  बस कॉल या मैसेज करें—हम आपका मार्गदर्शन करेंगे।</span>
+                    <span lang-content="en">Questions? Confusion? Want to start organic farming? Just call or message—we'll guide you.</span>
+                    <span lang-content="ta">கேள்விகள்?  குழப்பம்? ஆர்கானிக் விவசாயத்தைத் தொடங்க விரும்புகிறீர்களா? அழைக்கவும் அல்லது செய்தி அனுப்பவும்—நாங்கள் உங்களுக்கு வழிகாட்டுவோம்.</span>
+                    <span lang-content="te">ప్రశ్నలు? గందరగోళం? సేంద్రీయ వ్యవసాయం ప్రారంభించాలనుకుంటున్నారా? కాల్ లేదా మెసేజ్ చేయండి—మేము మీకు మార్గదర్శకత్వం చేస్తాము.</span>
+                    <span lang-content="mr">प्रश्न? गोंधळ? सेंद्रिय शेती सुरू करू इच्छिता? फक्त कॉल करा किंवा संदेश पाठवा—आम्ही तुम्हाला मार्गदर्शन करू.</span>
                 </p>
             </div>
             
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-                    <a href="https://wa.me/919876543210" class="btn btn-whatsapp btn-lg" target="_blank" style="padding: 2rem; flex-direction: column; height: auto;">
-                        <span style="font-size: 3rem; margin-bottom: 1rem;">📱</span>
-                        <strong style="font-size: 1.25rem; margin-bottom: 0.5rem;" data-hi="WhatsApp पर बात करें" data-en="Chat on WhatsApp">WhatsApp पर बात करें</strong>
-                        <span style="font-size: 0.95rem; opacity: 0.9;">+91-98765-43210</span>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="contact-cards">
+                    <a href="https://wa.me/919876543210" class="btn btn-whatsapp contact-card" target="_blank">
+                        <div class="contact-card-icon">📱</div>
+                        <div class="contact-card-title">
+                            <span lang-content="hi" class="active">WhatsApp पर बात करें</span>
+                            <span lang-content="en">Chat on WhatsApp</span>
+                            <span lang-content="ta">WhatsApp இல் அரட்டை அடிக்கவும்</span>
+                            <span lang-content="te">WhatsApp లో చాట్ చేయండి</span>
+                            <span lang-content="mr">WhatsApp वर चॅट करा</span>
+                        </div>
+                        <div class="contact-card-info">+91-98765-43210</div>
                     </a>
                     
-                    <a href="tel:+919876543210" class="btn btn-call btn-lg" style="padding:  2rem; flex-direction:  column; height: auto;">
-                        <span style="font-size: 3rem; margin-bottom: 1rem;">📞</span>
-                        <strong style="font-size: 1.25rem; margin-bottom: 0.5rem;" data-hi="फोन करें" data-en="Call Us">फोन करें</strong>
-                        <span style="font-size: 0.95rem; opacity: 0.9;">+91-98765-43210</span>
+                    <a href="tel:+919876543210" class="btn btn-call contact-card">
+                        <div class="contact-card-icon">📞</div>
+                        <div class="contact-card-title">
+                            <span lang-content="hi" class="active">फोन करें</span>
+                            <span lang-content="en">Call Us</span>
+                            <span lang-content="ta">எங்களை அழைக்கவும்</span>
+                            <span lang-content="te">మమ్మల్ని కాల్ చేయండి</span>
+                            <span lang-content="mr">आम्हाला कॉल करा</span>
+                        </div>
+                        <div class="contact-card-info">+91-98765-43210</div>
                     </a>
                 </div>
                 
                 <!-- Contact Form -->
-                <div style="background-color: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
-                    <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--dark-earth);" data-hi="या हमें संदेश भेजें" data-en="Or Send Us a Message">या हमें संदेश भेजें</h3>
+                <div class="contact-form-wrapper">
+                    <h3 style="text-align: center; margin-bottom: 1. 5rem; color: var(--dark-earth);">
+                        <span lang-content="hi" class="active">या हमें संदेश भेजें</span>
+                        <span lang-content="en">Or Send Us a Message</span>
+                        <span lang-content="ta">அல்லது எங்களுக்கு ஒரு செய்தியை அனுப்பவும்</span>
+                        <span lang-content="te">లేదా మాకు సందేశం పంపండి</span>
+                        <span lang-content="mr">किंवा आम्हाला संदेश पाठवा</span>
+                    </h3>
                     
-                    <form id="contactForm" style="display: flex; flex-direction: column; gap: 1rem;">
-                        <div>
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);" data-hi="नाम *" data-en="Name *">नाम *</label>
-                            <input type="text" name="name" required style="width: 100%; padding: 12px; border: 2px solid var(--light-gray); border-radius: 8px; font-size: 1rem; font-family: var(--font-body);" placeholder="आपका नाम">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span lang-content="hi" class="active">नाम *</span>
+                                <span lang-content="en">Name *</span>
+                                <span lang-content="ta">பெயர் *</span>
+                                <span lang-content="te">పేరు *</span>
+                                <span lang-content="mr">नाव *</span>
+                            </label>
+                            <input type="text" name="name" class="form-input" required placeholder="आपका नाम / Your Name">
                         </div>
                         
-                        <div>
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);" data-hi="फोन नंबर *" data-en="Phone Number *">फोन नंबर *</label>
-                            <input type="tel" name="phone" required pattern="[0-9]{10}" style="width: 100%; padding: 12px; border: 2px solid var(--light-gray); border-radius: 8px; font-size: 1rem; font-family: var(--font-body);" placeholder="10 अंकों का मोबाइल नंबर">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span lang-content="hi" class="active">फोन नंबर *</span>
+                                <span lang-content="en">Phone Number *</span>
+                                <span lang-content="ta">தொலைபேசி எண் *</span>
+                                <span lang-content="te">ఫోన్ నంబర్ *</span>
+                                <span lang-content="mr">फोन नंबर *</span>
+                            </label>
+                            <input type="tel" name="phone" class="form-input" required pattern="[0-9]{10}" placeholder="10 अंकों का मोबाइल नंबर / 10 digit mobile number">
                         </div>
                         
-                        <div>
-                            <label style="display: block; margin-bottom:  0.5rem; font-weight: 600; color: var(--text-dark);" data-hi="राज्य *" data-en="State *">राज्य *</label>
-                            <select name="state" required style="width: 100%; padding: 12px; border: 2px solid var(--light-gray); border-radius: 8px; font-size: 1rem; font-family: var(--font-body);">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span lang-content="hi" class="active">राज्य *</span>
+                                <span lang-content="en">State *</span>
+                                <span lang-content="ta">மாநிலம் *</span>
+                                <span lang-content="te">రాష్ట్రం *</span>
+                                <span lang-content="mr">राज्य *</span>
+                            </label>
+                            <select name="state" class="form-select" required>
                                 <option value="">राज्य चुनें / Select State</option>
-                                <option value="Andhra Pradesh">Andhra Pradesh / आंध्र प्रदेश</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh / ఆంధ్ర ప్రదేశ్</option>
                                 <option value="Bihar">Bihar / बिहार</option>
-                                <option value="Gujarat">Gujarat / गुजरात</option>
+                                <option value="Gujarat">Gujarat / ગુજરાત</option>
                                 <option value="Haryana">Haryana / हरियाणा</option>
-                                <option value="Karnataka">Karnataka / कर्नाटक</option>
-                                <option value="Kerala">Kerala / केरल</option>
+                                <option value="Karnataka">Karnataka / ಕರ್ನಾಟಕ</option>
+                                <option value="Kerala">Kerala / കേരളം</option>
                                 <option value="Madhya Pradesh">Madhya Pradesh / मध्य प्रदेश</option>
                                 <option value="Maharashtra">Maharashtra / महाराष्ट्र</option>
-                                <option value="Punjab">Punjab / पंजाब</option>
+                                <option value="Punjab">Punjab / ਪੰਜਾਬ</option>
                                 <option value="Rajasthan">Rajasthan / राजस्थान</option>
-                                <option value="Tamil Nadu">Tamil Nadu / तमिलनाडु</option>
-                                <option value="Telangana">Telangana / तेलंगाना</option>
+                                <option value="Tamil Nadu">Tamil Nadu / தமிழ்நாடு</option>
+                                <option value="Telangana">Telangana / తెలంగాణ</option>
                                 <option value="Uttar Pradesh">Uttar Pradesh / उत्तर प्रदेश</option>
-                                <option value="West Bengal">West Bengal / पश्चिम बंगाल</option>
+                                <option value="West Bengal">West Bengal / পশ্চিমবঙ্গ</option>
                                 <option value="Other">Other / अन्य</option>
                             </select>
                         </div>
                         
-                        <div>
-                            <label style="display:  block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);" data-hi="फसल" data-en="Crop">फसल</label>
-                            <select name="crop" style="width: 100%; padding:  12px; border: 2px solid var(--light-gray); border-radius: 8px; font-size: 1rem; font-family: var(--font-body);">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span lang-content="hi" class="active">फसल</span>
+                                <span lang-content="en">Crop</span>
+                                <span lang-content="ta">பயிர்</span>
+                                <span lang-content="te">పంట</span>
+                                <span lang-content="mr">पीक</span>
+                            </label>
+                            <select name="crop" class="form-select">
                                 <option value="">फसल चुनें / Select Crop</option>
-                                <option value="Rice">Rice / धान</option>
-                                <option value="Wheat">Wheat / गेहूं</option>
-                                <option value="Cotton">Cotton / कपास</option>
-                                <option value="Sugarcane">Sugarcane / गन्ना</option>
-                                <option value="Vegetables">Vegetables / सब्जियां</option>
-                                <option value="Fruits">Fruits / फल</option>
-                                <option value="Pulses">Pulses / दालें</option>
-                                <option value="Other">Other / अन्य</option>
+                                <option value="Rice">Rice / धान / அரிசி / వరి / तांदूळ</option>
+                                <option value="Wheat">Wheat / गेहूं / கோதுமை / గోధుమ / गहू</option>
+                                <option value="Cotton">Cotton / कपास / பருத்தி / పత్తి / कापूस</option>
+                                <option value="Sugarcane">Sugarcane / गन्ना / கரும்பு / చెరకు / ऊस</option>
+                                <option value="Vegetables">Vegetables / सब्जियां / காய்கறிகள் / కూరగాయలు / भाजीपाला</option>
+                                <option value="Fruits">Fruits / फल / பழங்கள் / పండ్లు / फळे</option>
+                                <option value="Pulses">Pulses / दालें / பருப்பு / పప్పు / डाळी</option>
+                                <option value="Other">Other / अन्य / மற்றவை / ఇతరమైనవి / इतर</option>
                             </select>
                         </div>
                         
-                        <div>
-                            <label style="display:  block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);" data-hi="आपका सवाल" data-en="Your Question">आपका सवाल</label>
-                            <textarea name="message" rows="4" style="width: 100%; padding: 12px; border: 2px solid var(--light-gray); border-radius: 8px; font-size: 1rem; font-family: var(--font-body); resize: vertical;" placeholder="हमें बताएं कि हम कैसे मदद कर सकते हैं..."></textarea>
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span lang-content="hi" class="active">आपका सवाल</span>
+                                <span lang-content="en">Your Question</span>
+                                <span lang-content="ta">உங்கள் கேள்வி</span>
+                                <span lang-content="te">మీ ప్రశ్న</span>
+                                <span lang-content="mr">तुमचा प्रश्न</span>
+                            </label>
+                            <textarea name="message" class="form-textarea" placeholder="हमें बताएं कि हम कैसे मदद कर सकते हैं...  / Tell us how we can help... "></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 1rem;">
-                            <span data-hi="भेजें" data-en="Send Message">भेजें</span>
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                            <span lang-content="hi" class="active">भेजें</span>
+                            <span lang-content="en">Send Message</span>
+                            <span lang-content="ta">அனுப்பு</span>
+                            <span lang-content="te">పంపండి</span>
+                            <span lang-content="mr">पाठवा</span>
                         </button>
                     </form>
                 </div>
                 
                 <!-- Office Address -->
                 <div style="margin-top: 3rem; text-align: center; padding: 2rem; background-color: var(--light-gray); border-radius: 12px;">
-                    <h4 style="color: var(--dark-earth); margin-bottom: 1rem;" data-hi="हमारा कार्यालय" data-en="Our Office">हमारा कार्यालय</h4>
+                    <h4 style="color: var(--dark-earth); margin-bottom: 1rem;">
+                        <span lang-content="hi" class="active">हमारा कार्यालय</span>
+                        <span lang-content="en">Our Office</span>
+                        <span lang-content="ta">எங்கள் அலுவலகம்</span>
+                        <span lang-content="te">మా కార్యాలయం</span>
+                        <span lang-content="mr">आमचे कार्यालय</span>
+                    </h4>
                     <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 0.5rem;">
                         <strong>MKAK Producers</strong><br>
                         123 Green Valley, Agriculture Park<br>
                         Maharashtra 411001, India
                     </p>
                     <p style="color: var(--text-light); font-size: 0.95rem;">
-                        <strong data-hi="समय:" data-en="Timing: ">समय:</strong> <span data-hi="सुबह 8 बजे से शाम 7 बजे (सोमवार-शनिवार)" data-en="8 AM to 7 PM (Monday-Saturday)">सुबह 8 बजे से शाम 7 बजे (सोमवार-शनिवार)</span>
+                        <strong>
+                            <span lang-content="hi" class="active">समय:</span>
+                            <span lang-content="en">Timing:</span>
+                            <span lang-content="ta">நேரம்:</span>
+                            <span lang-content="te">సమయం:</span>
+                            <span lang-content="mr">वेळ:</span>
+                        </strong>
+                        <span lang-content="hi" class="active">सुबह 8 बजे से शाम 7 बजे (सोमवार-शनिवार)</span>
+                        <span lang-content="en">8 AM to 7 PM (Monday-Saturday)</span>
+                        <span lang-content="ta">காலை 8 முதல் மாலை 7 வரை (திங்கள்-சனி)</span>
+                        <span lang-content="te">ఉదయం 8 నుండి సాయంత్రం 7 వరకు (సోమవారం-శని వారం)</span>
+                        <span lang-content="mr">सकाळी 8 ते संध्याकाळी 7 (सोमवार-शनिवार)</span>
                     </p>
                 </div>
             </div>
@@ -1586,15 +2142,26 @@
         <div class="container">
             <div class="cta-content text-center">
                 <h2 class="cta-title">
-                    <span data-hi="चलिए, साथ मिलकर खेती को फिर से हरा-भरा बनाएं">चलिए, साथ मिलकर खेती को फिर से हरा-भरा बनाएं</span><br>
-                    <span class="subtitle-en" data-en="Let's Bring Life Back to Farming—Together">Let's Bring Life Back to Farming—Together</span>
+                    <span lang-content="hi" class="active">चलिए, साथ मिलकर खेती को फिर से हरा-भरा बनाएं</span>
+                    <span lang-content="en">Let's Bring Life Back to Farming—Together</span>
+                    <span lang-content="ta">ஒன்றாக, விவசாயத்திற்கு மீண்டும் உயிரை கொண்டு வருவோம்</span>
+                    <span lang-content="te">కలిసి, వ్యవసాయానికి తిరిగి జీవితాన్ని తీసుకువస్దాం</span>
+                    <span lang-content="mr">चला, एकत्र शेतीला पुन्हा जीवन आणूया</span>
                 </h2>
                 <div class="cta-buttons">
                     <a href="https://wa.me/919876543210" class="btn btn-whatsapp btn-lg" target="_blank">
-                        📱 <span data-hi="WhatsApp पर बात करें" data-en="Chat on WhatsApp">WhatsApp पर बात करें</span>
+                        📱 <span lang-content="hi" class="active">WhatsApp पर बात करें</span>
+                        <span lang-content="en">Chat on WhatsApp</span>
+                        <span lang-content="ta">WhatsApp இல் அரட்டை</span>
+                        <span lang-content="te">WhatsApp లో చాట్</span>
+                        <span lang-content="mr">WhatsApp वर चॅट</span>
                     </a>
-                    <a href="tel:+919876543210" class="btn btn-primary btn-lg">
-                        📞 <span data-hi="हमसे कॉल करें" data-en="Call Us Now">हमसे कॉल करें</span>
+                    <a href="tel: +919876543210" class="btn btn-primary btn-lg">
+                        📞 <span lang-content="hi" class="active">हमसे कॉल करें</span>
+                        <span lang-content="en">Call Us Now</span>
+                        <span lang-content="ta">இப்போது எங்களை அழைக்கவும்</span>
+                        <span lang-content="te">ఇప్పుడు మమ్మల్ని కాల్ చేయండి</span>
+                        <span lang-content="mr">आता आम्हाला कॉल करा</span>
                     </a>
                 </div>
             </div>
@@ -1610,8 +2177,12 @@
                         <div class="footer-logo-icon">🌱</div>
                         <span>MKAK Producers</span>
                     </div>
-                    <p class="footer-desc" data-hi="किसानों के साथ, किसानों के लिए। 100% प्राकृतिक जैविक खाद।" data-en="With Farmers, For Farmers. 100% Natural Organic Fertilizers.">
-                        किसानों के साथ, किसानों के लिए। 100% प्राकृतिक जैविक खाद।
+                    <p class="footer-desc">
+                        <span lang-content="hi" class="active">किसानों के साथ, किसानों के लिए। 100% प्राकृतिक जैविक खाद।</span>
+                        <span lang-content="en">With Farmers, For Farmers. 100% Natural Organic Fertilizers.</span>
+                        <span lang-content="ta">விவசாயிகளுடன், விவசாயிகளுக்காக.  100% இயற்கை உரங்கள்.</span>
+                        <span lang-content="te">రైతులతో, రైతుల కోసం. 100% సహజ సేంద్రీయ ఎరువులు.</span>
+                        <span lang-content="mr">शेतकऱ्यांसोबत, शेतकऱ्यांसाठी.  100% नैसर्गिक सेंद्रिय खते.</span>
                     </p>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook">📘</a>
@@ -1622,44 +2193,102 @@
                 </div>
                 
                 <div class="footer-col">
-                    <h4 data-hi="त्वरित लिंक" data-en="Quick Links">त्वरित लिंक</h4>
+                    <h4>
+                        <span lang-content="hi" class="active">त्वरित लिंक</span>
+                        <span lang-content="en">Quick Links</span>
+                        <span lang-content="ta">விரைவு இணைப்புகள்</span>
+                        <span lang-content="te">శీఘ్ర లింక్‌లు</span>
+                        <span lang-content="mr">द्रुत दुवे</span>
+                    </h4>
                     <ul class="footer-links">
-                        <li><a href="#about" data-hi="हमारे बारे में" data-en="About Us">हमारे बारे में</a></li>
-                        <li><a href="#products" data-hi="हमारे उत्पाद" data-en="Our Products">हमारे उत्पाद</a></li>
-                        <li><a href="#why-organic" data-hi="ऑर्गेनिक क्यों?" data-en="Why Organic? ">ऑर्गेनिक क्यों? </a></li>
-                        <li><a href="#how-to-use" data-hi="कैसे इस्तेमाल करें" data-en="How to Use">कैसे इस्तेमाल करें</a></li>
+                        <li><a href="#about">
+                            <span lang-content="hi" class="active">हमारे बारे में</span>
+                            <span lang-content="en">About Us</span>
+                            <span lang-content="ta">எங்களை பற்றி</span>
+                            <span lang-content="te">మా గురించి</span>
+                            <span lang-content="mr">आमच्याबद्दल</span>
+                        </a></li>
+                        <li><a href="#products">
+                            <span lang-content="hi" class="active">हमारे उत्पाद</span>
+                            <span lang-content="en">Our Products</span>
+                            <span lang-content="ta">எங்கள் தயாரிப்புகள்</span>
+                            <span lang-content="te">మా ఉత్పత్తులు</span>
+                            <span lang-content="mr">आमची उत्पादने</span>
+                        </a></li>
+                        <li><a href="#why-organic">
+                            <span lang-content="hi" class="active">ऑर्गेनिक क्यों?  </span>
+                            <span lang-content="en">Why Organic?</span>
+                            <span lang-content="ta">ஆர்கானிக் ஏன்? </span>
+                            <span lang-content="te">ఆర్గానిక్ ఎందుకు?</span>
+                            <span lang-content="mr">सेंद्रिय का? </span>
+                        </a></li>
+                        <li><a href="#how-to-use">
+                            <span lang-content="hi" class="active">कैसे इस्तेमाल करें</span>
+                            <span lang-content="en">How to Use</span>
+                            <span lang-content="ta">எப்படி பயன்படுத்துவது</span>
+                            <span lang-content="te">ఎలా ఉపయోగించాలి</span>
+                            <span lang-content="mr">कसे वापरावे</span>
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
-                    <h4 data-hi="सहायता" data-en="Support">सहायता</h4>
+                    <h4>
+                        <span lang-content="hi" class="active">सहायता</span>
+                        <span lang-content="en">Support</span>
+                        <span lang-content="ta">ஆதரவு</span>
+                        <span lang-content="te">మద్దతు</span>
+                        <span lang-content="mr">समर्थन</span>
+                    </h4>
                     <ul class="footer-links">
-                        <li><a href="#contact" data-hi="संपर्क करें" data-en="Contact Us">संपर्क करें</a></li>
-                        <li><a href="#farmer-stories" data-hi="किसान कहानियां" data-en="Farmer Stories">किसान कहानियां</a></li>
-                        <li><a href="#" data-hi="डाउनलोड गाइड" data-en="Download Guides">डाउनलोड गाइड</a></li>
-                        <li><a href="#" data-hi="सामान्य प्रश्न" data-en="FAQs">सामान्य प्रश्न</a></li>
+                        <li><a href="#contact">
+                            <span lang-content="hi" class="active">संपर्क करें</span>
+                            <span lang-content="en">Contact Us</span>
+                            <span lang-content="ta">தொடர்பு கொள்ளவும்</span>
+                            <span lang-content="te">మమ్మల్ని సంప్రదించండి</span>
+                            <span lang-content="mr">आमच्याशी संपर्क साधा</span>
+                        </a></li>
+                        <li><a href="#farmer-stories">
+                            <span lang-content="hi" class="active">किसान कहानियां</span>
+                            <span lang-content="en">Farmer Stories</span>
+                            <span lang-content="ta">விவசாயி கதைகள்</span>
+                            <span lang-content="te">రైతు కథలు</span>
+                            <span lang-content="mr">शेतकरी कथा</span>
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
-                    <h4 data-hi="संपर्क जानकारी" data-en="Contact Info">संपर्क जानकारी</h4>
+                    <h4>
+                        <span lang-content="hi" class="active">संपर्क जानकारी</span>
+                        <span lang-content="en">Contact Info</span>
+                        <span lang-content="ta">தொடர்பு தகவல்</span>
+                        <span lang-content="te">సంప్రదింపు సమాచారం</span>
+                        <span lang-content="mr">संपर्क माहिती</span>
+                    </h4>
                     <ul class="footer-contact">
-                        <li>
-                            📞 <a href="tel:+919876543210">+91-98765-43210</a>
-                        </li>
-                        <li>
-                            ✉️ <a href="mailto:info@mkakproducers.com">info@mkakproducers.com</a>
-                        </li>
-                        <li>
-                            📍 <span>123 Green Valley, Agriculture Park, Maharashtra 411001</span>
-                        </li>
+                        <li>📞 <a href="tel:+919876543210">+91-98765-43210</a></li>
+                        <li>✉️ <a href="mailto:info@mkakproducers.com">info@mkakproducers.com</a></li>
+                        <li>📍 <span>123 Green Valley, Agriculture Park, Maharashtra 411001</span></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 MKAK Producers. <span data-hi="सर्वाधिकार सुरक्षित।" data-en="All rights reserved.">सर्वाधिकार सुरक्षित।</span></p>
-                <p class="footer-tagline" data-hi="किसानों के साथ, किसानों के लिए 🌾" data-en="With Farmers, For Farmers 🌾">किसानों के साथ, किसानों के लिए 🌾</p>
+                <p>&copy; 2024 MKAK Producers. 
+                                       <span lang-content="hi" class="active">सर्वाधिकार सुरक्षित।</span>
+                    <span lang-content="en">All rights reserved.</span>
+                    <span lang-content="ta">அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</span>
+                    <span lang-content="te">అన్ని హక్కులు రక్షించబడ్డాయి.</span>
+                    <span lang-content="mr">सर्व हक्क राखीव.</span>
+                </p>
+                <p class="footer-tagline">
+                    <span lang-content="hi" class="active">किसानों के साथ, किसानों के लिए 🌾</span>
+                    <span lang-content="en">With Farmers, For Farmers 🌾</span>
+                    <span lang-content="ta">விவசாயிகளுடன், விவசாயிகளுக்காக 🌾</span>
+                    <span lang-content="te">రైతులతో, రైతుల కోసం 🌾</span>
+                    <span lang-content="mr">शेतकऱ्यांसोबत, शेतकऱ्यांसाठी 🌾</span>
+                </p>
             </div>
         </div>
     </footer>
@@ -1677,6 +2306,64 @@
         
         document.addEventListener('DOMContentLoaded', function() {
             
+            // ===== LANGUAGE SWITCHING FUNCTIONALITY =====
+            const langButtons = document.querySelectorAll('.lang-btn');
+            let currentLang = 'hi'; // Default language
+            
+            // Get saved language from localStorage
+            const savedLang = localStorage.getItem('mkak-preferred-language');
+            if (savedLang) {
+                currentLang = savedLang;
+                setLanguage(currentLang);
+            }
+            
+            // Language button click handlers
+            langButtons.forEach(button => {
+                button. addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Remove active class from all buttons
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Set language
+                    setLanguage(lang);
+                    
+                    // Save preference
+                    localStorage.setItem('mkak-preferred-language', lang);
+                    currentLang = lang;
+                });
+            });
+            
+            function setLanguage(lang) {
+                // Update HTML lang attribute
+                document.documentElement.lang = lang;
+                
+                // Hide all language content
+                const allLangContent = document.querySelectorAll('[lang-content]');
+                allLangContent.forEach(element => {
+                    element.classList.remove('active');
+                });
+                
+                // Show selected language content
+                const selectedLangContent = document.querySelectorAll(`[lang-content="${lang}"]`);
+                selectedLangContent.forEach(element => {
+                    element.classList.add('active');
+                });
+                
+                // Update active button
+                langButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                console.log(`Language switched to: ${lang}`);
+            }
+            
             // ===== MOBILE MENU TOGGLE =====
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
             const navMenu = document.querySelector('.nav-menu');
@@ -1692,7 +2379,7 @@
             document.addEventListener('click', function(event) {
                 if (navMenu && mobileMenuToggle) {
                     const isClickInsideNav = navMenu.contains(event. target);
-                    const isClickOnToggle = mobileMenuToggle.contains(event.target);
+                    const isClickOnToggle = mobileMenuToggle.contains(event. target);
                     
                     if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
                         navMenu. classList.remove('active');
@@ -1704,7 +2391,7 @@
             // Close mobile menu when clicking on a link
             const navLinks = document.querySelectorAll('.nav-menu a');
             navLinks.forEach(link => {
-                link.addEventListener('click', function() {
+                link. addEventListener('click', function() {
                     if (window.innerWidth <= 768 && navMenu) {
                         navMenu.classList.remove('active');
                         if (mobileMenuToggle) {
@@ -1715,7 +2402,7 @@
             });
             
             // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-            document. querySelectorAll('a[href^="#"]').forEach(anchor => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
                     if (href !== '#' && href.length > 1) {
@@ -1750,7 +2437,7 @@
                         document.querySelectorAll('.nav-menu a').forEach(link => {
                             link.classList.remove('active');
                             if (link.getAttribute('href') === `#${sectionId}`) {
-                                link.classList. add('active');
+                                link.classList.add('active');
                             }
                         });
                     }
@@ -1774,25 +2461,25 @@
             
             // ===== ANIMATE ELEMENTS ON SCROLL =====
             const observerOptions = {
-                threshold:  0.1,
+                threshold: 0.1,
                 rootMargin: '0px 0px -100px 0px'
             };
             
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style. opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        entry. target.style.opacity = '1';
+                        entry.target. style.transform = 'translateY(0)';
                     }
                 });
             }, observerOptions);
             
             // Animate cards
-            const cards = document.querySelectorAll('.promise-card, .testimonial-card, .product-card, .stat-card');
-            cards.forEach(card => {
+            const cards = document.querySelectorAll('. promise-card, .testimonial-card, .product-card, .stat-card');
+            cards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px)';
-                card.style.transition = 'all 0.6s ease';
+                card.style.transition = `all 0.6s ease ${index * 0.1}s`;
                 observer.observe(card);
             });
             
@@ -1814,7 +2501,7 @@
                     const timer = setInterval(() => {
                         current += increment;
                         if (current >= num) {
-                            element.textContent = num. toLocaleString() + suffix;
+                            element.textContent = num.toLocaleString() + suffix;
                             clearInterval(timer);
                         } else {
                             element.textContent = Math.floor(current).toLocaleString() + suffix;
@@ -1832,8 +2519,8 @@
                 });
             }, { threshold: 0.5 });
             
-            statNumbers.forEach(stat => {
-                statsObserver.observe(stat);
+            statNumbers. forEach(stat => {
+                statsObserver. observe(stat);
             });
             
             // ===== CONTACT FORM HANDLING =====
@@ -1841,7 +2528,7 @@
             
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
-                    e. preventDefault();
+                    e.preventDefault();
                     
                     const formData = new FormData(contactForm);
                     const data = {
@@ -1849,7 +2536,7 @@
                         phone: formData.get('phone'),
                         state: formData.get('state'),
                         crop: formData.get('crop'),
-                        message: formData.get('message')
+                        message: formData. get('message')
                     };
                     
                     // Basic validation
@@ -1857,30 +2544,69 @@
                     const requiredFields = contactForm.querySelectorAll('[required]');
                     
                     requiredFields.forEach(field => {
-                        if (! field.value.trim()) {
+                        if (!field.value.trim()) {
                             isValid = false;
                             field.style.borderColor = '#E74C3C';
                         } else {
-                            field. style.borderColor = 'var(--light-gray)';
+                            field. style.borderColor = '';
                         }
                     });
                     
                     if (isValid) {
-                        // In a real application, you would send this data to a server
-                        // For now, we'll just show a success message
+                        // Success message based on current language
+                        let successMessage = '';
+                        switch(currentLang) {
+                            case 'hi':
+                                successMessage = 'धन्यवाद! हम जल्द ही आपसे संपर्क करेंगे।';
+                                break;
+                            case 'en':
+                                successMessage = 'Thank you! We will contact you soon.';
+                                break;
+                            case 'ta':
+                                successMessage = 'நன்றி! நாங்கள் விரைவில் உங்களைத் தொடர்பு கொள்வோம்.';
+                                break;
+                            case 'te':
+                                successMessage = 'ధన్యవాదాలు! మేము త్వరలో మిమ్మల్ని సంప్రదిస్తాము.';
+                                break;
+                            case 'mr': 
+                                successMessage = 'धन्यवाद! आम्ही लवकरच तुमच्याशी संपर्क साधू. ';
+                                break;
+                            default:
+                                successMessage = 'धन्यवाद! हम जल्द ही आपसे संपर्क करेंगे।';
+                        }
                         
-                        alert('धन्यवाद! हम जल्द ही आपसे संपर्क करेंगे।\n\nThank you!  We will contact you soon.');
+                        alert(successMessage);
                         contactForm.reset();
                         
                         // Optional:  Redirect to WhatsApp with pre-filled message
-                        const whatsappMessage = `नमस्ते, मेरा नाम ${data. name} है। मैं ${data.state} से हूं और ${data.crop} की खेती करता हूं। ${data.message || 'मुझे MKAK उत्पादों के बारे में जानकारी चाहिए।'}`;
+                        const whatsappMessage = `नमस्ते, मेरा नाम ${data.name} है। मैं ${data. state} से हूं। ${data.message || 'मुझे MKAK उत्पादों के बारे में जानकारी चाहिए।'}`;
                         const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(whatsappMessage)}`;
                         
-                        // Uncomment the line below to auto-redirect to WhatsApp
+                        // Uncomment to auto-redirect to WhatsApp
                         // window.open(whatsappUrl, '_blank');
                         
                     } else {
-                        alert('कृपया सभी आवश्यक फ़ील्ड भरें।\n\nPlease fill all required fields.');
+                        let errorMessage = '';
+                        switch(currentLang) {
+                            case 'hi':
+                                errorMessage = 'कृपया सभी आवश्यक फ़ील्ड भरें।';
+                                break;
+                            case 'en':
+                                errorMessage = 'Please fill all required fields.';
+                                break;
+                            case 'ta':
+                                errorMessage = 'தயவுசெய்து அனைத்து தேவையான புலங்களையும் நிரப்பவும்.';
+                                break;
+                            case 'te':
+                                errorMessage = 'దయచేసి అన్ని అవసరమైన ఫీల్డ్‌లను నింపండి.';
+                                break;
+                            case 'mr':
+                                errorMessage = 'कृपया सर्व आवश्यक फील्ड भरा.';
+                                break;
+                            default:
+                                errorMessage = 'कृपया सभी आवश्यक फ़ील्ड भरें।';
+                        }
+                        alert(errorMessage);
                     }
                 });
                 
@@ -1888,83 +2614,17 @@
                 const formInputs = contactForm.querySelectorAll('input, select, textarea');
                 formInputs. forEach(input => {
                     input.addEventListener('input', function() {
-                        this.style.borderColor = 'var(--light-gray)';
+                        this.style.borderColor = '';
                     });
-                });
-            }
-            
-            // ===== LANGUAGE TOGGLE FUNCTIONALITY =====
-            const langButtons = document.querySelectorAll('. lang-btn');
-            let currentLang = 'hi'; // Default language
-            
-            // Get saved language from localStorage
-            const savedLang = localStorage.getItem('mkak-preferred-language');
-            if (savedLang) {
-                currentLang = savedLang;
-                setLanguage(currentLang);
-            }
-            
-            // Language button click handlers
-            langButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    
-                    // Remove active class from all buttons
-                    langButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Set language
-                    setLanguage(lang);
-                    
-                    // Save preference
-                    localStorage.setItem('mkak-preferred-language', lang);
-                    currentLang = lang;
-                });
-            });
-            
-            function setLanguage(lang) {
-                // Update HTML lang attribute
-                document.documentElement.lang = lang;
-                
-                // Get all elements with language attributes
-                const elements = document.querySelectorAll('[data-hi], [data-en]');
-                
-                elements.forEach(element => {
-                    const text = element.getAttribute(`data-${lang}`);
-                    if (text) {
-                        // Check if element is input/textarea
-                        if (element. tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                            element. placeholder = text;
-                        } else {
-                            // For elements with only text content
-                            if (element.childNodes.length === 1 && element.childNodes[0].nodeType === 3) {
-                                element. textContent = text;
-                            } else {
-                                // For elements with mixed content, update only text nodes
-                                element.childNodes.forEach(node => {
-                                    if (node.nodeType === 3) {
-                                        node.textContent = text;
-                                    }
-                                });
-                            }
-                        }
-                    }
-                });
-                
-                // Update active button
-                langButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.getAttribute('data-lang') === lang) {
-                        btn.classList.add('active');
-                    }
                 });
             }
             
             // ===== SHOW STICKY WHATSAPP ON SCROLL =====
             const stickyWhatsapp = document.querySelector('.sticky-whatsapp');
             if (stickyWhatsapp) {
+                // Initially hide it
+                stickyWhatsapp.style.display = 'none';
+                
                 window.addEventListener('scroll', function() {
                     if (window.scrollY > 300) {
                         stickyWhatsapp.style.display = 'flex';
@@ -1978,13 +2638,23 @@
             console.log('%c🌱 MKAK Producers - Organic Fertilizers 🌱', 'color: #4A7C2F; font-size: 20px; font-weight: bold;');
             console.log('%cWith Farmers, For Farmers | किसानों के साथ, किसानों के लिए', 'color: #2D5016; font-size: 14px;');
             console.log('%cWebsite built with ❤️ for Indian Farmers', 'color: #6C757D; font-size: 12px;');
+            console.log('%cMulti-language support:  Hindi, English, Tamil, Telugu, Marathi', 'color: #4A7C2F; font-size: 12px;');
             
         });
         
         // ===== PREVENT FORM RESUBMISSION ON PAGE REFRESH =====
         if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location. href);
+            window. history.replaceState(null, null, window.location.href);
         }
+        
+        // ===== PAGE LOAD ANIMATION =====
+        window. addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
     </script>
     
 </body>
