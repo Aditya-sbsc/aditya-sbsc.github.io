@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Maison Noir — Discover the world's most exclusive luxury properties. Penthouses, waterfront estates, and architectural masterpieces curated for the discerning few.">
+  <meta name="keywords"
+    content="luxury real estate, penthouses, waterfront estates, luxury villas, exclusive properties">
+  <meta name="author" content="Maison Noir">
+  <meta property="og:title" content="Maison Noir | Where Luxury Lives">
+  <meta property="og:description"
+    content="The world's most exclusive luxury properties, curated for the discerning few.">
+  <meta property="og:type" content="website">
+  <title>Maison Noir | Where Luxury Lives</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ═══ Preloader ═══ -->
+  <div id="preloader">
+    <div class="preloader-logo">MAISON NOIR</div>
+    <div class="preloader-bar"></div>
+  </div>
+
+  <!-- ═══ Header ═══ -->
+  <header class="header" id="header">
+    <a href="#" class="header-logo"><span>MAISON</span> NOIR</a>
+    <nav class="header-nav" id="mainNav">
+      <a href="#properties" class="nav-hover-color">Properties</a>
+      <a href="#dome-gallery" class="nav-hover-color">Gallery</a>
+      <a href="#about" class="nav-hover-color">About</a>
+      <a href="#testimonials" class="nav-hover-color">Testimonials</a>
+      <a href="#contact" class="nav-hover-color">Contact</a>
+    </nav>
+    <a href="#contact" class="header-cta">Schedule Viewing</a>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- ═══ Hero Section — Cinematic Image Sequence + Falling Text ═══ -->
+  <section class="hero-sequence-wrapper" id="hero">
+    <div class="hero-sequence-sticky">
+      <canvas id="heroCanvas"></canvas>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">◆ Exclusive Collection 2026</div>
+        <h1 class="hero-title falling-text-container">
+          <span class="falling-word" style="--fall-delay: 0">Where</span>
+          <em class="falling-word" style="--fall-delay: 1"><span>Luxury</span></em>
+          <span class="falling-word" style="--fall-delay: 2">Lives</span>
+        </h1>
+        <p class="hero-subtitle falling-text-container">
+          <span class="falling-char-line">Exceptional estates and architectural masterpieces, curated for those who
+            demand nothing less than extraordinary.</span>
+        </p>
+        <div class="hero-actions">
+          <a href="#properties" class="btn btn-primary">View Properties</a>
+          <a href="#contact" class="btn btn-outline">Book a Private Showing</a>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+      <!-- Loading indicator for image sequence -->
+      <div class="hero-sequence-loader" id="heroLoader">
+        <div class="hero-sequence-loader-bar"></div>
+        <span class="hero-sequence-loader-text">Loading Cinematic Experience...</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Stats Bar (Enhanced Count-Up) ═══ -->
+  <section class="stats-bar reveal">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-count="2400" data-suffix="+">0</div>
+          <div class="stat-label">Properties Sold</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="12" data-prefix="$" data-suffix="B+">0</div>
+          <div class="stat-label">Total Sales Volume</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="35" data-suffix="+">0</div>
+          <div class="stat-label">Global Markets</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="98" data-suffix="%">0</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Featured Properties — Masonry Layout ═══ -->
+  <section class="properties section-padding" id="properties">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="heading-sm">Curated Collection</p>
+        <h2 class="heading-lg text-hover-color">Exceptional Estates</h2>
+        <div class="gold-divider center"></div>
+        <p class="body-lg" style="max-width: 600px; margin: 16px auto 0;">A hand-selected portfolio of the world's most
+          prestigious residences.</p>
+      </div>
+
+      <div class="filter-tabs reveal">
+        <button class="filter-tab active" data-filter="all">All</button>
+        <button class="filter-tab" data-filter="penthouse">Penthouses</button>
+        <button class="filter-tab" data-filter="villa">Villas</button>
+        <button class="filter-tab" data-filter="waterfront">Waterfront</button>
+        <button class="filter-tab" data-filter="estate">Estates</button>
+      </div>
+
+      <div class="masonry-grid" id="propertiesGrid">
+
+        <!-- Card 1 — tall -->
+        <div class="property-card masonry-item masonry-tall reveal" data-category="penthouse" data-property="1">
+          <div class="property-card-img">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"
+              alt="Modern penthouse with city views" loading="lazy">
+            <span class="property-card-badge">Limited</span>
+            <button class="property-card-fav" aria-label="Add to favorites">♡</button>
+          </div>
+          <div class="property-card-body">
+            <p class="property-card-location">Beverly Hills, California</p>
+            <h3 class="property-card-title">The Skyline Penthouse</h3>
+            <div class="property-card-features">
+              <span>🛏 5 Beds</span>
+              <span>🛁 6 Baths</span>
+              <span>📐 8,200 sq ft</span>
+            </div>
+            <div class="property-card-footer">
+              <span class="property-card-price">$24,500,000</span>
+              <span class="property-card-link">View Details →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="property-card masonry-item reveal" data-category="waterfront" data-property="2">
+          <div class="property-card-img">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
+              alt="Waterfront luxury villa with pool" loading="lazy">
+            <span class="property-card-badge">New Listing</span>
+            <button class="property-card-fav" aria-label="Add to favorites">♡</button>
+          </div>
+          <div class="property-card-body">
+            <p class="property-card-location">Miami Beach, Florida</p>
+            <h3 class="property-card-title">Azure Waterfront Estate</h3>
+            <div class="property-card-features">
+              <span>🛏 7 Beds</span>
+              <span>🛁 9 Baths</span>
+              <span>📐 12,400 sq ft</span>
+            </div>
+            <div class="property-card-footer">
+              <span class="property-card-price">$38,900,000</span>
+              <span class="property-card-link">View Details →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 — tall -->
+        <div class="property-card masonry-item masonry-tall reveal" data-category="villa" data-property="3">
+          <div class="property-card-img">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
+              alt="Contemporary luxury villa" loading="lazy">
+            <span class="property-card-badge">Exclusive</span>
+            <button class="property-card-fav" aria-label="Add to favorites">♡</button>
+          </div>
+          <div class="property-card-body">
+            <p class="property-card-location">Malibu, California</p>
+            <h3 class="property-card-title">Pacific Ridge Villa</h3>
+            <div class="property-card-features">
+              <span>🛏 6 Beds</span>
+              <span>🛁 7 Baths</span>
+              <span>📐 9,800 sq ft</span>
+            </div>
+            <div class="property-card-footer">
+              <span class="property-card-price">$31,200,000</span>
+              <span class="property-card-link">View Details →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="property-card masonry-item reveal" data-category="estate" data-property="4">
+          <div class="property-card-img">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80"
+              alt="Luxury estate with grand entrance" loading="lazy">
+            <span class="property-card-badge">Trophy Asset</span>
+            <button class="property-card-fav" aria-label="Add to favorites">♡</button>
+          </div>
+          <div class="property-card-body">
+            <p class="property-card-location">Aspen, Colorado</p>
+            <h3 class="property-card-title">Summit Crown Estate</h3>
+            <div class="property-card-features">
+              <span>🛏 8 Beds</span>
+              <span>🛁 10 Baths</span>
+              <span>📐 15,600 sq ft</span>
+            </div>
+            <div class="property-card-footer">
+              <span class="property-card-price">$52,000,000</span>
+              <span class="property-card-link">View Details →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="property-card masonry-item reveal" data-category="penthouse" data-property="5">
+          <div class="property-card-img">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80"
+              alt="NYC penthouse luxury interior" loading="lazy">
+            <span class="property-card-badge">Iconic</span>
+            <button class="property-card-fav" aria-label="Add to favorites">♡</button>
+          </div>
+          <div class="property-card-body">
+            <p class="property-card-location">Manhattan, New York</p>
+            <h3 class="property-card-title">The Park Avenue Crown</h3>
+            <div class="property-card-features">
+              <span>🛏 4 Beds</span>
+              <span>🛁 5 Baths</span>
+              <span>📐 6,200 sq ft</span>
+            </div>
+            <div class="property-card-footer">
+              <span class="property-card-price">$45,000,000</span>
+              <span class="property-card-link">View Details →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 — tall -->
+        <div class="property-card masonry-item masonry-tall reveal" data-category="waterfront" data-property="6">
+          <div class="property-card-img">
+            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"
+              alt="Luxury waterfront mansion" loading="lazy">
+            <span class="property-card-badge">Rare Find</span>
+            <button class="property-card-fav" aria-label="Add to favorites">♡</button>
+          </div>
+          <div class="property-card-body">
+            <p class="property-card-location">Monaco, French Riviera</p>
+            <h3 class="property-card-title">Côte d'Azur Residence</h3>
+            <div class="property-card-features">
+              <span>🛏 5 Beds</span>
+              <span>🛁 6 Baths</span>
+              <span>📐 7,800 sq ft</span>
+            </div>
+            <div class="property-card-footer">
+              <span class="property-card-price">€28,500,000</span>
+              <span class="property-card-link">View Details →</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center reveal" style="margin-top: 60px;">
+        <a href="#" class="btn btn-outline">View All Properties</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA Banner — Scroll Velocity Effect ═══ -->
+  <section class="cta-banner" id="cta-velocity">
+    <div class="cta-banner-bg">
+      <img src="https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=1920&q=80" alt="Luxury interior"
+        loading="lazy">
+    </div>
+    <div class="container cta-banner-content">
+      <p class="heading-sm reveal" style="margin-bottom: 16px;">An Invitation</p>
+      <h2 class="heading-lg velocity-text reveal" style="color: var(--color-white); margin-bottom: 16px;">Experience
+        Living Without Limits</h2>
+      <div class="gold-divider center reveal"></div>
+      <p class="body-lg reveal" style="max-width: 550px; margin: 16px auto 40px; color: var(--color-platinum);">Schedule
+        a private viewing and discover why the world's most discerning collectors trust Maison Noir.</p>
+      <div class="reveal">
+        <a href="#contact" class="btn btn-primary">Schedule a Private Viewing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Dome Gallery ═══ -->
+  <section class="dome-gallery-section section-padding" id="dome-gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="heading-sm">Visual Showcase</p>
+        <h2 class="heading-lg text-hover-color">Architectural Brilliance</h2>
+        <div class="gold-divider center"></div>
+        <p class="body-lg" style="max-width: 600px; margin: 16px auto 0;">Explore our curated gallery of world-class
+          interiors and exteriors.</p>
+      </div>
+    </div>
+    <div class="dome-gallery-wrapper" id="domeGallery">
+      <div class="dome-gallery-track">
+        <div class="dome-card" style="--i:0">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" alt="Luxury living room"
+            loading="lazy">
+          <div class="dome-card-overlay"><span>Living Spaces</span></div>
+        </div>
+        <div class="dome-card" style="--i:1">
+          <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80" alt="Modern kitchen"
+            loading="lazy">
+          <div class="dome-card-overlay"><span>Gourmet Kitchens</span></div>
+        </div>
+        <div class="dome-card" style="--i:2">
+          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80" alt="Master bedroom"
+            loading="lazy">
+          <div class="dome-card-overlay"><span>Master Suites</span></div>
+        </div>
+        <div class="dome-card" style="--i:3">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80" alt="Pool area"
+            loading="lazy">
+          <div class="dome-card-overlay"><span>Resort Pools</span></div>
+        </div>
+        <div class="dome-card" style="--i:4">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" alt="Terrace view"
+            loading="lazy">
+          <div class="dome-card-overlay"><span>Sky Terraces</span></div>
+        </div>
+        <div class="dome-card" style="--i:5">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Architecture exterior"
+            loading="lazy">
+          <div class="dome-card-overlay"><span>Exteriors</span></div>
+        </div>
+        <div class="dome-card" style="--i:6">
+          <img src="https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=600&q=80" alt="Wine cellar"
+            loading="lazy">
+          <div class="dome-card-overlay"><span>Wine Cellars</span></div>
+        </div>
+        <div class="dome-card" style="--i:7">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Garden landscape"
+            loading="lazy">
+          <div class="dome-card-overlay"><span>Gardens</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ About Section — Scroll Stack Cards ═══ -->
+  <section class="about section-padding" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal-left">
+          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80"
+            alt="Luxury real estate interior" loading="lazy">
+          <div class="about-accent"></div>
+        </div>
+        <div class="about-content reveal-right">
+          <p class="heading-sm">Our Legacy</p>
+          <h2 class="heading-lg text-hover-color">Redefining Luxury<br>Since 1987</h2>
+          <div class="gold-divider"></div>
+          <p class="body-lg">For nearly four decades, Maison Noir has been the trusted name in ultra-luxury real estate.
+            We don't just sell properties — we curate lifestyles, protect legacies, and connect the world's elite with
+            homes that reflect their extraordinary vision.</p>
+          <div class="scroll-stack-container" id="scrollStack">
+            <div class="scroll-stack-card" data-stack-index="0">
+              <div class="about-value glass-hover">
+                <div class="about-value-icon">🏛️</div>
+                <h4>Heritage</h4>
+                <p>37 years of market leadership</p>
+              </div>
+            </div>
+            <div class="scroll-stack-card" data-stack-index="1">
+              <div class="about-value glass-hover">
+                <div class="about-value-icon">🌍</div>
+                <h4>Global Reach</h4>
+                <p>35 markets across 6 continents</p>
+              </div>
+            </div>
+            <div class="scroll-stack-card" data-stack-index="2">
+              <div class="about-value glass-hover">
+                <div class="about-value-icon">🤝</div>
+                <h4>Discretion</h4>
+                <p>Private, off-market transactions</p>
+              </div>
+            </div>
+            <div class="scroll-stack-card" data-stack-index="3">
+              <div class="about-value glass-hover">
+                <div class="about-value-icon">⭐</div>
+                <h4>Excellence</h4>
+                <p>98% client satisfaction rate</p>
+              </div>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Testimonials — Glass Hover Effect ═══ -->
+  <section class="testimonials section-padding" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="heading-sm">Client Stories</p>
+        <h2 class="heading-lg text-hover-color">Trusted by the Elite</h2>
+        <div class="gold-divider center"></div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card glass-hover reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Maison Noir understood our vision from the first conversation. They found us a
+            home that exceeded every expectation — a true masterpiece."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JR</div>
+            <div>
+              <div class="testimonial-name">James Rothschild</div>
+              <div class="testimonial-role">Private Investor, London</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass-hover reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"The level of discretion and professionalism is unmatched. Our $40M acquisition
+            was handled with absolute precision and confidentiality."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SA</div>
+            <div>
+              <div class="testimonial-name">Sophia Armani</div>
+              <div class="testimonial-role">Art Collector, Milan</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass-hover reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"From our Manhattan penthouse to our Aspen retreat, Maison Noir has been our
+            exclusive partner for over a decade. Simply the best."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MK</div>
+            <div>
+              <div class="testimonial-name">Michael Kensington</div>
+              <div class="testimonial-role">CEO, Kensington Capital</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Contact Section ═══ -->
+  <section class="contact section-padding" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-content reveal-left">
+          <p class="heading-sm">Private Consultation</p>
+          <h2 class="heading-lg text-hover-color">Begin Your<br>Journey</h2>
+          <div class="gold-divider"></div>
+          <p class="body-lg">Whether acquiring a trophy property or discreetly listing an estate, our advisors are ready
+            to guide you through every step.</p>
+          <div class="contact-info">
+            <div class="contact-info-item glass-hover">
+              <div class="contact-info-icon">📍</div>
+              <div class="contact-info-text">
+                <h4>Flagship Office</h4>
+                <p>9400 Wilshire Blvd, Beverly Hills, CA 90212</p>
+              </div>
+            </div>
+            <div class="contact-info-item glass-hover">
+              <div class="contact-info-icon">📞</div>
+              <div class="contact-info-text">
+                <h4>Private Line</h4>
+                <p>+1 (310) 555-0190</p>
+              </div>
+            </div>
+            <div class="contact-info-item glass-hover">
+              <div class="contact-info-icon">✉️</div>
+              <div class="contact-info-text">
+                <h4>Email</h4>
+                <p>private@maisonnoir.com</p>
+              </div>
+            </div>
+          </div>
+          <!-- Map embed -->
+          <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-border);">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.1234567890!2d-118.4!3d34.07!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBeverly+Hills!5e0!3m2!1sen!2sus!4v1"
+              width="100%" height="220" style="border:0; filter: grayscale(1) brightness(0.6) contrast(1.3);"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Maison Noir Office Location"></iframe>
+          </div>
+        </div>
+        <div class="contact-form reveal-right">
+          <h3 class="heading-md" style="margin-bottom: 8px;">Request a Consultation</h3>
+          <p class="body-md" style="margin-bottom: 32px;">All inquiries are handled with complete discretion.</p>
+          <form id="contactForm" autocomplete="off">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Your last name" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="interest">Area of Interest</label>
+              <select id="interest" name="interest">
+                <option value="" disabled selected>Select your interest</option>
+                <option value="acquisition">Property Acquisition</option>
+                <option value="selling">Private Listing</option>
+                <option value="investment">Investment Advisory</option>
+                <option value="relocation">Luxury Relocation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="budget">Budget Range</label>
+              <select id="budget" name="budget">
+                <option value="" disabled selected>Select budget range</option>
+                <option value="5-10">$5M – $10M</option>
+                <option value="10-25">$10M – $25M</option>
+                <option value="25-50">$25M – $50M</option>
+                <option value="50+">$50M+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us about your ideal property..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Schedule Private Consultation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-name">MAISON NOIR</div>
+          <p class="footer-brand-desc">The world's premier luxury real estate advisory. Curating exceptional properties
+            for the discerning few since 1987.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram" class="glass-hover">IG</a>
+            <a href="#" aria-label="LinkedIn" class="glass-hover">IN</a>
+            <a href="#" aria-label="Twitter" class="glass-hover">TW</a>
+            <a href="#" aria-label="Facebook" class="glass-hover">FB</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Properties</h4>
+          <a href="#" class="nav-hover-color">Penthouses</a>
+          <a href="#" class="nav-hover-color">Villas</a>
+          <a href="#" class="nav-hover-color">Waterfront</a>
+          <a href="#" class="nav-hover-color">Estates</a>
+          <a href="#" class="nav-hover-color">New Developments</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#" class="nav-hover-color">About Us</a>
+          <a href="#" class="nav-hover-color">Our Team</a>
+          <a href="#" class="nav-hover-color">Press</a>
+          <a href="#" class="nav-hover-color">Careers</a>
+          <a href="#" class="nav-hover-color">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Subscribe</h4>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 16px;">Receive exclusive
+            off-market listings.</p>
+          <div class="footer-newsletter">
+            <input type="email" placeholder="Your email" aria-label="Newsletter email">
+            <button type="button">Join</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Maison Noir. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#" class="nav-hover-color">Privacy Policy</a>
+          <a href="#" class="nav-hover-color">Terms of Service</a>
+          <a href="#" class="nav-hover-color">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ Property Detail Modal ═══ -->
+  <div class="modal-overlay" id="propertyModal">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">✕</button>
+    <div class="modal-content">
+      <div class="modal-gallery">
+        <img id="modalImage" src="" alt="Property gallery">
+        <div class="modal-gallery-nav">
+          <span class="modal-gallery-dot active"></span>
+          <span class="modal-gallery-dot"></span>
+          <span class="modal-gallery-dot"></span>
+          <span class="modal-gallery-dot"></span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="property-card-location" id="modalLocation"></p>
+        <h2 class="heading-lg" id="modalTitle"></h2>
+        <div class="property-card-price" id="modalPrice"></div>
+        <div class="modal-features">
+          <div class="modal-feature-item">
+            <div class="icon">🛏</div>
+            <div class="value" id="modalBeds"></div>
+            <div class="label">Bedrooms</div>
+          </div>
+          <div class="modal-feature-item">
+            <div class="icon">🛁</div>
+            <div class="value" id="modalBaths"></div>
+            <div class="label">Bathrooms</div>
+          </div>
+          <div class="modal-feature-item">
+            <div class="icon">📐</div>
+            <div class="value" id="modalSqft"></div>
+            <div class="label">Square Feet</div>
+          </div>
+          <div class="modal-feature-item">
+            <div class="icon">🏗️</div>
+            <div class="value" id="modalYear"></div>
+            <div class="label">Year Built</div>
+          </div>
+        </div>
+        <div class="modal-description">
+          <h3>About This Property</h3>
+          <p id="modalDescription"></p>
+        </div>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#contact" class="btn btn-primary" onclick="closeModal()">Schedule Viewing</a>
+          <a href="#" class="btn btn-outline">Request Floor Plans</a>
+          <a href="#" class="btn btn-outline">Virtual Tour</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Chat Widget ═══ -->
+  <div class="chat-widget">
+    <button class="chat-btn" aria-label="Open live chat" id="chatBtn">💬</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
