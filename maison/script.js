@@ -82,7 +82,7 @@ document.body.style.overflow = 'hidden';
 
   const TOTAL_FRAMES = 80;
   const BASE_NAME = 'Create_a_hyperrealistic_1080p_202602230105_';
-  const IMG_DIR = 'assets/hero-sequence/';
+  const IMG_DIR = './';
   const frames = [];
   let loadedCount = 0;
   let currentFrame = 0;
